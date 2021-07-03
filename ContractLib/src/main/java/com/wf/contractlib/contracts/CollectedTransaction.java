@@ -1,3 +1,6 @@
+package com.wf.contractlib.contracts;
+
+import com.wf.contractlib.entities.*;
 import lombok.*;
 
 import java.util.Date;
@@ -30,4 +33,3 @@ public class CollectedTransaction {
     Long unixTime;
     GeoCoordinate merchantCoordinate;
 }
-
