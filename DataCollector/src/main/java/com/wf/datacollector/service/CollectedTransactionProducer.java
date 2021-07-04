@@ -10,17 +10,30 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class CollectedTransactionProducer {
-    @Autowired
     private KafkaTemplate<String, CollectedTransaction> kafkaTemplate;
-
-    @Autowired
     private InboundFilter inboundFilterChain;
-
-    @Autowired
     private TransactionConverter transactionConverter;
+    private OutboundFilter outboundFilterChain;
 
     @Autowired
-    private OutboundFilter outboundFilterChain;
+    public void setInboundFilterChain(InboundFilter inboundFilterChain) {
+        this.inboundFilterChain = inboundFilterChain;
+    }
+
+    @Autowired
+    public void setKafkaTemplate(KafkaTemplate<String, CollectedTransaction> kafkaTemplate) {
+        this.kafkaTemplate = kafkaTemplate;
+    }
+
+    @Autowired
+    public void setOutboundFilterChain(OutboundFilter outboundFilterChain) {
+        this.outboundFilterChain = outboundFilterChain;
+    }
+
+    @Autowired
+    public void setTransactionConverter(TransactionConverter transactionConverter) {
+        this.transactionConverter = transactionConverter;
+    }
 
     public boolean produce(InboundTransaction inboundTransaction) {
         if (inboundFilterChain.isOk(inboundTransaction)) {
