@@ -1,6 +1,5 @@
 package com.wf.datacollector.controller;
 
-import com.wf.contractlib.contracts.CollectedTransaction;
 import com.wf.datacollector.entity.InboundTransaction;
 import com.wf.datacollector.filter.inbound.InboundFilter;
 import com.wf.datacollector.service.CollectedTransactionProducer;
@@ -22,12 +21,7 @@ public class TransactionController {
     private CollectedTransactionProducer collectedTransactionProducer;
 
     @PostMapping("/transaction")
-    boolean consumeTransaction(@RequestBody InboundTransaction transaction) {
-        System.out.println("Consumed :: " + transaction);
-        if (inboundFilterChain.isOk(transaction)) {
-            CollectedTransaction collectedTransaction = transactionConverter.convert(transaction);
-            return collectedTransactionProducer.produce(collectedTransaction);
-        }
-        return false;
+    boolean consumeTransaction(@RequestBody InboundTransaction inboundTransaction) {
+        return collectedTransactionProducer.produce(inboundTransaction);
     }
 }
