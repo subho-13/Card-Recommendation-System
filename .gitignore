@@ -1,0 +1,6 @@
+/.idea/
+/binaries/
+*.json
+*.csv
+*.jar
+*.class
