@@ -10,14 +10,14 @@ public class OutboundFilterUnknown implements OutboundFilter {
     OutboundFilter nextOutboundFilter;
     @Override
     public boolean isOk(final CollectedTransaction transaction) {
-        boolean isInputOkay = true;
-        isInputOkay &= transaction.getDob() != null;
+        boolean isInputOkay;
+        isInputOkay = transaction.getDob() != null;
         isInputOkay &= transaction.getGender() != Gender.UNKNOWN;
         isInputOkay &= (transaction.getJob() != JobType.UNKNOWN);
         isInputOkay &= (transaction.getCardType() != CardType.UNKNOWN);
         isInputOkay &= (transaction.getPurchaseCategory() != PurchaseCategory.UNKNOWN);
 
-        if(nextOutboundFilter == null || isInputOkay == false) {
+        if (nextOutboundFilter == null || !isInputOkay) {
             return isInputOkay;
         }
 
