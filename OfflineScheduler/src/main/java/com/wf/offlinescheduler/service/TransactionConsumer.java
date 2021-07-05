@@ -1,4 +1,4 @@
-package com.wf.nearlinescheduler.service;
+package com.wf.offlinescheduler.service;
 
 import com.wf.contractlib.contracts.AbstractedTransaction;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,17 +7,17 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class TransactionConsumer {
-    private TransactionCountTrigger transactionCountTrigger;
+    private Trigger trigger;
 
     @Autowired
-    public void setTransactionCountTrigger(TransactionCountTrigger transactionCountTrigger) {
-        this.transactionCountTrigger = transactionCountTrigger;
+    public void setTransactionCountTrigger(Trigger tigger) {
+        this.trigger = trigger;
     }
 
-    @KafkaListener(groupId = "NearlineScheduler", topics = "AbstractedTransaction",
+    @KafkaListener(groupId = "OfflineScheduler", topics = "AbstractedTransaction",
             containerFactory = "abstractedTransactionListenerFactory")
     public void consumeAbstractedTransaction(AbstractedTransaction abstractedTransaction) {
         System.out.println(abstractedTransaction);
-        transactionCountTrigger.handle(abstractedTransaction);
+        trigger.handle(abstractedTransaction);
     }
 }

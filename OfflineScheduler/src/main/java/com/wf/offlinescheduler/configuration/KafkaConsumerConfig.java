@@ -1,4 +1,4 @@
-package com.wf.nearlinescheduler.configuration;
+package com.wf.offlinescheduler.configuration;
 
 import com.wf.contractlib.contracts.AbstractedTransaction;
 import org.apache.kafka.clients.consumer.ConsumerConfig;

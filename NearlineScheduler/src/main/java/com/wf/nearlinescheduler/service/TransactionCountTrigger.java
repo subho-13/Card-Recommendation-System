@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.Optional;
 
 @Service
@@ -37,7 +38,8 @@ public class TransactionCountTrigger {
         return customerDetails;
     }
 
-    public void updateDatabase(AbstractedTransaction abstractedTransaction) {
+    @Transactional
+    public void handle(AbstractedTransaction abstractedTransaction) {
         CustomerDetails customerDetails = getNewCustomer(abstractedTransaction);
 
         Optional<CustomerDetails> customerDetailsOptional =
@@ -53,7 +55,7 @@ public class TransactionCountTrigger {
                 NearlineTrigger nearlineTrigger = new NearlineTrigger();
                 nearlineTrigger.setCustomerID(customerDetails.getCustomerID());
 
-                triggerProducer.produceScheduler(nearlineTrigger);
+                triggerProducer.produce(nearlineTrigger);
 
                 customerDetails.setLastScheduledUnixTime(Time.getCurrentTimeInSecs());
             }

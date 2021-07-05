@@ -46,7 +46,7 @@ public class LastScheduledTrigger  implements DisposableBean, Runnable {
                 NearlineTrigger nearlineTrigger = new NearlineTrigger();
                 nearlineTrigger.setCustomerID(customer.getCustomerID());
 
-                triggerProducer.produceScheduler(nearlineTrigger);
+                triggerProducer.produce(nearlineTrigger);
 
                 customer.setLastScheduledUnixTime(Time.getCurrentTimeInSecs());
                 customerDetailsRepository.save(customer);

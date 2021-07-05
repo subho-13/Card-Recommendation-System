@@ -1,6 +1,6 @@
-package com.wf.nearlinescheduler.configuration;
+package com.wf.dataabstraction.configuration;
 
-import com.wf.contractlib.contracts.AbstractedTransaction;
+import com.wf.contractlib.contracts.CollectedTransaction;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.beans.factory.annotation.Value;
@@ -29,12 +29,12 @@ public class KafkaConsumerConfig {
     }
 
     @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, AbstractedTransaction> abstractedTransactionListenerFactory() {
-        JsonDeserializer<AbstractedTransaction> jsonDeserializer =
-                new JsonDeserializer<>(AbstractedTransaction.class);
+    public ConcurrentKafkaListenerContainerFactory<String, CollectedTransaction> collectedTransactionListenerFactory() {
+        JsonDeserializer<CollectedTransaction> jsonDeserializer =
+                new JsonDeserializer<>(CollectedTransaction.class);
         StringDeserializer stringDeserializer = new StringDeserializer();
-        DefaultKafkaConsumerFactory<String, AbstractedTransaction> defaultKafkaConsumerFactory = new DefaultKafkaConsumerFactory<>(getConfig(), stringDeserializer, jsonDeserializer);
-        ConcurrentKafkaListenerContainerFactory<String, AbstractedTransaction> concurrentKafkaListenerContainerFactory = new ConcurrentKafkaListenerContainerFactory<String, AbstractedTransaction>();
+        DefaultKafkaConsumerFactory<String, CollectedTransaction> defaultKafkaConsumerFactory = new DefaultKafkaConsumerFactory<>(getConfig(), stringDeserializer, jsonDeserializer);
+        ConcurrentKafkaListenerContainerFactory<String, CollectedTransaction> concurrentKafkaListenerContainerFactory = new ConcurrentKafkaListenerContainerFactory<>();
         concurrentKafkaListenerContainerFactory.setConsumerFactory(defaultKafkaConsumerFactory);
         return concurrentKafkaListenerContainerFactory;
     }
