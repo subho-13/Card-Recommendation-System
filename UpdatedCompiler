@@ -1,0 +1,18 @@
+1. Develop an algorithm to calculate the reward points -> Textual Algo ( Database ? )
+2. Develop the database for the Products
+3. Generate the complimentary card mapping
+4. Feature Vector for Supervised Learning
+5. Refactoring
+
+1. Develop microservices for Product Recommendation and Reward Points Calculation
+	-> Sabuj -> 2 days, <- Sabuj and I - 2 days ->
+2. Modify Recommendation Compiler Service to accomodate
+	-> Me - 2 days <-
+	a. Update Compiled Recommendation JSON
+	b. Complimentary Card
+3. Testing microservices
+	- Vanshika and I -> 2 days, <- Vanshika - 6 -> , Me + Vanshika
+4. Documentation
+ 	-> Sabuj -> After 4 days
+5. Refactor Microservices
+	-> Me -> After 7 days

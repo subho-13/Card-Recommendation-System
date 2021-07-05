@@ -9,6 +9,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class OfflineScheduler {
+public class OfflineTrigger {
     private boolean trigger;
 }

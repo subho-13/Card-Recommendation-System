@@ -9,6 +9,6 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @ToString
-public class NearlineScheduler {
-    private List<Integer> customerID;
+public class NearlineTrigger {
+    private Integer customerID;
 }

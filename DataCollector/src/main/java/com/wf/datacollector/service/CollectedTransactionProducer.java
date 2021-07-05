@@ -5,6 +5,7 @@ import com.wf.datacollector.entity.InboundTransaction;
 import com.wf.datacollector.filter.inbound.InboundFilter;
 import com.wf.datacollector.filter.outbound.OutboundFilter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,9 @@ public class CollectedTransactionProducer {
     private InboundFilter inboundFilterChain;
     private TransactionConverter transactionConverter;
     private OutboundFilter outboundFilterChain;
+
+    @Value("${producer-topic}")
+    private String topic;
 
     @Autowired
     public void setInboundFilterChain(InboundFilter inboundFilterChain) {
@@ -48,6 +52,6 @@ public class CollectedTransactionProducer {
     }
 
     private void sendOverKafka(CollectedTransaction collectedTransaction) {
-        this.kafkaTemplate.send("CollectedTransaction", collectedTransaction);
+        this.kafkaTemplate.send(topic, collectedTransaction);
     }
 }

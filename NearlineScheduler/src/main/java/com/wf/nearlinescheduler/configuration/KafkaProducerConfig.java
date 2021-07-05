@@ -1,6 +1,6 @@
-package com.wf.datacollector.configuration;
+package com.wf.nearlinescheduler.configuration;
 
-import com.wf.contractlib.contracts.CollectedTransaction;
+import com.wf.contractlib.contracts.NearlineTrigger;
 import org.apache.kafka.clients.admin.NewTopic;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
@@ -22,7 +22,7 @@ public class KafkaProducerConfig {
 
     @Value("${producer-replication}")
     private int replication;
-    
+
     @Value("${producer-topic}")
     private String topic;
 
@@ -38,10 +38,10 @@ public class KafkaProducerConfig {
     }
 
     @Bean
-    public KafkaTemplate<String, CollectedTransaction> kafkaCollectedTransactionTemplate(){
-        JsonSerializer<CollectedTransaction> jsonSerializer = new JsonSerializer<>();
+    public KafkaTemplate<String, NearlineTrigger> kafkaNearlineTriggerTemplate(){
+        JsonSerializer<NearlineTrigger> jsonSerializer = new JsonSerializer<>();
         StringSerializer stringSerializer = new StringSerializer();
-        DefaultKafkaProducerFactory<String, CollectedTransaction> defaultKafkaProducerFactory
+        DefaultKafkaProducerFactory<String, NearlineTrigger> defaultKafkaProducerFactory
                 = new DefaultKafkaProducerFactory<>(getConfig(), stringSerializer, jsonSerializer);
         return new KafkaTemplate<>(defaultKafkaProducerFactory);
     }
