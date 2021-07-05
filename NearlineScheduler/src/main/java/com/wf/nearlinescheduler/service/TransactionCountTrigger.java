@@ -7,9 +7,11 @@ import com.wf.nearlinescheduler.repository.CustomerDetailsRepository;
 import com.wf.nearlinescheduler.util.Time;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@Service
 public class TransactionCountTrigger {
     private CustomerDetailsRepository customerDetailsRepository;
     private TriggerProducer triggerProducer;
