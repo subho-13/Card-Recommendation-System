@@ -11,14 +11,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class TransactionController {
-    @Autowired
-    private InboundFilter inboundFilterChain;
-
-    @Autowired
-    private TransactionConverter transactionConverter;
-
-    @Autowired
     private CollectedTransactionProducer collectedTransactionProducer;
+
+    @Autowired
+    public void setCollectedTransactionProducer(CollectedTransactionProducer collectedTransactionProducer) {
+        this.collectedTransactionProducer = collectedTransactionProducer;
+    }
 
     @PostMapping("/transaction")
     boolean consumeTransaction(@RequestBody InboundTransaction inboundTransaction) {
