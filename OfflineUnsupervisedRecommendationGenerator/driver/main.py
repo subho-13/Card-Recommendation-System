@@ -1,7 +1,7 @@
 import threading
+from time import sleep
 
 from readerwriterlock import rwlock
-from time import sleep
 
 from service.FeatureVectorConsumer import FeatureVectorConsumer
 from service.RecommendationProducer import RecommendationProducer
@@ -25,7 +25,7 @@ def main(model_driver, model_name, to_send, topic, generate_feature_vector_one, 
 
     for thread in threads:
         thread.start()
-    
+
     try:
         while True:
             sleep(2)
@@ -34,6 +34,6 @@ def main(model_driver, model_name, to_send, topic, generate_feature_vector_one, 
 
         if mutex.locked():
             mutex.release()
-        
+
         for thread in threads:
             thread.join()
