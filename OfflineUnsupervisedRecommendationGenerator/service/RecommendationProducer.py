@@ -8,18 +8,19 @@ from lib.CommonDicts import card_dict
 from Configuration import bootstrap_servers
 
 
+def generate_card_confidence_map(card_confidence_list):
+    card_confidence_map = {}
+
+    for card in card_dict:
+        card_confidence_map[card] = card_confidence_list[card_dict[card]]
+    return card_confidence_map
+
+
 class GeneratedRecommendation:
     def __init__(self, customer_id, model_name, card_confidence_list):
         self.customer_id = customer_id
         self.model_name = model_name
-        self.card_confidence_map = self.generate_card_confidence_map(card_confidence_list)
-
-    def generate_card_confidence_map(self, cardConfidenceList):
-        card_confidence_map = {}
-
-        for card in card_dict:
-            card_confidence_map[card] = cardConfidenceList[card_dict[card]]
-        return card_confidence_map
+        self.card_confidence_map = generate_card_confidence_map(card_confidence_list)
 
 
 class RecommendationProducer(Thread):

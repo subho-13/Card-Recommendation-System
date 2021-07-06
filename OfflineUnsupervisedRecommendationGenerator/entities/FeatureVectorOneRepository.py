@@ -1,5 +1,6 @@
 from FeatureVectorOne import *
 
+
 def write_to_db(message):
     global session
     feature_vector_one = FeatureVectorOne(User_Id=message['User_Id'],
@@ -35,7 +36,7 @@ def write_to_db(message):
     session.commit()
 
 
-def checkIfUserIsNew(User_Id):
+def check_if_user_is_new(User_Id):
     global session
     feature_vector_one = session.query(FeatureVectorOne).filter_by(User_Id=User_Id).first()
     return feature_vector_one.isNewUser()
