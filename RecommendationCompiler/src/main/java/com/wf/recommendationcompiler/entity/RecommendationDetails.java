@@ -9,7 +9,6 @@ import java.util.Map;
 import java.util.Objects;
 
 @ToString
-@RequiredArgsConstructor
 @Getter
 @Setter
 @NoArgsConstructor

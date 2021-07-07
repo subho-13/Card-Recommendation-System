@@ -33,7 +33,7 @@ public class KafkaConsumerConfig {
     }
 
     @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, GeneratedRecommendation> collectedTransactionListenerFactory() {
+    public ConcurrentKafkaListenerContainerFactory<String, GeneratedRecommendation> generatedRecommendationListenerFactory() {
         JsonDeserializer<GeneratedRecommendation> jsonDeserializer =
                 new JsonDeserializer<>(GeneratedRecommendation.class);
         StringDeserializer stringDeserializer = new StringDeserializer();
@@ -45,7 +45,7 @@ public class KafkaConsumerConfig {
     }
 
     @Bean
-    public NewTopic constructNewTopic() {
+    public NewTopic constructConsumerTopic() {
         return TopicBuilder.name("GeneratedRecommendation").partitions(concurrency).replicas(1).build();
     }
 }

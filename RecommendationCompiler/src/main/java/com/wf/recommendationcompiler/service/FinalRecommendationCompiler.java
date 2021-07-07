@@ -10,14 +10,14 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 @Service
-public class Compiler {
-    private ReentrantReadWriteLock readWriteLock = new ReentrantReadWriteLock();
-    private Lock writeLock = readWriteLock.writeLock();
-    private Lock readLock = readWriteLock.readLock();
+public class FinalRecommendationCompiler {
+    private final ReentrantReadWriteLock readWriteLock = new ReentrantReadWriteLock();
+    private final Lock writeLock = readWriteLock.writeLock();
+    private final Lock readLock = readWriteLock.readLock();
 
     HashMap<String, Float> modelWeightMap;
 
-    public Compiler() {
+    public FinalRecommendationCompiler() {
         modelWeightMap = new HashMap<>();
         modelWeightMap.put("Rule Learning", 0.15F);
         modelWeightMap.put("Association Rule Learning", 0.35F);
@@ -30,7 +30,7 @@ public class Compiler {
         modelWeightMap.put("New User", 0.05F);
     }
 
-    public void updateMap(final Map<String, Float> newModelWeightMap) {
+    public void updateModelWeightMap(final Map<String, Float> newModelWeightMap) {
         try {
             writeLock.lock();
             modelWeightMap = new HashMap<>();

@@ -10,7 +10,8 @@ import java.util.Optional;
 @Repository
 public interface RecommendationDetailsRepository extends
         CrudRepository<RecommendationDetails, Integer> {
-    List<RecommendationDetails> findByCustomerID(Integer customerID);
+    List<RecommendationDetails> findAll();
     Optional<RecommendationDetails> findByCustomerIDAndModelName(Integer customerID,
                                                                  String modelName);
+
 }

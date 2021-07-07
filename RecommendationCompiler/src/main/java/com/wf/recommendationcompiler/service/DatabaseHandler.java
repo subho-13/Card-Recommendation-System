@@ -7,12 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 @Service
 public class DatabaseHandler {
     private RecommendationDetailsRepository recommendationDetailsRepository;
     private DetailsGenerator detailsGenerator;
+    private final AtomicBoolean isNewDataAvailable = new AtomicBoolean(false);
 
     @Autowired
     public void setRecommendationDetailsRepository(RecommendationDetailsRepository recommendationDetailsRepository) {
@@ -22,6 +25,10 @@ public class DatabaseHandler {
     @Autowired
     public void setDetailsGenerator(DetailsGenerator detailsGenerator) {
         this.detailsGenerator = detailsGenerator;
+    }
+
+    public boolean getIsNewDataAvailable() {
+        return isNewDataAvailable.get();
     }
 
     @Transactional
@@ -38,5 +45,12 @@ public class DatabaseHandler {
         }
 
         recommendationDetailsRepository.save(recommendationDetails);
+        isNewDataAvailable.set(true);
+    }
+
+    @Transactional
+    public List<RecommendationDetails> getAllRecommendationDetails() {
+        isNewDataAvailable.set(false);
+        return recommendationDetailsRepository.findAll();
     }
 }
