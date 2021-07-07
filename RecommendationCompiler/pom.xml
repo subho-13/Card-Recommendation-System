@@ -8,7 +8,7 @@
         <version>2.5.2</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.example</groupId>
+    <groupId>com.wf</groupId>
     <artifactId>RecommendationCompiler</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>RecommendationCompiler</name>
@@ -76,6 +76,11 @@
             <groupId>org.testcontainers</groupId>
             <artifactId>postgresql</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.wf</groupId>
+            <artifactId>ContractLib</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
     <dependencyManagement>
