@@ -3,7 +3,7 @@ package com.wf.datacollector.filter.inbound;
 import com.wf.datacollector.entity.InboundTransaction;
 
 public class InboundFilterNull implements InboundFilter {
-    InboundFilter nextInboundFilter;
+    private InboundFilter nextInboundFilter;
 
     @Override
     public boolean isOk(InboundTransaction transaction) {

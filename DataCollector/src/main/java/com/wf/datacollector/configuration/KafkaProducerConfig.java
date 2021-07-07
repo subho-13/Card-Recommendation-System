@@ -17,13 +17,13 @@ import java.util.Map;
 
 @Configuration
 public class KafkaProducerConfig {
-    @Value("${producer.partition}")
+    @Value("${producer-partition}")
     private int partition;
 
-    @Value("${producer.replication}")
+    @Value("${producer-replication}")
     private int replication;
     
-    @Value("${producer.topic}")
+    @Value("${producer-topic}")
     private String topic;
 
     @Value("${spring.kafka.bootstrap-servers}")

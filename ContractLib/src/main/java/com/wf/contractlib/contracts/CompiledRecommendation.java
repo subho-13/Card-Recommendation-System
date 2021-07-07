@@ -13,5 +13,5 @@ import java.util.Map;
 @ToString
 public class CompiledRecommendation {
     private Integer customerId;
-    private Map<String, CardType> modelCardMap;
+    private Map<CardType, Float> cardConfidenceMap;
 }
