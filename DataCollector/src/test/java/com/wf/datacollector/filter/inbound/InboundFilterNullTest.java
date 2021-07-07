@@ -63,14 +63,34 @@ public class InboundFilterNullTest {
 
 
     @Test
-    @DisplayName("Should return false when dob is null")
+    @DisplayName("Should return false when values are null")
     public void testIsNotOkWhenDobNull() {
         InboundTransaction inboundTransaction = new InboundTransaction();
-        inboundTransaction.setDob(null);
+        inboundTransaction.setTrans_date_trans_time(null);
+        inboundTransaction.setCard_num("9876543219876543");
+        inboundTransaction.setMerchant("Sporer-Keebler");
+        inboundTransaction.setPurchase_category("Personal");
+        inboundTransaction.setTrans_amt(30.34F);
+        inboundTransaction.setFirst("Ashley");
+        inboundTransaction.setLast("Lopez");
         inboundTransaction.setGender(null);
-        inboundTransaction.setJob("Accountant");
-        inboundTransaction.setCard_type("Cash_wise");
-        inboundTransaction.setPurchase_category("Education");
+        inboundTransaction.setCard_type("Shopping");
+        inboundTransaction.setCredit_score(210);
+        inboundTransaction.setStreet("9333 Valentine Point");
+        inboundTransaction.setCity("Bellmore");
+        inboundTransaction.setState("NY");
+        inboundTransaction.setZip("11710");
+        inboundTransaction.setLongitude(40.6729F);
+        inboundTransaction.setLatitude(-73.5365F);
+        inboundTransaction.setCity_pop(34496);
+        inboundTransaction.setJob("manager");
+        inboundTransaction.setDob(null);
+        inboundTransaction.setTrans_num("c81755dbbbea9d5c77f094348a7579be");
+        inboundTransaction.setUnix_time(1371816893L);
+        inboundTransaction.setMerch_lat(40.49F);
+        inboundTransaction.setMerch_long(-74.19F);
+        inboundTransaction.setAge(23);
+        inboundTransaction.setIs_fraud(0);
 
         assertFalse(inboundFilterNull.isOk(inboundTransaction), "Should return false");
     }
@@ -79,6 +99,7 @@ public class InboundFilterNullTest {
     @DisplayName("Should return false when the fields are unknown")
     public void testIsNotOkWhenUnknown() throws ParseException {
         InboundTransaction inboundTransaction = new InboundTransaction();
+        inboundTransaction.setTrans_date_trans_time("");
         inboundTransaction.setCard_num("9876543219876543");
         inboundTransaction.setMerchant("Sporer-Keebler");
         inboundTransaction.setPurchase_category("Personal");
@@ -86,21 +107,23 @@ public class InboundFilterNullTest {
         inboundTransaction.setFirst("Ashley");
         inboundTransaction.setLast("Lopez");
         inboundTransaction.setGender("");
-        inboundTransaction.setCard_type("");
+        inboundTransaction.setCard_type("Shopping");
         inboundTransaction.setCredit_score(210);
-        inboundTransaction.setStreet("");
+        inboundTransaction.setStreet("9333 Valentine Point");
         inboundTransaction.setCity("Bellmore");
-        inboundTransaction.setState("");
+        inboundTransaction.setState("NY");
         inboundTransaction.setZip("11710");
         inboundTransaction.setLongitude(40.6729F);
         inboundTransaction.setLatitude(-73.5365F);
         inboundTransaction.setCity_pop(34496);
-        inboundTransaction.setJob("manager");
-        inboundTransaction.setDob("10-2-10");
+        inboundTransaction.setJob("");
+        inboundTransaction.setDob("10-2-98");
         inboundTransaction.setTrans_num("c81755dbbbea9d5c77f094348a7579be");
         inboundTransaction.setUnix_time(1371816893L);
         inboundTransaction.setMerch_lat(40.49F);
         inboundTransaction.setMerch_long(-74.19F);
+        inboundTransaction.setAge(23);
+        inboundTransaction.setIs_fraud(0);
 
         System.out.println(inboundTransaction) ;
         assertFalse(inboundFilterNull.isOk(inboundTransaction), "Should return false");
