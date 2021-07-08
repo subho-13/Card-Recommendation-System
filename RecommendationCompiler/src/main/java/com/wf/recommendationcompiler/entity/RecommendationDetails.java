@@ -13,7 +13,7 @@ import java.util.Objects;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(uniqueConstraints = {
+@Table(name = "recommendation_details", uniqueConstraints = {
         @UniqueConstraint(columnNames = {"customer_id", "model_name"})
 })
 public class RecommendationDetails {
@@ -22,10 +22,10 @@ public class RecommendationDetails {
     @Column(name = "recommendation_id")
     private Integer recommendationID;
 
-    @Column(name = "customer_id")
+    @Column(name = "customer_id", nullable = false)
     private Integer customerID;
 
-    @Column(name = "model_name")
+    @Column(name = "model_name", nullable = false)
     private String modelName;
 
     @ElementCollection

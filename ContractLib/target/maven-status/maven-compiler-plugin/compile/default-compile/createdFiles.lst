@@ -5,6 +5,7 @@ com/wf/contractlib/contracts/CompiledRecommendation.class
 com/wf/contractlib/contracts/CustomerDetails.class
 com/wf/contractlib/contracts/OfflineTrigger.class
 com/wf/contractlib/entities/JobType.class
+com/wf/contractlib/contracts/ProvidedRecommendation.class
 com/wf/contractlib/entities/Gender.class
 com/wf/contractlib/entities/PurchaseCategory.class
 com/wf/contractlib/contracts/CollectedTransaction.class

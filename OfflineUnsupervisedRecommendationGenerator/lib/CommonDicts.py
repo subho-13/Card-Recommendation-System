@@ -32,6 +32,7 @@ job_dict = {
         "ARTIST": "artist",
         "CEO": "ceo",
         "POLITICIAN": "politician",
+        "STUDENT": "student"
     }
 
 card_dict = {
