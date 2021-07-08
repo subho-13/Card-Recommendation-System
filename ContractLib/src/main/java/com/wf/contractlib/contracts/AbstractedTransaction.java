@@ -1,8 +1,6 @@
 package com.wf.contractlib.contracts;
 
-import com.wf.contractlib.entities.CardType;
-import com.wf.contractlib.entities.GeoCoordinate;
-import com.wf.contractlib.entities.PurchaseCategory;
+import com.wf.contractlib.entities.*;
 import lombok.*;
 
 @Data
