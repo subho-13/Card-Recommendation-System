@@ -17,6 +17,7 @@ public enum PurchaseCategory {
     GROCERY_NET,
     EDUCATION,
     HOTEL,
+    ANY,
     UNKNOWN;
 
     public static PurchaseCategory convert(String category) {
@@ -53,6 +54,8 @@ public enum PurchaseCategory {
                 return EDUCATION;
             case "Hotel":
                 return HOTEL;
+            case "Any":
+                return ANY;
         }
         return UNKNOWN;
     }

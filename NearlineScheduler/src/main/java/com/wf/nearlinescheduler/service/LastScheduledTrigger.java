@@ -28,7 +28,7 @@ public class LastScheduledTrigger  implements DisposableBean, Runnable {
     private TriggerProducer triggerProducer;
 
     @Autowired
-    LastScheduledTrigger(ApplicationContext applicationContext) {
+    public LastScheduledTrigger(ApplicationContext applicationContext) {
         this.customerDetailsRepository = applicationContext.getBean(CustomerDetailsRepository.class);
         this.triggerProducer = applicationContext.getBean(TriggerProducer.class);
 
