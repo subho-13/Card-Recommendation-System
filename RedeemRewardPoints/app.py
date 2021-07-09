@@ -1,7 +1,12 @@
+import threading
+from time import sleep
+
 from flask import Flask
 from repository.DatabaseHandler import *
+from service.AbstractedTransactionConsumer import AbstractedTransactionConsumer
 from service.RestService import RestService
 from threading import Thread
+from readerwriterlock import rwlock
 
 app = Flask(__name__)
 
@@ -24,7 +29,29 @@ def hello_world(customer_id):
 
 
 if __name__ == '__main__':
-    list_of_thread = [
+    event = threading.Event()
+    event.set()
 
+    rwlock_reader = rwlock.RWLockReadD()
+
+    purchase_min_max_dict = {
+        "min": {},
+        "max": {}
+    }
+
+    list_of_threads = [
+        AbstractedTransactionConsumer(event, rwlock, purchase_min_max_dict),
+        Thread(target=app.run, args=("localhost", 9512))
     ]
-    app.run()
+
+    try:
+        for thread in list_of_threads:
+            thread.start()
+
+        while True:
+            sleep(5)
+    except KeyboardInterrupt:
+        event.clear()
+
+        for thread in list_of_threads:
+            thread.join()

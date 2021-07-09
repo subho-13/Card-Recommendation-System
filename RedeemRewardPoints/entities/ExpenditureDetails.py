@@ -9,7 +9,7 @@ BaseExpenditureDetails = declarative_base()
 class ExpenditureDetails(BaseExpenditureDetails):
     __tablename__ = "expenditure_details"
 
-    expenditure_id = Column(Integer, ForeignKey('card_details.card_id'), PrimaryKey=True)
+    expenditure_id = Column(Integer, ForeignKey('card_details.card_id'), primary_key=True)
     card_type = Column(Integer)
     Education = Column(Float)
     Entertainment = Column(Float)

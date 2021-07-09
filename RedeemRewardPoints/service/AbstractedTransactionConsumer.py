@@ -68,15 +68,15 @@ class AbstractedTransactionConsumer(Thread):
         transaction_amount = abstracted_transaction.transaction_amount
         with self.rwlock.gen_wlock():
             if purchase_category in self.purchase_min_max_dict['min']:
-                self.purchase_category_min_max_dict['min'] = min(transaction_amount,
+                self.purchase_category_min_max_dict['min'][purchase_category] = min(transaction_amount,
                                                                  self.purchase_category_min_max_dict['min'][
                                                                      purchase_category])
             else:
-                self.purchase_category_min_max_dict['min'] = transaction_amount
+                self.purchase_category_min_max_dict['min'][purchase_category]  = transaction_amount
 
             if purchase_category in self.purchase_min_max_dict['max']:
-                self.purchase_category_min_max_dict['max'] = max(transaction_amount,
+                self.purchase_category_min_max_dict['max'][purchase_category]  = max(transaction_amount,
                                                                  self.purchase_category_min_max_dict['max'][
                                                                      purchase_category])
             else:
-                self.purchase_category_min_max_dict['max'] = transaction_amount
+                self.purchase_category_min_max_dict['max'][purchase_category] = transaction_amount

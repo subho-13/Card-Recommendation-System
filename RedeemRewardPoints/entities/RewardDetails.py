@@ -9,7 +9,7 @@ BaseRewardDetails = declarative_base()
 class RewardDetails(BaseRewardDetails):
     __tablename__ = "reward_details"
 
-    reward_id = Column(Integer, ForeignKey('card_details.card_id'), PrimaryKey=True)
+    reward_id = Column(Integer, ForeignKey('card_details.card_id'), primary_key=True)
     card_type = Column(Integer)
     Education = Column(Float)
     Entertainment = Column(Float)
