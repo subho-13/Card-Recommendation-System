@@ -1,8 +1,6 @@
-import threading
+from flask import Flask, request
 
-from flask import Flask, request, jsonify
-
-from SuggestReward import get_rewards
+from service.SuggestReward import get_rewards
 
 app = Flask(__name__)
 
@@ -11,8 +9,9 @@ app = Flask(__name__)
 def post_reward_suggestion():
     data = request.form
     expenditure_details = data['expenditure_details']
-    reward_details = data['reward_details']
-    list_of_suggestions = get_rewards(expenditure_details, reward_details)
+    reward_points = data['reward_points']
+
+    list_of_suggestions = get_rewards(expenditure_details, reward_points)
     return list_of_suggestions
 
 

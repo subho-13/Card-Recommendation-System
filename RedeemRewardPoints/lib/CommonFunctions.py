@@ -1,11 +1,11 @@
-import numpy as np
+import pickle
+
 import matplotlib.pyplot as plt
+import numpy as np
 import pandas as pd
 import seaborn as sns
-import openpyxl
-import json
-import pickle
 from sklearn.preprocessing import StandardScaler
+
 
 def card_data_generator():
     with open('card_data.pickle', 'rb') as handle:
