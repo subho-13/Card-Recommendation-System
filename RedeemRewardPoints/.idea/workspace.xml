@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="e74b2616-18e0-4ec7-88a8-956fc05a676c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service/RestService.py" beforeDir="false" afterPath="$PROJECT_DIR$/service/RestService.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/dummy.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +46,7 @@
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
@@ -63,7 +65,7 @@
       <updated>1625808018095</updated>
       <workItem from="1625808033529" duration="4803000" />
       <workItem from="1625813405451" duration="4211000" />
-      <workItem from="1625834664428" duration="3721000" />
+      <workItem from="1625834664428" duration="6049000" />
     </task>
     <servers />
   </component>
