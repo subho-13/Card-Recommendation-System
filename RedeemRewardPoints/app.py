@@ -19,7 +19,7 @@ def hello_world(customer_id):
         reward_details = get_reward_details(card.card_id)
         suggestions = RestService.call_reward_redeem_suggestion_service(expenditure_details, reward_details)
         dict_of_suggestions[card.card_id] = suggestions
-
+            
     return dict_of_suggestions
 
 

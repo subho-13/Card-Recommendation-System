@@ -1,14 +1,15 @@
-from flask import Flask
+from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-
-@app.route('/')
-def get_reward_suggestion(expenditure_details, reward_details):
-    suggested_reward_list = []
-    
-    return suggested_reward_list
+@app.route('/postRewardSuggestion', methods=['POST'])
+def post_reward_suggestion():    
+    data = request.form                    
+    expenditure_details = data['expenditure_details']
+    reward_details = data['reward_details']   
+    # call func  
+    return dummy
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
