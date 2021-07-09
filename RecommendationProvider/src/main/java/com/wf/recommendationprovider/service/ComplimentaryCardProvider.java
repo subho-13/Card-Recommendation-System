@@ -6,7 +6,6 @@ import com.wf.contractlib.entities.PurchaseCategory;
 import com.wf.recommendationprovider.entity.CardBenefits;
 import com.wf.recommendationprovider.entity.CustomerDetails;
 import com.wf.recommendationprovider.util.ComplimentaryCardRepositoryBuilder;
-import lombok.Setter;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;

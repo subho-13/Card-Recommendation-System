@@ -1,8 +1,10 @@
 from flask import Flask
 from repository.DatabaseHandler import *
 from service.RestService import RestService
+from threading import Thread
 
 app = Flask(__name__)
+
 
 @app.route('/get/<customer_id>')
 def hello_world(customer_id):
@@ -20,5 +22,9 @@ def hello_world(customer_id):
 
     return dict_of_suggestions
 
+
 if __name__ == '__main__':
+    list_of_thread = [
+
+    ]
     app.run()

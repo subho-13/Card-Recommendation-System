@@ -6,10 +6,11 @@ import com.wf.recommendationprovider.entity.CardBenefits;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class ComplimentaryCardRepositoryBuilder {
     public static Map<CardType, Map<CardType, CardBenefits>> getComplimentaryCardMap() {
-        Map<CardType, Map<CardType, CardBenefits>> complimentaryCardMap = new HashMap<>();
+        Map<CardType, Map<CardType, CardBenefits>> complimentaryCardMap = new ConcurrentHashMap<>();
         Map<CardType, CardBenefits> cardBenefitsMap;
         CardBenefits cardBenefits;
         Map<PurchaseCategory, Float> purchaseBenefitMap;

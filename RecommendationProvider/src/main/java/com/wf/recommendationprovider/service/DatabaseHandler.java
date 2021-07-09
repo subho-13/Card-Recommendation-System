@@ -32,9 +32,7 @@ public class DatabaseHandler {
         Optional<CustomerDetails> optionalCustomerDetails =
                 customerDetailsRepository.findByCustomerID(customerDetails.getCustomerID());
 
-        if (optionalCustomerDetails.isPresent()) {
-            customerDetails.setCardConfidenceMap(optionalCustomerDetails.get().getCardConfidenceMap());
-        }
+        optionalCustomerDetails.ifPresent(details -> customerDetails.setCardConfidenceMap(details.getCardConfidenceMap()));
 
         customerDetailsRepository.save(customerDetails);
     }
@@ -52,10 +50,5 @@ public class DatabaseHandler {
         }
 
         customerDetailsRepository.save(customerDetails);
-    }
-
-    @Transactional
-    public Optional<CustomerDetails> getCustomerDetails(Integer customerID) {
-        return customerDetailsRepository.findByCustomerID(customerID);
     }
 }

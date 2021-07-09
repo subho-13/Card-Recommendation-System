@@ -1,7 +1,6 @@
 package com.wf.recommendationprovider.service;
 
 import com.wf.contractlib.contracts.CompiledRecommendation;
-import com.wf.contractlib.contracts.featurevector.FeatureVectorOne;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
