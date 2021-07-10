@@ -1,14 +1,12 @@
 from sqlalchemy import Column, Integer, String, Boolean, Float, Date
 from sqlalchemy import create_engine
-from sqlalchemy.orm import declarative_base
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import declarative_base, sessionmaker
 
-from Configuration import postgres_db_uri
+from repository.EntityManager import engine
 
-engine = create_engine(postgres_db_uri, echo=False)
+BaseUserDetails = declarative_base()
 
-Base = declarative_base()
-class UserDetails(Base):
+class UserDetails(BaseUserDetails):
     __tablename__ = "user_details"
 
     User_Id = Column(Integer, primary_key=True)
@@ -38,8 +36,4 @@ class UserDetails(Base):
     def __repr__(self):
         return "UserDetails"    
 
-
-Session = sessionmaker(bind=engine)
-Session.configure(bind=engine)
-session = Session()
-Base.metadata.create_all(engine)
+BaseUserDetails.metadata.create_all(engine)

@@ -30,7 +30,7 @@ def convert_to_user_details(message):
 class CompiledRecommendationConsumer(Thread):
     def __init__(self, event, rwlock):
         super(CompiledRecommendationConsumer, self).__init__()
-        self.kafka_consumer = KafkaConsumer("FeatureVectorOne", group_id=consumer_gid,
+        self.kafka_consumer = KafkaConsumer("CompiledRecommendation", group_id=consumer_gid,
                                             bootstrap_servers=bootstrap_servers,
                                             auto_offset_reset='latest',
                                             value_deserializer=lambda message: json.loads(message.decode('utf-8')),
