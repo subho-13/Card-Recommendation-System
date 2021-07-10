@@ -1,22 +1,22 @@
 package com.wf.contractlib.entities;
 
 public enum PurchaseCategory {
-    PERSONAL,
-    HEALTH,
-    MISC_POS,
-    TRAVEL,
-    KIDS_PETS,
-    FOOD,
-    HOME,
+    EDUCATION,
     ENTERTAINMENT,
-    SHOP_POS,
-    SHOP_NET,
-    MISC_NET,
-    GROCERY_POS,
+    FOOD,
     GAS_TRANS,
     GROCERY_NET,
-    EDUCATION,
+    GROCERY_POS,
+    HEALTH,
+    HOME,
     HOTEL,
+    KIDS_PETS,
+    MISC_NET,
+    MISC_POS,
+    PERSONAL,
+    SHOP_NET,
+    SHOP_POS,
+    TRAVEL,
     UNKNOWN;
 
     public static PurchaseCategory convert(String category) {

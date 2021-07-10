@@ -16,6 +16,7 @@ public enum JobType {
     ARTIST,
     CEO,
     POLITICIAN,
+    STUDENT,
     UNKNOWN;
 
     public static JobType convert(String jobname) {
@@ -35,6 +36,7 @@ public enum JobType {
             case "artist": return ARTIST;
             case "ceo": return CEO;
             case "politician": return POLITICIAN;
+            case "student": return STUDENT;
         }
         return UNKNOWN;
     }
