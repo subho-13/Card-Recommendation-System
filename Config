@@ -1,0 +1,13 @@
+username := teamb1
+password := themonksofteamb1
+
+DataCollector
+port := 9501
+
+DataAbstraction
+db := data_abstraction_db
+port := 9502
+
+RedeemRewardPoints
+db := redeem_reward_points_db
+port := 9503

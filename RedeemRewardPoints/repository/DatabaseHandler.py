@@ -2,16 +2,16 @@ from entities.CardDetails import CardDetails
 from entities.ExpenditureDetails import ExpenditureDetails
 from entities.RewardDetails import RewardDetails
 
-from EntityManager import session
+from repository.EntityManager import session
 
 
 def get_expenditure_details(card_id):
-    expenditure_details = session.query(ExpenditureDetails).filter_by(card_id=card_id).one()
+    expenditure_details = session.query(ExpenditureDetails).filter_by(expenditure_id=card_id).first()
     return expenditure_details
 
 
 def get_reward_details(card_id):
-    reward_details = session.query(RewardDetails).filter_by(card_id=card_id).one()
+    reward_details = session.query(RewardDetails).filter_by(reward_id=card_id).first()
     return reward_details
 
 

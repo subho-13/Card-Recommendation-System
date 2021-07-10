@@ -1,5 +1,6 @@
 from sqlalchemy import Column, Integer, Float, ForeignKey
 from sqlalchemy.orm import declarative_base
+from entities.CardDetails import CardDetails
 
 from repository.EntityManager import engine
 
@@ -9,7 +10,7 @@ BaseExpenditureDetails = declarative_base()
 class ExpenditureDetails(BaseExpenditureDetails):
     __tablename__ = "expenditure_details"
 
-    expenditure_id = Column(Integer, ForeignKey('card_details.card_id'), primary_key=True)
+    expenditure_id = Column(Integer, ForeignKey(CardDetails.card_id), primary_key=True)
     card_type = Column(Integer)
     Education = Column(Float, default=0)
     Entertainment = Column(Float, default=0)

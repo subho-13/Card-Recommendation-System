@@ -1,5 +1,5 @@
 import requests
-from RewardPointsCalculator import total_amount
+from service.RewardPointsCalculator import total_amount
 
 def min_max_scale_value(value, min_val, max_val):
     if min_val == max_val:
