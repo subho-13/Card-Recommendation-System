@@ -5,6 +5,7 @@ import com.wf.contractlib.contracts.NearlineTrigger;
 import com.wf.nearlinescheduler.entity.CustomerDetails;
 import com.wf.nearlinescheduler.repository.CustomerDetailsRepository;
 import com.wf.nearlinescheduler.util.Time;
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,7 @@ public class TransactionCountTrigger {
     private CustomerDetailsRepository customerDetailsRepository;
     private TriggerProducer triggerProducer;
 
+    @Setter
     @Value("${transaction-step-count}")
     private int transactionStepCount;
 

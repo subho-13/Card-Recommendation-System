@@ -42,24 +42,42 @@ public class TransactionControllerTest {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
     }
 
-//    @Test
-//    public void consumeTransactionTest() throws Exception {
-//        InboundTransaction inboundTransaction = new InboundTransaction();
-//        when(collectedTransactionProducer.produce(inboundTransaction)).thenReturn(false) ;
-//
-//        mockMvc.perform(
-//                MockMvcRequestBuilders.get("/transaction"))
-//                .andExpect(status().isOk())
-//                .andExpect() ;
-//        )
-//    }
     @Test
-    public void shouldFilterOutDebitCardTransactions() throws Exception {
-        InboundTransaction inboundTransaction = new InboundTransaction();
-        when(inboundFilterChain.isOk(inboundTransaction)).thenReturn(false);
+    public void consumeTransactionTest() throws Exception {
+        InboundTransaction transaction = new InboundTransaction() ;
+        transaction.setCard_num("9876543219876543");
+        transaction.setMerchant("Sporer-Keebler");
+        transaction.setPurchase_category("Personal");
+        transaction.setTrans_amt(30.34F);
+        transaction.setFirst("Ashley");
+        transaction.setLast("Lopez");
+        transaction.setGender("F");
+        transaction.setCard_type("Shopping");
+        transaction.setCredit_score(210);
+        transaction.setStreet("9333 Valentine Point");
+        transaction.setCity("Bellmore");
+        transaction.setState("NY");
+        transaction.setZip("11710");
+        transaction.setLongitude(40.6729F);
+        transaction.setLatitude(-73.5365F);
+        transaction.setCity_pop(34496);
+        transaction.setJob("manager");
+        transaction.setDob("10-12-98");
+        transaction.setTrans_num("c81755dbbbea9d5c77f094348a7579be");
+        transaction.setUnix_time(1371816893L);
+        transaction.setMerch_lat(40.49581F);
+        transaction.setMerch_long(-74.196111F);
 
-        CollectedTransaction collectedTransaction = new CollectedTransaction();
-        when(transactionConverter.convert(inboundTransaction)).thenReturn(collectedTransaction);
-        verify(transactionConverter, atMostOnce()).convert(inboundTransaction);
+        when(collectedTransactionProducer.produce(transaction)).thenReturn(false) ;
+
+        mockMvc.perform(
+                MockMvcRequestBuilders.post("/transaction").content())
+
+                .andExpect(status().isOk())
+                .andR
+
+        verify(collectedTransactionProducer,times(1)).produce(transaction) ;
+
     }
+
 }
