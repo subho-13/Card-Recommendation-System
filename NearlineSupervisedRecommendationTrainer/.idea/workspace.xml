@@ -2,19 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d764f75d-a84c-42f4-a78c-fd793e839829" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../NearlineSupervisedRecommendationGenerator/driver/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../NearlineSupervisedRecommendationGenerator/entities/FeatureVectorOne.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../NearlineSupervisedRecommendationGenerator/repository/DatabaseHandler.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../NearlineSupervisedRecommendationGenerator/repository/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../NearlineSupervisedRecommendationGenerator/service/FeatureVectorOneConsumer.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../NearlineSupervisedRecommendationGenerator/service/GeneratedRecommendationProducer.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../NearlineSupervisedRecommendationGenerator/service/NearlineTriggerConsumer.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/driver/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/repository/DatabaseHandler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../NearlineScheduler/src/main/java/com/wf/nearlinescheduler/service/LastScheduledTrigger.java" beforeDir="false" afterPath="$PROJECT_DIR$/../NearlineScheduler/src/main/java/com/wf/nearlinescheduler/service/LastScheduledTrigger.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/FeatureVectorOneConsumer.py" beforeDir="false" afterPath="$PROJECT_DIR$/service/FeatureVectorOneConsumer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../OfflineUnsupervisedRecommendationGenerator/Configuration.py" beforeDir="false" afterPath="$PROJECT_DIR$/../OfflineUnsupervisedRecommendationGenerator/Configuration.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RecommendationCompiler/src/main/java/com/wf/recommendationcompiler/service/CompiledRecommendationProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../RecommendationCompiler/src/main/java/com/wf/recommendationcompiler/service/CompiledRecommendationProducer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Configuration.py" beforeDir="false" afterPath="$PROJECT_DIR$/Configuration.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/CompiledRecommendationConsumer.py" beforeDir="false" afterPath="$PROJECT_DIR$/service/CompiledRecommendationConsumer.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +45,7 @@
       <option name="presentableId" value="Default" />
       <updated>1625895118661</updated>
       <workItem from="1625895129455" duration="3460000" />
+      <workItem from="1625922676849" duration="1406000" />
     </task>
     <servers />
   </component>
@@ -70,6 +62,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
