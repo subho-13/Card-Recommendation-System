@@ -66,7 +66,7 @@ public class CompiledRecommendationProducer implements DisposableBean, Runnable 
             for(Map.Entry<Integer, Map<String, Map<CardType, Float>>> entry :
             customerModelCardConfidenceMap.entrySet()) {
                 CompiledRecommendation compiledRecommendation = new CompiledRecommendation();
-                compiledRecommendation.setCustomerId(entry.getKey());
+                compiledRecommendation.setCustomerID(entry.getKey());
                 Map<String, Map<CardType, Float>> modelCardConfidenceMap = entry.getValue();
                 Map<CardType, Float> finalCardConfidenceMap =
                         finalRecommendationCompiler.getCardConfidenceMap(modelCardConfidenceMap);
