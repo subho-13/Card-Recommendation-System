@@ -1,0 +1,25 @@
+NearlineRecommendationTrainer
+	-> Consume the Feature Vector -> DB
+	-> Consume the Compiled Recommendation Data -> DB
+	-> Run the trainer server at specific intervals
+		-> Ask for the pd df format?
+		-> Produce the Model Weights over Kafka
+
+DataBase ->
+FeatureVectorOne
+CompiledRecommendation
+	-> df.merge(on the basis of customer id)
+
+NearlineRecommendationGenerator
+	-> Consume the Feature Vector -> DB
+	-> Consume the Model Weight and Update the models regularly
+	-> Consume the trigger
+		-> Generate Recommendation and produce it
+		-> Ask for the pd df format?
+		
+DataBase ->
+FeatureVectorOne
+
+11:00 - 12:30 ->
+	Sabuj -> SQL ORM
+	Souvik -> Consumers
