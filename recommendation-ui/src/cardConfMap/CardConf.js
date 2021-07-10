@@ -1,35 +1,29 @@
 import React, {useState, useEffect} from "react";
-import { Bar } from 'react-chartjs-2';
+import { Bar, Doughnut } from 'react-chartjs-2';
 
-const Purchase = ({customerID}) => {
-
+const CardConf = ({customerID}) => {
+  
     useEffect(() => {
-        
-    }, [customerID])
 
-    const datax = [10, 10, 10, 10, 10, 10, 10, 10,10, 10, 10, 10, 10, 10, 10, 10]
+    }, [])
+
+    const datax = [10, 10, 10, 10, 10, 10, 10, 10, 10]
 
     const data = {
-        labels: ['EDUCATION',
-          'ENTERTAINMENT',
-          'FOOD',
-          'GAS_TRANS',
-          'GROCERY_NET',
-          'GROCERY_POS',
-          'HEALTH',
-          'HOME',
+        labels: [
+          'CASH_WISE',
+          'PLATINUM',
           'HOTEL',
-          'KIDS_PETS',
-          'MISC_NET',
-          'MISC_POS',
-          'PERSONAL',
-          'SHOP_NET',
-          'SHOP_POS',
-          'TRAVEL'
+          'COLLEGE',
+          'VISA_SIGNATURE',
+          'HOLIDAY',
+          'SHOPPING',
+          'ENTERTAINMENT',
+          'CREDIT_BUILDER',
         ],
         datasets: [
           {
-            label: 'Amount Spent per Category',
+            label: 'Card Confidence',
             data: datax,
             backgroundColor: [
               'rgba(253, 35, 35, 0.2)',
@@ -88,7 +82,7 @@ const Purchase = ({customerID}) => {
           },
           title: {
             display: true,
-            text: 'Purchase Category',
+            text: 'Purchase Category Map',
           },
         },
       };
@@ -96,9 +90,9 @@ const Purchase = ({customerID}) => {
     return (
       <div className="App">    
             {customerID}
-            <Bar data={data} options={options} />
+            <Doughnut data={data} options={options} />
       </div>
     );
   }
   
-  export default Purchase;
+  export default CardConf;

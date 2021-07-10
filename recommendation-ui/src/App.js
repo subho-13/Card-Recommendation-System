@@ -1,5 +1,6 @@
 import React, {useState} from "react"
 import './App.css';
+import CardConf from "./cardConfMap/CardConf";
 import Purchase from './purchaseExpMap/Purchase';
 
 const App = () => {
@@ -27,7 +28,10 @@ const App = () => {
             />
             <button type="submit">Fetch</button>
         </form>      
+        <div>
           {flagSubmit &&  <Purchase customerID={customerID} />}
+          {flagSubmit &&  <CardConf customerID={customerID} />}
+        </div>
     </div>
   );
 }
