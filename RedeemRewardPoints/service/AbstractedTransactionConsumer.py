@@ -7,6 +7,7 @@ from kafka.coordinator.assignors.roundrobin import RoundRobinPartitionAssignor
 from Configuration import bootstrap_servers, abstracted_transaction_consumer_gid
 from service.RewardPointsCalculator import calculate_reward_points
 from repository.DatabaseHandler import *
+from lib.CommonDict import card_dict, purchase_category_int_dict
 
 
 class AbstractedTransaction:
@@ -28,8 +29,8 @@ def convert_to_abstracted_transaction(message):
     abstracted_transaction = AbstractedTransaction(
         message['customerID'],
         message['cardID'],
-        message['purchaseCategory'],
-        message['cardType'],
+        purchase_category_int_dict[message['purchaseCategory']],
+        card_dict[message['cardType']],
         message['transactionAmount']
     )
 
