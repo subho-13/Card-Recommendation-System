@@ -1,63 +1,80 @@
 from __future__ import absolute_import
 
-from struct import pack, unpack, error
+import struct
+from struct import error
 
-from .abstract import AbstractType
+from kafka.protocol.abstract import AbstractType
 
 
 def _pack(f, value):
     try:
-        return pack(f, value)
-    except error:
-        raise ValueError(error)
+        return f(value)
+    except error as e:
+        raise ValueError("Error encountered when attempting to convert value: "
+                        "{!r} to struct format: '{}', hit error: {}"
+                        .format(value, f, e))
 
 
 def _unpack(f, data):
     try:
-        (value,) = unpack(f, data)
+        (value,) = f(data)
         return value
-    except error:
-        raise ValueError(error)
+    except error as e:
+        raise ValueError("Error encountered when attempting to convert value: "
+                        "{!r} to struct format: '{}', hit error: {}"
+                        .format(data, f, e))
 
 
 class Int8(AbstractType):
+    _pack = struct.Struct('>b').pack
+    _unpack = struct.Struct('>b').unpack
+
     @classmethod
     def encode(cls, value):
-        return _pack('>b', value)
+        return _pack(cls._pack, value)
 
     @classmethod
     def decode(cls, data):
-        return _unpack('>b', data.read(1))
+        return _unpack(cls._unpack, data.read(1))
 
 
 class Int16(AbstractType):
+    _pack = struct.Struct('>h').pack
+    _unpack = struct.Struct('>h').unpack
+
     @classmethod
     def encode(cls, value):
-        return _pack('>h', value)
+        return _pack(cls._pack, value)
 
     @classmethod
     def decode(cls, data):
-        return _unpack('>h', data.read(2))
+        return _unpack(cls._unpack, data.read(2))
 
 
 class Int32(AbstractType):
+    _pack = struct.Struct('>i').pack
+    _unpack = struct.Struct('>i').unpack
+
     @classmethod
     def encode(cls, value):
-        return _pack('>i', value)
+        return _pack(cls._pack, value)
 
     @classmethod
     def decode(cls, data):
-        return _unpack('>i', data.read(4))
+        return _unpack(cls._unpack, data.read(4))
 
 
 class Int64(AbstractType):
+    _pack = struct.Struct('>q').pack
+    _unpack = struct.Struct('>q').unpack
+
     @classmethod
     def encode(cls, value):
-        return _pack('>q', value)
+        return _pack(cls._pack, value)
 
     @classmethod
     def decode(cls, data):
-        return _unpack('>q', data.read(8))
+        return _unpack(cls._unpack, data.read(8))
 
 
 class String(AbstractType):
@@ -98,15 +115,22 @@ class Bytes(AbstractType):
             raise ValueError('Buffer underrun decoding Bytes')
         return value
 
+    @classmethod
+    def repr(cls, value):
+        return repr(value[:100] + b'...' if value is not None and len(value) > 100 else value)
+
 
 class Boolean(AbstractType):
+    _pack = struct.Struct('>?').pack
+    _unpack = struct.Struct('>?').unpack
+
     @classmethod
     def encode(cls, value):
-        return _pack('>?', value)
+        return _pack(cls._pack, value)
 
     @classmethod
     def decode(cls, data):
-        return _unpack('>?', data.read(1))
+        return _unpack(cls._unpack, data.read(1))
 
 
 class Schema(AbstractType):
@@ -140,7 +164,7 @@ class Schema(AbstractType):
                     field_val = value[i]
                 key_vals.append('%s=%s' % (self.names[i], self.fields[i].repr(field_val)))
             return '(' + ', '.join(key_vals) + ')'
-        except:
+        except Exception:
             return repr(value)
 
 

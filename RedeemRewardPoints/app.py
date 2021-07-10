@@ -40,8 +40,8 @@ if __name__ == '__main__':
     }
 
     list_of_threads = [
-        AbstractedTransactionConsumer(event, rwlock, purchase_min_max_dict),
-        Thread(target=app.run, args=("localhost", 9512))
+        AbstractedTransactionConsumer(event, rwlock_reader, purchase_min_max_dict),
+        Thread(target=app.run, args=("localhost", 9503))
     ]
 
     try:

@@ -2,17 +2,108 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e74b2616-18e0-4ec7-88a8-956fc05a676c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../RewardSuggestion/service/SuggestReward.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../NearlineSupervisedRecommendationGenerator/driver/main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../NearlineSupervisedRecommendationGenerator/entities/FeatureVectorOne.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../NearlineSupervisedRecommendationGenerator/repository/DatabaseHandler.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../NearlineSupervisedRecommendationGenerator/repository/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../NearlineSupervisedRecommendationGenerator/service/FeatureVectorOneConsumer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../NearlineSupervisedRecommendationGenerator/service/GeneratedRecommendationProducer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../NearlineSupervisedRecommendationGenerator/service/NearlineTriggerConsumer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../NearlineSupervisedRecommendationTrainer/driver/main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../NearlineSupervisedRecommendationTrainer/repository/DatabaseHandler.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/card_data.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cat_dict.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/admin/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/admin/acl_resource.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/admin/client.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/admin/config_resource.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/admin/new_partitions.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/admin/new_topic.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/coordinator/assignors/sticky/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/coordinator/assignors/sticky/partition_movements.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/coordinator/assignors/sticky/sorted_set.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/coordinator/assignors/sticky/sticky_assignor.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/oauth/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/oauth/abstract.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/protocol/parser.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/record/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/record/_crc32c.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/record/abc.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/record/default_records.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/record/legacy_records.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/record/memory_records.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/record/util.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/scram.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/vendor/enum34.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka_python-2.0.2.dist-info/INSTALLER" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka_python-2.0.2.dist-info/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka_python-2.0.2.dist-info/METADATA" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka_python-2.0.2.dist-info/RECORD" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka_python-2.0.2.dist-info/REQUESTED" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka_python-2.0.2.dist-info/WHEEL" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka_python-2.0.2.dist-info/top_level.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DataAbstraction/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../DataAbstraction/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DataCollector/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../DataCollector/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../NearlineSupervisedRecommendationTrainer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../NearlineSupervisedRecommendationTrainer/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../NearlineSupervisedRecommendationTrainer/service/FeatureVectorOneConsumer.py" beforeDir="false" afterPath="$PROJECT_DIR$/../NearlineSupervisedRecommendationTrainer/service/FeatureVectorOneConsumer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OfflineUnsupervisedRecommendationGenerator/Configuration.py" beforeDir="false" afterPath="$PROJECT_DIR$/../OfflineUnsupervisedRecommendationGenerator/Configuration.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RecommendationCompiler/src/main/java/com/wf/recommendationcompiler/service/CompiledRecommendationProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../RecommendationCompiler/src/main/java/com/wf/recommendationcompiler/service/CompiledRecommendationProducer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Configuration.py" beforeDir="false" afterPath="$PROJECT_DIR$/Configuration.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entities/ExpenditureDetails.py" beforeDir="false" afterPath="$PROJECT_DIR$/entities/ExpenditureDetails.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/CommonFunctions.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/CommonFunctions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entities/RewardDetails.py" beforeDir="false" afterPath="$PROJECT_DIR$/entities/RewardDetails.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/repository/DatabaseHandler.py" beforeDir="false" afterPath="$PROJECT_DIR$/repository/DatabaseHandler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/AbstractedTransactionConsumer.py" beforeDir="false" afterPath="$PROJECT_DIR$/service/AbstractedTransactionConsumer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service/RestService.py" beforeDir="false" afterPath="$PROJECT_DIR$/service/RestService.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/RewardDetails.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/RewardPointsCalculator.py" beforeDir="false" afterPath="$PROJECT_DIR$/service/RewardPointsCalculator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/matplotlib-3.4.2.dist-info/RECORD" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/matplotlib-3.4.2.dist-info/RECORD" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/pandas-1.3.0.dist-info/RECORD" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/pandas-1.3.0.dist-info/RECORD" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RewardSuggestion/SuggestReward.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RewardSuggestion/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/../RewardSuggestion/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/client_async.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/client_async.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/cluster.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/cluster.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/codec.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/codec.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/conn.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/conn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/consumer/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/consumer/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/consumer/fetcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/consumer/fetcher.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/consumer/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/consumer/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/consumer/subscription_state.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/consumer/subscription_state.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/coordinator/assignors/range.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/coordinator/assignors/range.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/coordinator/assignors/roundrobin.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/coordinator/assignors/roundrobin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/coordinator/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/coordinator/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/coordinator/consumer.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/coordinator/consumer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/coordinator/heartbeat.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/coordinator/heartbeat.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/errors.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/errors.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/metrics/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/metrics/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/metrics/metric_name.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/metrics/metric_name.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/metrics/metrics.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/metrics/metrics.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/metrics/stats/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/metrics/stats/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/metrics/stats/percentiles.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/metrics/stats/percentiles.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/metrics/stats/rate.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/metrics/stats/rate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/metrics/stats/sensor.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/metrics/stats/sensor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/partitioner/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/partitioner/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/partitioner/default.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/partitioner/default.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/producer/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/producer/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/producer/buffer.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/producer/buffer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/producer/future.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/producer/future.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/producer/kafka.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/producer/kafka.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/producer/record_accumulator.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/producer/record_accumulator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/producer/sender.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/producer/sender.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/protocol/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/protocol/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/protocol/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/protocol/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/protocol/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/protocol/api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/protocol/commit.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/protocol/commit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/protocol/fetch.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/protocol/fetch.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/protocol/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/protocol/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/protocol/message.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/protocol/message.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/protocol/metadata.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/protocol/metadata.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/protocol/offset.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/protocol/offset.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/protocol/produce.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/protocol/produce.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/protocol/struct.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/protocol/struct.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/protocol/types.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/protocol/types.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/serializer/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/serializer/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/structs.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/structs.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/util.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/util.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/vendor/six.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/vendor/six.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/vendor/socketpair.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/vendor/socketpair.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/version.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.8/site-packages/kafka/version.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,6 +201,7 @@
       <workItem from="1625808033529" duration="4803000" />
       <workItem from="1625813405451" duration="4211000" />
       <workItem from="1625834664428" duration="13564000" />
+      <workItem from="1625899888535" duration="3100000" />
     </task>
     <servers />
   </component>
