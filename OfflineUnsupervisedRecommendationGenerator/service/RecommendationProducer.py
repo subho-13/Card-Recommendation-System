@@ -12,7 +12,8 @@ def generate_card_confidence_map(card_confidence_list):
     card_confidence_map = {}
 
     for card in card_dict:
-        card_confidence_map[card] = card_confidence_list[card_dict[card]]
+        index = card_dict[card]
+        card_confidence_map[card] = card_confidence_list[index]
     return card_confidence_map
 
 

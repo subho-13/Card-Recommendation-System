@@ -12,6 +12,6 @@ import java.util.Map;
 @AllArgsConstructor
 @ToString
 public class CompiledRecommendation {
-    private Integer customerId;
+    private Integer customerID;
     private Map<CardType, Float> cardConfidenceMap;
 }
