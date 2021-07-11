@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d764f75d-a84c-42f4-a78c-fd793e839829" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../NearlineSupervisedRecommendationGenerator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../NearlineSupervisedRecommendationGenerator/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RedeemRewardPoints/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../RedeemRewardPoints/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../OfflineUnsupervisedRecommendationGenerator/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +53,7 @@
       <workItem from="1625922676849" duration="11145000" />
       <workItem from="1625983176413" duration="825000" />
       <workItem from="1626016280635" duration="4402000" />
+      <workItem from="1626024925275" duration="602000" />
     </task>
     <servers />
   </component>

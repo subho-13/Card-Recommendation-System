@@ -25,5 +25,6 @@ class NearlineTriggerConsumer(Thread):
         for message in self.kafka_consumer:
             with self.rwlock.gen_wlock():
                 self.generated_recommendation_producer.produce(message.value["customerID"])
+
                 if not self.event.is_set():
                     return

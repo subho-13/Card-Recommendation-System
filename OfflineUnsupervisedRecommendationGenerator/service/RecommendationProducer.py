@@ -5,7 +5,7 @@ from kafka import KafkaProducer
 
 from lib.CommonDicts import card_dict
 
-from Configuration import bootstrap_servers
+from Configuration import bootstrap_servers, minimum_df_size
 from repository.DatabaseHandler import load_feature_vector_one_df
 
 
@@ -55,6 +55,10 @@ class RecommendationProducer(Thread):
     def generate_recommendation(self):
         with self.rwlock.gen_wlock():
             df = self.load_and_preprocess_df()
+
+            if len(df) < minimum_df_size:
+                return
+
             user_card_confidence_list = self.model_driver(df)
             for user_card_confidence in user_card_confidence_list:
                 user_card_confidence = self.replace_index_with_user_id(user_card_confidence)
@@ -76,7 +80,6 @@ class RecommendationProducer(Thread):
 
     def replace_user_id_with_index(self, df):
         self.user_map = {}
-        index = 0
         for i in df.index:
             self.user_map[i] = df.at[i, 'User_Id']
             df.at[i, 'User_Id'] = i

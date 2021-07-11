@@ -1,6 +1,7 @@
-/.idea/
-/binaries/
-*.json
+.idea/
+binaries/
 *.csv
 *.jar
 *.class
+.venv
+venv/

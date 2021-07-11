@@ -2,28 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="357e4dd3-0d06-4aff-b4fc-f389dc81c862" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/models/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../NearlineSupervisedRecommendationTrainer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../NearlineSupervisedRecommendationTrainer/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../OfflineUnsupervisedRecommendationGenerator/driver/AssociationRuleLearning.py" beforeDir="false" afterPath="$PROJECT_DIR$/../OfflineUnsupervisedRecommendationGenerator/driver/AssociationRuleLearning.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../OfflineUnsupervisedRecommendationGenerator/driver/AutoEncoder.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../OfflineUnsupervisedRecommendationGenerator/driver/KpcaKmeans.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../OfflineUnsupervisedRecommendationGenerator/driver/KpcaSimilarity.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../OfflineUnsupervisedRecommendationGenerator/driver/NeuralEmbedding.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../OfflineUnsupervisedRecommendationGenerator/driver/NewUserModel.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../OfflineUnsupervisedRecommendationGenerator/driver/PcaKmeans.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../OfflineUnsupervisedRecommendationGenerator/driver/RuleLearning.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../OfflineUnsupervisedRecommendationGenerator/driver/SelfOrganizingMaps.py" beforeDir="false" afterPath="$PROJECT_DIR$/../OfflineUnsupervisedRecommendationGenerator/driver/SelfOrganizingMaps.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../OfflineUnsupervisedRecommendationGenerator/models/AssociationRuleLearning.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../OfflineUnsupervisedRecommendationGenerator/models/AutoEncoder.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../OfflineUnsupervisedRecommendationGenerator/models/KpcaKmeans.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../OfflineUnsupervisedRecommendationGenerator/models/KpcaSimilarity.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../OfflineUnsupervisedRecommendationGenerator/models/NeuralEmbedding.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../OfflineUnsupervisedRecommendationGenerator/models/NewUserModel.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../OfflineUnsupervisedRecommendationGenerator/models/PcaKmeans.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../OfflineUnsupervisedRecommendationGenerator/models/RuleLearning.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../OfflineUnsupervisedRecommendationGenerator/models/SelfOrganizingMaps.py" beforeDir="false" afterPath="$PROJECT_DIR$/../OfflineUnsupervisedRecommendationGenerator/models/SelfOrganizingMaps.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RedeemRewardPoints/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../RedeemRewardPoints/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../OfflineUnsupervisedRecommendationGenerator/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +44,7 @@
       <workItem from="1625934636754" duration="4065000" />
       <workItem from="1625983187262" duration="1695000" />
       <workItem from="1626008145176" duration="5601000" />
-      <workItem from="1626024065863" duration="625000" />
+      <workItem from="1626024065863" duration="1893000" />
     </task>
     <servers />
   </component>
