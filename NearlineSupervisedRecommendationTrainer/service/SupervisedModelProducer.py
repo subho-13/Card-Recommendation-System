@@ -1,10 +1,12 @@
-import json
+import pickle
 from threading import Thread
+from time import sleep
 
 from kafka import KafkaProducer
 
-from Configuration import bootstrap_servers
+from Configuration import bootstrap_servers, init_sleep_time, sleep_time
 from lib.CommonDicts import card_dict
+from repository.DatabaseHandler import load_user_details_df
 
 
 def generate_card_confidence_map(card_confidence_list):
@@ -23,21 +25,34 @@ class GeneratedRecommendation:
         self.card_confidence_map = generate_card_confidence_map(card_confidence_list)
 
 
+def load_and_preprocess_df():
+    df = load_user_details_df()
+    df = df[df['new_user'] == False]
+    df.drop('new_user', axis=1, inplace=True)
+    return df
+
+
 class SupervisedModelProducer(Thread):
-    def __init__(self, topic, event, rwlock, generate_model):
+    def __init__(self, event, rwlock, topic, supervised_model):
         super(SupervisedModelProducer, self).__init__()
         self.kafka_producer = KafkaProducer(
             bootstrap_servers=bootstrap_servers,
-            value_serializer=lambda message: json.dumps(message).encode('utf-8')
+            value_serializer=lambda message: pickle.dumps(message)
         )
 
         self.topic = topic
         self.event = event
         self.rwlock = rwlock
-        self.generate_model = generate_model
+        self.supervised_model = supervised_model
+        self.init_sleep_time = init_sleep_time
+        self.sleep_time = sleep_time
 
     def run(self):
+        sleep(self.init_sleep_time)
+
         while self.event.is_set():
             with self.rwlock.gen_wlock():
-                supervised_model = self.generate_model()
-                self.kafka_producer.send(self.topic, supervised_model)
+                df = load_and_preprocess_df()
+                self.supervised_model.train(df)
+                self.kafka_producer.send(self.topic, self.supervised_model)
+                sleep(self.sleep_time)

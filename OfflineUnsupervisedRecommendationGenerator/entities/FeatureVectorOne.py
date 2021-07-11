@@ -1,16 +1,12 @@
-from sqlalchemy import Column, Integer, String, Boolean, Float, Date
-from sqlalchemy import create_engine
+from sqlalchemy import Column, Integer, Boolean, String, Date, Float
 from sqlalchemy.orm import declarative_base
-from sqlalchemy.orm import sessionmaker
 
-from Configuration import postgres_db_uri
+from repository.EntityManager import engine
 
-engine = create_engine(postgres_db_uri, echo=False)
-
-Base = declarative_base()
+BaseFeatureVectorOne = declarative_base()
 
 
-class FeatureVectorOne(Base):
+class FeatureVectorOne(BaseFeatureVectorOne):
     __tablename__ = "feature_vector_one"
 
     User_Id = Column(Integer, primary_key=True)
@@ -39,11 +35,5 @@ class FeatureVectorOne(Base):
     def __repr__(self):
         return "FeatureVectorOne"
 
-    def is_new_user(self):
-        return self.new_user
 
-
-Session = sessionmaker(bind=engine)
-Session.configure(bind=engine)
-session = Session()
-Base.metadata.create_all(engine)
+BaseFeatureVectorOne.metadata.create_all(engine)

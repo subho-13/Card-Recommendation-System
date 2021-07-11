@@ -53,4 +53,13 @@ public class TransactionControllerTest {
                         "\"age\":32}").contentType("application/json"))
                 .andExpect(status().isOk());
     }
+
+    @Test
+    public void badRequestTest() throws Exception {
+        InboundTransaction inboundTransaction = new InboundTransaction();
+        when(collectedTransactionProducer.produce(inboundTransaction)).thenReturn(false);
+        mockMvc.perform(
+                MockMvcRequestBuilders.post("/transaction").content("").contentType("application/json"))
+                .andExpect(status().isBadRequest());
+    }
 }

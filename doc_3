@@ -1,0 +1,45 @@
+for transaction in transaction_stream:
+	current_mean_for_category = calculate_mean(transaction)
+	
+old_feature_vector_after_update
+		
+	num_categories_underwhelming_expenditure = 0
+	
+	-> For total_expenditure in categories :
+		if the expenditure in category < 0.2 * current_mean_for_category :
+			num_categories_underwhelming_expenditure++
+			
+		
+	if num_categories_underwhelming_expenditure > 9 :
+		then tag as new user
+	else :
+		tag as old user
+		
+Thread_1 -> Update the model, SupervisedModel.update(supervised_model)
+Thread_2 -> Generate the recommendations from the model, SupervisedModel.generate(feature_vector_one)
+
+SupervisedModel instance -> shared by Thread_1 and Thread_2
+
+main :
+	SupervisedModelInstance
+	
+	Thread_1 <- SupervisedModelInstance
+	Thread_2 <- SupervisedModelInstance
+	
+Class SupervisedModel:
+	self.xgboost
+	self.standard_scaler
+	
+	def update_itself(supervised_model) -> [Generator]:
+		self.xgboost = supervised_model.xgboost
+		self.standard_scaler = supervised_model.standard_scaler
+		
+	def generate_recommendations(feature_vector_one) -> [Generator]:
+		self.xgboost.predict(feature_vector_one)
+		return ()
+		
+	def train_itself(df) : self -> [Trainer]:
+
+	
+	
+

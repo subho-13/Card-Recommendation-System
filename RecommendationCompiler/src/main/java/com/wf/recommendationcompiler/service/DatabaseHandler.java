@@ -3,6 +3,7 @@ package com.wf.recommendationcompiler.service;
 import com.wf.recommendationcompiler.entity.RecommendationDetails;
 import com.wf.recommendationcompiler.repository.RecommendationDetailsRepository;
 import com.wf.contractlib.contracts.GeneratedRecommendation;
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,6 +17,9 @@ public class DatabaseHandler {
     private RecommendationDetailsRepository recommendationDetailsRepository;
     private DetailsGenerator detailsGenerator;
     private final AtomicBoolean isNewDataAvailable = new AtomicBoolean(false);
+
+    @Getter //variable added just for testing
+    private Boolean testVariable = false ;
 
     @Autowired
     public void setRecommendationDetailsRepository(RecommendationDetailsRepository recommendationDetailsRepository) {
@@ -42,6 +46,7 @@ public class DatabaseHandler {
 
         if (details.isPresent()) {
             recommendationDetails.setRecommendationID(details.get().getRecommendationID());
+            testVariable=true ;
         }
 
         recommendationDetailsRepository.save(recommendationDetails);
