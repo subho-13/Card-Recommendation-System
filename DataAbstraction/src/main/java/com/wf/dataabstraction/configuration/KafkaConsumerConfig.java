@@ -20,6 +20,8 @@ public class KafkaConsumerConfig {
     @Value("${spring.kafka.bootstrap-servers}")
     private String bootstrapServers;
 
+    private static final int concurrency = 5;
+
     private Map<String, Object> getConfig() {
         Map<String, Object> configs = new HashMap<>();
         configs.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
@@ -36,6 +38,7 @@ public class KafkaConsumerConfig {
         DefaultKafkaConsumerFactory<String, CollectedTransaction> defaultKafkaConsumerFactory = new DefaultKafkaConsumerFactory<>(getConfig(), stringDeserializer, jsonDeserializer);
         ConcurrentKafkaListenerContainerFactory<String, CollectedTransaction> concurrentKafkaListenerContainerFactory = new ConcurrentKafkaListenerContainerFactory<>();
         concurrentKafkaListenerContainerFactory.setConsumerFactory(defaultKafkaConsumerFactory);
+        concurrentKafkaListenerContainerFactory.setConcurrency(concurrency);
         return concurrentKafkaListenerContainerFactory;
     }
 }

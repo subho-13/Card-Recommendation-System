@@ -42,7 +42,7 @@ class CompiledRecommendationConsumer(Thread):
 
     def run(self):
         for message in self.kafka_consumer:
-            with self.rwlock.gen_rlock():
+            with self.rwlock.gen_wlock():
                 user_details = convert_to_user_details(message.value)
                 save_user_details_from_compiled_recommendations(user_details)
 

@@ -1,3 +1,3 @@
 bootstrap_servers="localhost:9092"
-feature_vector_consumer_gid="OfflineUnsupervisedRecommendationGenerator"
+consumer_gid="OfflineUnsupervisedRecommendationGenerator"
 postgres_db_uri="postgresql+psycopg2://subho:souvik@localhost:5432/offline_unsupervised_recommendation_generator_db"

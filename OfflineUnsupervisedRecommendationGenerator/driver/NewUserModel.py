@@ -1,5 +1,5 @@
 from entities.FeatureVectorOne import engine
-from entities.FeatureVectorOneRepository import check_if_user_is_new, write_to_db
+from repository.DatabaseHandler import check_if_user_is_new, write_to_db
 from models.NewUserModel import new_user_model
 from util.Adapter import generate_feature_vector_one
 

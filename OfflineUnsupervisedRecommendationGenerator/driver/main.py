@@ -3,24 +3,27 @@ from time import sleep
 
 from readerwriterlock import rwlock
 
-from service.FeatureVectorConsumer import FeatureVectorConsumer
+from service.FeatureVectorOneConsumer import FeatureVectorOneConsumer
 from service.RecommendationProducer import RecommendationProducer
 from service.TriggerConsumer import TriggerConsumer
 
 
-def main(model_driver, model_name, to_send, topic, generate_feature_vector_one, write_to_db):
+def main(model_driver, group_id, consider_new_users):
     event = threading.Event()
-    event.set()
-
     mutex = threading.Lock()
-    mutex.acquire()
-
     rwlock_writer = rwlock.RWLockWriteD()
 
+    event.set()
+    mutex.acquire()
+
+    trigger_consumer = TriggerConsumer(event, mutex, group_id)
+    recommendation_producer = RecommendationProducer(event, mutex, rwlock_writer, model_driver, consider_new_users)
+    feature_vector_one_consumer = FeatureVectorOneConsumer(event, rwlock_writer)
+
     threads = [
-        TriggerConsumer(model_name, event, mutex),
-        RecommendationProducer(event, mutex, rwlock_writer, model_driver, to_send),
-        FeatureVectorConsumer(event, rwlock_writer, topic, generate_feature_vector_one, write_to_db)
+        trigger_consumer,
+        recommendation_producer,
+        feature_vector_one_consumer
     ]
 
     for thread in threads:

@@ -31,9 +31,10 @@ def save_feature_vector_one(feature_vector_one_dict):
                                           Travel=feature_vector_one_dict['Travel']
                                           )
 
-    checkIfExists = bool(session.query(FeatureVectorOne).filter_by(User_Id=feature_vector_one_dict['User_Id']).first())
+    check_if_exists = bool(
+        session.query(FeatureVectorOne).filter_by(User_Id=feature_vector_one_dict['User_Id']).first())
 
-    if checkIfExists:
+    if check_if_exists:
         session.query(FeatureVectorOne).filter_by(User_Id=feature_vector_one_dict['User_Id']).delete()
 
     session.add(feature_vector_one)

@@ -1,6 +1,6 @@
 from driver.main import main
 from entities.FeatureVectorOne import engine
-from entities.FeatureVectorOneRepository import check_if_user_is_new, write_to_db
+from repository.DatabaseHandler import check_if_user_is_new, write_to_db
 from models.KpcaSimilarity import kpca_similarity
 from util.Adapter import generate_feature_vector_one
 

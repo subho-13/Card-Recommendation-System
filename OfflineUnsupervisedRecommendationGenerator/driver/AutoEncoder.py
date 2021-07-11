@@ -1,6 +1,6 @@
 from driver.main import main
 from entities.FeatureVectorOne import engine
-from entities.FeatureVectorOneRepository import check_if_user_is_new, write_to_db
+from repository.DatabaseHandler import check_if_user_is_new, write_to_db
 from models.AutoEncoder import auto_encoder
 from util.Adapter import generate_feature_vector_one
 

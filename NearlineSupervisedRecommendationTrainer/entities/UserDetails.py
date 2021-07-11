@@ -1,10 +1,10 @@
 from sqlalchemy import Column, Integer, String, Boolean, Float, Date
-from sqlalchemy import create_engine
-from sqlalchemy.orm import declarative_base, sessionmaker
+from sqlalchemy.orm import declarative_base
 
 from repository.EntityManager import engine
 
 BaseUserDetails = declarative_base()
+
 
 class UserDetails(BaseUserDetails):
     __tablename__ = "user_details"
@@ -34,6 +34,7 @@ class UserDetails(BaseUserDetails):
     best_card = Column(Integer)
 
     def __repr__(self):
-        return "UserDetails"    
+        return "UserDetails"
+
 
 BaseUserDetails.metadata.create_all(engine)
