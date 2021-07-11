@@ -1,5 +1,7 @@
 import json
+import pickle
 from threading import Thread
+from time import sleep
 
 from kafka import KafkaProducer
 
@@ -24,20 +26,24 @@ class GeneratedRecommendation:
 
 
 class SupervisedModelProducer(Thread):
-    def __init__(self, topic, event, rwlock, generate_model):
+    def __init__(self, topic, event, rwlock, generate_model, init_sleep_time, sleep_time):
         super(SupervisedModelProducer, self).__init__()
         self.kafka_producer = KafkaProducer(
             bootstrap_servers=bootstrap_servers,
-            value_serializer=lambda message: json.dumps(message).encode('utf-8')
+            value_serializer=lambda message: pickle.dumps(message)
         )
 
         self.topic = topic
         self.event = event
         self.rwlock = rwlock
         self.generate_model = generate_model
+        self.init_sleep_time = init_sleep_time
+        self.sleep_time = sleep_time
 
     def run(self):
+        sleep(self.init_sleep_time)
         while self.event.is_set():
             with self.rwlock.gen_wlock():
                 supervised_model = self.generate_model()
                 self.kafka_producer.send(self.topic, supervised_model)
+                sleep(self.sleep_time)

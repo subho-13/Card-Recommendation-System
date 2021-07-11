@@ -1,4 +1,5 @@
 import json
+from datetime import datetime
 from threading import Thread
 
 from kafka import KafkaConsumer
@@ -6,7 +7,7 @@ from kafka.coordinator.assignors.roundrobin import RoundRobinPartitionAssignor
 
 from Configuration import consumer_gid, bootstrap_servers
 from entities.UserDetails import UserDetails
-from lib.CommonDicts import card_dict, purchase_category_dict
+from lib.CommonDicts import card_dict, purchase_category_dict, job_dict
 from repository.DatabaseHandler import save_user_details_from_feature_vector_one
 
 def get_card_issue_date(card_issue_unix_time):
@@ -29,7 +30,7 @@ def convert_to_user_dict(message):
         else:
             temp[purchase_category_dict[category]] = 0.0    
 
-    return user_details
+    return temp
 
 
 

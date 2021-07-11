@@ -2,17 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d764f75d-a84c-42f4-a78c-fd793e839829" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/CommonDicts.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/SupervisedModelProducer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ContractLib/src/main/java/com/wf/contractlib/contracts/CompiledRecommendation.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ContractLib/src/main/java/com/wf/contractlib/contracts/CompiledRecommendation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../NearlineSupervisedRecommendationGenerator/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../NearlineSupervisedRecommendationGenerator/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../NearlineSupervisedRecommendationGenerator/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../NearlineSupervisedRecommendationGenerator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../NearlineSupervisedRecommendationGenerator/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../NearlineSupervisedRecommendationGenerator/entities/FeatureVectorOne.py" beforeDir="false" afterPath="$PROJECT_DIR$/../NearlineSupervisedRecommendationGenerator/entities/FeatureVectorOne.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../NearlineSupervisedRecommendationGenerator/lib/CommonDicts.py" beforeDir="false" afterPath="$PROJECT_DIR$/../NearlineSupervisedRecommendationGenerator/lib/CommonDicts.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../NearlineSupervisedRecommendationGenerator/repository/DatabaseHandler.py" beforeDir="false" afterPath="$PROJECT_DIR$/../NearlineSupervisedRecommendationGenerator/repository/DatabaseHandler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../NearlineSupervisedRecommendationGenerator/repository/EntityManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/../NearlineSupervisedRecommendationGenerator/repository/EntityManager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../NearlineSupervisedRecommendationGenerator/service/FeatureVectorOneConsumer.py" beforeDir="false" afterPath="$PROJECT_DIR$/../NearlineSupervisedRecommendationGenerator/service/FeatureVectorOneConsumer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../NearlineSupervisedRecommendationGenerator/service/GeneratedRecommendationProducer.py" beforeDir="false" afterPath="$PROJECT_DIR$/../NearlineSupervisedRecommendationGenerator/service/GeneratedRecommendationProducer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../NearlineSupervisedRecommendationGenerator/service/NearlineTriggerConsumer.py" beforeDir="false" afterPath="$PROJECT_DIR$/../NearlineSupervisedRecommendationGenerator/service/NearlineTriggerConsumer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../NearlineSupervisedRecommendationGenerator/service/SupervisedModelConsumer.py" beforeDir="false" afterPath="$PROJECT_DIR$/../NearlineSupervisedRecommendationGenerator/service/SupervisedModelConsumer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Configuration.py" beforeDir="false" afterPath="$PROJECT_DIR$/Configuration.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entities/UserDetails.py" beforeDir="false" afterPath="$PROJECT_DIR$/entities/UserDetails.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/repository/DatabaseHandler.py" beforeDir="false" afterPath="$PROJECT_DIR$/repository/DatabaseHandler.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service/CompiledRecommendationConsumer.py" beforeDir="false" afterPath="$PROJECT_DIR$/service/CompiledRecommendationConsumer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service/FeatureVectorOneConsumer.py" beforeDir="false" afterPath="$PROJECT_DIR$/service/FeatureVectorOneConsumer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../OfflineUnsupervisedRecommendationGenerator/service/RecommendationProducer.py" beforeDir="false" afterPath="$PROJECT_DIR$/../OfflineUnsupervisedRecommendationGenerator/service/RecommendationProducer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/SupervisedModelProducer.py" beforeDir="false" afterPath="$PROJECT_DIR$/service/SupervisedModelProducer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../RedeemRewardPoints/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../RedeemRewardPoints/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -53,7 +57,7 @@
       <option name="presentableId" value="Default" />
       <updated>1625895118661</updated>
       <workItem from="1625895129455" duration="3460000" />
-      <workItem from="1625922676849" duration="4863000" />
+      <workItem from="1625922676849" duration="11145000" />
     </task>
     <servers />
   </component>

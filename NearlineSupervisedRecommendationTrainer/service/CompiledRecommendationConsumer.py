@@ -45,3 +45,6 @@ class CompiledRecommendationConsumer(Thread):
             with self.rwlock.gen_rlock():
                 user_details = convert_to_user_details(message.value)
                 save_user_details_from_compiled_recommendations(user_details)
+
+            if not self.event.is_set():
+                return
