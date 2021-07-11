@@ -3,9 +3,8 @@ from threading import Thread
 
 from kafka import KafkaProducer
 
-from lib.CommonDicts import card_dict
-
 from Configuration import bootstrap_servers, minimum_df_size
+from lib.CommonDicts import card_dict
 from repository.DatabaseHandler import load_feature_vector_one_df
 
 

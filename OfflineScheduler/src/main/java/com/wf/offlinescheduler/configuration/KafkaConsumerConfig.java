@@ -33,7 +33,8 @@ public class KafkaConsumerConfig {
         JsonDeserializer<AbstractedTransaction> jsonDeserializer =
                 new JsonDeserializer<>(AbstractedTransaction.class);
         StringDeserializer stringDeserializer = new StringDeserializer();
-        DefaultKafkaConsumerFactory<String, AbstractedTransaction> defaultKafkaConsumerFactory = new DefaultKafkaConsumerFactory<>(getConfig(), stringDeserializer, jsonDeserializer);
+        DefaultKafkaConsumerFactory<String, AbstractedTransaction> defaultKafkaConsumerFactory =
+                new DefaultKafkaConsumerFactory<>(getConfig(), stringDeserializer, jsonDeserializer);
         ConcurrentKafkaListenerContainerFactory<String, AbstractedTransaction> concurrentKafkaListenerContainerFactory = new ConcurrentKafkaListenerContainerFactory<String, AbstractedTransaction>();
         concurrentKafkaListenerContainerFactory.setConsumerFactory(defaultKafkaConsumerFactory);
         return concurrentKafkaListenerContainerFactory;

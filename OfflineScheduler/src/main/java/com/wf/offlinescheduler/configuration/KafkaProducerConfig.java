@@ -27,9 +27,9 @@ public class KafkaProducerConfig {
     private String topic;
 
     @Value("${spring.kafka.bootstrap-servers}")
-    private  String kafkaBootstrapServer;
+    private String kafkaBootstrapServer;
 
-    public Map<String, Object> getConfig(){
+    public Map<String, Object> getConfig() {
         Map<String, Object> configs = new HashMap<>();
         configs.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaBootstrapServer);
         configs.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
@@ -38,7 +38,7 @@ public class KafkaProducerConfig {
     }
 
     @Bean
-    public KafkaTemplate<String, OfflineTrigger> kafkaOfflineTriggerTemplate(){
+    public KafkaTemplate<String, OfflineTrigger> kafkaOfflineTriggerTemplate() {
         JsonSerializer<OfflineTrigger> jsonSerializer = new JsonSerializer<>();
         StringSerializer stringSerializer = new StringSerializer();
         DefaultKafkaProducerFactory<String, OfflineTrigger> defaultKafkaProducerFactory

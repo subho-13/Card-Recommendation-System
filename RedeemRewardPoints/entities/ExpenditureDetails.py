@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, Float, ForeignKey
 from sqlalchemy.orm import declarative_base
-from entities.CardDetails import CardDetails
 
+from entities.CardDetails import CardDetails
 from repository.EntityManager import engine
 
 BaseExpenditureDetails = declarative_base()

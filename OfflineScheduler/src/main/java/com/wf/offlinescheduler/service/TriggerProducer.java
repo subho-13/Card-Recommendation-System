@@ -9,16 +9,15 @@ import org.springframework.stereotype.Service;
 @Service
 public class TriggerProducer {
     private KafkaTemplate<String, OfflineTrigger> template;
+    @Value("${producer-topic}")
+    private String topic;
 
     @Autowired
     public void setTemplate(KafkaTemplate<String, OfflineTrigger> template) {
         this.template = template;
     }
 
-    @Value("${producer-topic}")
-    private String topic;
-
-    public void produce(OfflineTrigger offlineTrigger){
+    public void produce(OfflineTrigger offlineTrigger) {
         this.template.send(topic, offlineTrigger);
     }
 }

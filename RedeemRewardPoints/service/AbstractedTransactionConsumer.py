@@ -5,9 +5,9 @@ from kafka import KafkaConsumer
 from kafka.coordinator.assignors.roundrobin import RoundRobinPartitionAssignor
 
 from Configuration import bootstrap_servers, abstracted_transaction_consumer_gid
-from service.RewardPointsCalculator import calculate_reward_points
-from repository.DatabaseHandler import *
 from lib.CommonDict import card_dict, purchase_category_int_dict
+from repository.DatabaseHandler import *
+from service.RewardPointsCalculator import calculate_reward_points
 
 
 class AbstractedTransaction:
@@ -52,16 +52,15 @@ class AbstractedTransactionConsumer(Thread):
 
     def run(self):
         for message in self.kafka_consumer:
-            # print(message.value)
             abstracted_transaction = convert_to_abstracted_transaction(message.value)
             self.update_purchase_dict(abstracted_transaction)
-            # print(abstracted_transaction)
             reward_details = get_reward_details(abstracted_transaction.card_id)
             expenditure_details = get_expenditure_details(abstracted_transaction.card_id)
 
             print(reward_details, expenditure_details)
 
-            expenditure_details, reward_details = calculate_reward_points(abstracted_transaction, expenditure_details, reward_details)
+            expenditure_details, reward_details = calculate_reward_points(abstracted_transaction, expenditure_details,
+                                                                          reward_details)
 
             save_reward_details(reward_details)
             save_expenditure_details(expenditure_details)
@@ -76,14 +75,16 @@ class AbstractedTransactionConsumer(Thread):
         with self.rwlock.gen_wlock():
             if purchase_category in self.purchase_category_min_max_dict['min']:
                 self.purchase_category_min_max_dict['min'][purchase_category] = min(transaction_amount,
-                                                                 self.purchase_category_min_max_dict['min'][
-                                                                     purchase_category])
+                                                                                    self.purchase_category_min_max_dict[
+                                                                                        'min'][
+                                                                                        purchase_category])
             else:
-                self.purchase_category_min_max_dict['min'][purchase_category]  = transaction_amount
+                self.purchase_category_min_max_dict['min'][purchase_category] = transaction_amount
 
             if purchase_category in self.purchase_category_min_max_dict['max']:
-                self.purchase_category_min_max_dict['max'][purchase_category]  = max(transaction_amount,
-                                                                 self.purchase_category_min_max_dict['max'][
-                                                                     purchase_category])
+                self.purchase_category_min_max_dict['max'][purchase_category] = max(transaction_amount,
+                                                                                    self.purchase_category_min_max_dict[
+                                                                                        'max'][
+                                                                                        purchase_category])
             else:
                 self.purchase_category_min_max_dict['max'][purchase_category] = transaction_amount

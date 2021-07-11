@@ -16,28 +16,42 @@ import java.util.List;
 @Service
 @Configurable
 public class LastScheduledTrigger  implements DisposableBean, Runnable {
+    @Value("${init-sleep-time-ms")
+    private int initSleepTime;
+
     @Value("${sleep-time-ms}")
     private int sleepTime;
 
     @Value("${last-schedule-interval-s}")
     private int lastScheduleInterval;
 
-    private Thread thread;
     private CustomerDetailsRepository customerDetailsRepository;
     private TriggerProducer triggerProducer;
+
+    @Autowired
+    public void setCustomerDetailsRepository(CustomerDetailsRepository customerDetailsRepository) {
+        this.customerDetailsRepository = customerDetailsRepository;
+    }
+
+    @Autowired
+    public void setTriggerProducer(TriggerProducer triggerProducer) {
+        this.triggerProducer = triggerProducer;
+    }
 
     @Autowired
     public LastScheduledTrigger(ApplicationContext applicationContext) {
         this.customerDetailsRepository = applicationContext.getBean(CustomerDetailsRepository.class);
         this.triggerProducer = applicationContext.getBean(TriggerProducer.class);
 
-        this.thread = new Thread(this);
-        this.thread.start();
+        Thread thread = new Thread(this);
+        thread.start();
     }
 
     @SneakyThrows
     @Override
     public void run() {
+        Thread.sleep(initSleepTime);
+
         while (true) {
             List<CustomerDetails> customerDetailsList = getCustomersToSchedule();
 
@@ -63,18 +77,4 @@ public class LastScheduledTrigger  implements DisposableBean, Runnable {
 
     @Override
     public void destroy() throws Exception {}
-
-//    //for testing
-//    public void produceTrigger(List<CustomerDetails> customerDetailsList)
-//    {
-//        for(CustomerDetails customer: customerDetailsList) {
-//            NearlineTrigger nearlineTrigger = new NearlineTrigger();
-//            nearlineTrigger.setCustomerID(customer.getCustomerID());
-//
-//            triggerProducer.produce(nearlineTrigger);
-//
-//            customer.setLastScheduledUnixTime(Time.getCurrentTimeInSecs());
-//            customerDetailsRepository.save(customer);
-//        }
-//    }
 }

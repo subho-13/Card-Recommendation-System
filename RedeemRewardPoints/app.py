@@ -1,12 +1,13 @@
 import threading
+from threading import Thread
 from time import sleep
 
 from flask import Flask
+from readerwriterlock import rwlock
+
 from repository.DatabaseHandler import *
 from service.AbstractedTransactionConsumer import AbstractedTransactionConsumer
 from service.RestService import RestService
-from threading import Thread
-from readerwriterlock import rwlock
 
 app = Flask(__name__)
 
@@ -24,7 +25,7 @@ def hello_world(customer_id):
         reward_details = get_reward_details(card.card_id)
         suggestions = RestService.call_reward_redeem_suggestion_service(expenditure_details, reward_details)
         dict_of_suggestions[card.card_id] = suggestions
-            
+
     return dict_of_suggestions
 
 

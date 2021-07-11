@@ -15,3 +15,27 @@ port := 9503
 FeatureExtractionOne
 db := feature_extraction_one_db
 port := 9504
+
+NearlineScheduler
+db := nearline_scheduler_db
+port := 9505
+
+OfflineScheduler
+db := offline_scheduler_db
+port := 9506
+
+RecommendationCompiler
+db := recommendation_compiler_db
+port := 9507
+
+RecommendationProvider
+db := recommendation_provider_db
+port := 9508
+
+
+
+
+
+
+
+

@@ -3,7 +3,7 @@ import pandas as pd
 from sklearn.svm import SVC
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
-from CommonFunctions1 import *
+from lib.CommonFunctions1 import *
 
 def supervised_data_preparation(df):
     df_clean = df.drop(labels = ['job', 'card_issue_date', 'card_type'], axis = 1)
@@ -26,7 +26,7 @@ def classifier_model1(X_train, X_test, y_train, y_test):
 
 def prediction_generator(model, X_train, X_test, y_train, y_test, X, y):
     y_pred = model.predict_proba(X)
-    return y_pred, history,  model
+    return y_pred,  model
 
 def user_list_generator(user_dict):
     '''Converts the spendings of user from dict form to list form'''
@@ -41,8 +41,10 @@ def user_list_generator(user_dict):
     user_list = np.array(user_list)
     return user_id, user_list
 
-def svm_trainer():
-    df = pd.read_csv('Supervised User Database.csv')
+def svm_trainer(df):
+# =============================================================================
+#     df = pd.read_csv('Supervised User Database.csv')
+# =============================================================================
 # =============================================================================
 #     df_1, empty_list = new_user_remover(df)
 # =============================================================================
@@ -75,5 +77,5 @@ class SVMObject:
         card_score = self.model.predict_proba(user_list)
         card_score = standardize(card_score)
         card_score = (np.reshape(card_score, (9, ))).tolist()
-        return (user_id, 'ANN Model', card_score)
+        return (user_id, 'SVM Model', card_score)
 

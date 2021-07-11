@@ -48,10 +48,10 @@ def prediction_generator(model, X_train, X_test, y_train, y_test, X):
     y_pred = model.predict_proba(X)
     return y_pred, history, model
 
-def xgb_supervised():
+def xgb_supervised(df):
     
-    df = pd.read_csv('Supervised User Database.csv')
 # =============================================================================
+#     df = pd.read_csv('Supervised User Database.csv')
 #     df_1, empty_list = new_user_remover(df)
 # =============================================================================
     X, y = supervised_data_preparation(df)

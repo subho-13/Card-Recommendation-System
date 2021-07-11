@@ -1,5 +1,7 @@
 import requests
+
 from service.RewardPointsCalculator import total_amount
+
 
 def min_max_scale_value(value, min_val, max_val):
     if min_val == max_val:
@@ -12,13 +14,13 @@ class RestService:
     def __init__(self, rwlock, purchase_min_max_dict):
         self.rwlock = rwlock
         self.purchase_min_max_dict = purchase_min_max_dict
-        self.url = 'http://localhost:9510'
+        self.reward_suggestion_url = 'http://localhost:9509'
 
     def call_reward_redeem_suggestion_service(self, expenditure_details, reward_details):
         expenditure_details = self.min_max_scale_expenditure(expenditure_details)
         reward_points = total_amount(reward_details)
 
-        val = requests.post(self.url, data={
+        val = requests.post(self.reward_suggestion_url, data={
             'expenditure_details': expenditure_details.__dict__,
             'reward_points': reward_points
         })

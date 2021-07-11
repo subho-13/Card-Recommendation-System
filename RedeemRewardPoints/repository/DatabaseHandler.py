@@ -45,4 +45,4 @@ def save_card_details(card_details):
 
 
 def get_card_details(customer_id):
-    return session.query(CardDetails).filter_by(customer_id = customer_id)
+    return session.query(CardDetails).filter_by(customer_id=customer_id)

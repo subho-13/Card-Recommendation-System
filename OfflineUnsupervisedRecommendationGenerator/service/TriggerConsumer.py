@@ -1,10 +1,10 @@
 import json
+from threading import Thread
 
+from kafka import KafkaConsumer
 from kafka.coordinator.assignors.roundrobin import RoundRobinPartitionAssignor
 
 from Configuration import bootstrap_servers
-from threading import Thread
-from kafka import KafkaConsumer
 
 
 class TriggerConsumer(Thread):
