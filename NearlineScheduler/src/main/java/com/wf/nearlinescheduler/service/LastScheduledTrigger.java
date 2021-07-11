@@ -5,7 +5,6 @@ import com.wf.nearlinescheduler.entity.CustomerDetails;
 import com.wf.nearlinescheduler.repository.CustomerDetailsRepository;
 import com.wf.nearlinescheduler.util.Time;
 import lombok.SneakyThrows;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
@@ -17,8 +16,8 @@ import java.util.List;
 @Service
 @Configurable
 public class LastScheduledTrigger  implements DisposableBean, Runnable {
-    @Value("${sleeptime-ms}")
-    private int sleeptime;
+    @Value("${sleep-time-ms}")
+    private int sleepTime;
 
     @Value("${last-schedule-interval-s}")
     private int lastScheduleInterval;
@@ -53,7 +52,7 @@ public class LastScheduledTrigger  implements DisposableBean, Runnable {
                 customerDetailsRepository.save(customer);
             }
 
-            Thread.sleep(sleeptime);
+            Thread.sleep(sleepTime);
         }
     }
 
