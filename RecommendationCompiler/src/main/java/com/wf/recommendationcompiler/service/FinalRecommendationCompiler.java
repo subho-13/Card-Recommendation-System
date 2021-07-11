@@ -1,6 +1,8 @@
 package com.wf.recommendationcompiler.service;
 
 import com.wf.contractlib.entities.CardType;
+import lombok.Getter;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 
 import java.awt.*;
@@ -15,6 +17,7 @@ public class FinalRecommendationCompiler {
     private final Lock writeLock = readWriteLock.writeLock();
     private final Lock readLock = readWriteLock.readLock();
 
+    @Getter
     HashMap<String, Float> modelWeightMap;
 
     public FinalRecommendationCompiler() {
@@ -30,7 +33,7 @@ public class FinalRecommendationCompiler {
         modelWeightMap.put("New User", 0.05F);
     }
 
-    public void updateModelWeightMap(final Map<String, Float> newModelWeightMap) {
+    public void updateModelWeightMap(@NotNull final Map<String, Float> newModelWeightMap) {
         try {
             writeLock.lock();
             modelWeightMap = new HashMap<>();
@@ -44,7 +47,7 @@ public class FinalRecommendationCompiler {
         }
     }
 
-    public Map<CardType, Float> getCardConfidenceMap(Map<String, Map<CardType, Float>> modelCardConfidenceMap) {
+    public Map<CardType, Float> getCardConfidenceMap(@NotNull Map<String, Map<CardType, Float>> modelCardConfidenceMap) {
         Map<CardType, Float> finalCardConfidenceMap = new HashMap<>();
         try {
             readLock.lock();
