@@ -22,7 +22,7 @@ public class KafkaConsumerConfig {
     @Value("${spring.kafka.bootstrap-servers}")
     private String bootstrapServers;
 
-    private int concurrency = 10;
+    // private int concurrency = 10;
 
     private Map<String, Object> getConfig() {
         Map<String, Object> configs = new HashMap<>();
@@ -40,12 +40,12 @@ public class KafkaConsumerConfig {
         DefaultKafkaConsumerFactory<String, GeneratedRecommendation> defaultKafkaConsumerFactory = new DefaultKafkaConsumerFactory<>(getConfig(), stringDeserializer, jsonDeserializer);
         ConcurrentKafkaListenerContainerFactory<String, GeneratedRecommendation> concurrentKafkaListenerContainerFactory = new ConcurrentKafkaListenerContainerFactory<>();
         concurrentKafkaListenerContainerFactory.setConsumerFactory(defaultKafkaConsumerFactory);
-        concurrentKafkaListenerContainerFactory.setConcurrency(concurrency);
+        // concurrentKafkaListenerContainerFactory.setConcurrency(concurrency);
         return concurrentKafkaListenerContainerFactory;
     }
 
-    @Bean
-    public NewTopic constructConsumerTopic() {
-        return TopicBuilder.name("GeneratedRecommendation").partitions(concurrency).replicas(1).build();
-    }
+    // @Bean
+    // public NewTopic constructConsumerTopic() {
+       // return TopicBuilder.name("GeneratedRecommendation").partitions(concurrency).replicas(1).build();
+    // }
 }
