@@ -70,8 +70,8 @@ def user_tuple_generator(user_final_list, model_name):
     user_tuple_list = []
     for i, user in enumerate(user_final_list):
         single_user = [i, model_name, user]
-        user_tuple = tuple(single_user)
-        user_tuple_list.append(user_tuple)
+        # user_tuple = tuple(single_user)
+        user_tuple_list.append(single_user)
     return user_tuple_list
 
 
