@@ -52,6 +52,7 @@ public class CollectedTransactionProducer {
     }
 
     private void sendOverKafka(CollectedTransaction collectedTransaction) {
+        System.out.println(collectedTransaction);
         this.kafkaTemplate.send(topic, collectedTransaction);
     }
 }

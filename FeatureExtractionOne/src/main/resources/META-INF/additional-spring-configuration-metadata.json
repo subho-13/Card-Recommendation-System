@@ -1,8 +1,0 @@
-{
-  "properties": [
-    {
-      "name": "producer-partition",
-      "type": "java.lang.String",
-      "description": "Description for producer-partition."
-  }
-] }
