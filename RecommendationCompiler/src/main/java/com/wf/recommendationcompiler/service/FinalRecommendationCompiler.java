@@ -24,10 +24,10 @@ public class FinalRecommendationCompiler {
         modelWeightMap = new HashMap<>();
         modelWeightMap.put("Rule Learning", 0.15F);
         modelWeightMap.put("Association Rule Learning", 0.35F);
-        modelWeightMap.put("Kpca Kmeans", 0.05F);
+        modelWeightMap.put("Kpca Kmeans Based", 0.05F);
         modelWeightMap.put("Kpca Similarity", 0.06F);
-        modelWeightMap.put("Pca Kmeans", 0.04F);
-        modelWeightMap.put("Som Based", 0.1F);
+        modelWeightMap.put("PCA Based", 0.04F);
+        modelWeightMap.put("SOM Based", 0.1F);
         modelWeightMap.put("Neural Based", 0.1F);
         modelWeightMap.put("Autoencoder Based", 0.1F);
         modelWeightMap.put("New User", 0.05F);

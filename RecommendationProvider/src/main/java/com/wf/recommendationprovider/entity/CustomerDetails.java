@@ -6,6 +6,7 @@ import com.wf.contractlib.entities.PurchaseCategory;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.Map;
@@ -15,9 +16,9 @@ import java.util.Map;
 @NoArgsConstructor
 @Entity
 @Table(name = "customer_details")
+@ToString
 public class CustomerDetails {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "customer_id")
     private Integer customerID;
 
@@ -36,12 +37,12 @@ public class CustomerDetails {
     @ElementCollection
     @MapKeyColumn(name = "purchase_category")
     @MapKeyEnumerated(EnumType.STRING)
-    @CollectionTable(name = "purchase_expenditure")
+    @CollectionTable(name = "purchase_expenditure", joinColumns = @JoinColumn(name = "customer_id"))
     private Map<PurchaseCategory, Float> purchaseExpenditureMap;
 
     @ElementCollection
     @MapKeyColumn(name = "card_type")
     @MapKeyEnumerated(EnumType.STRING)
-    @CollectionTable(name = "confidence_score")
+    @CollectionTable(name = "confidence_score", joinColumns = @JoinColumn(name = "customer_id"))
     private Map<CardType, Float> cardConfidenceMap;
 }
