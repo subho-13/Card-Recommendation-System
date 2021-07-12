@@ -37,4 +37,5 @@ class UserDetails(BaseUserDetails):
         return "UserDetails"
 
 
+BaseUserDetails.metadata.drop_all(engine)
 BaseUserDetails.metadata.create_all(engine)

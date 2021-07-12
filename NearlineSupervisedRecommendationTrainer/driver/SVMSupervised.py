@@ -1,5 +1,5 @@
-from models.SVMSupervised import SVMObject
 from driver.main import main
+from models.SVMSupervised import SVMObject
 
 svm_object = SVMObject()
 

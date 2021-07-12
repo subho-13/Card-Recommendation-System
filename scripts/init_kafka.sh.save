@@ -1,0 +1,6 @@
+#!/bin/sh
+cd ../binaries
+cd apache-zookeeper-3.7.0-bin/
+./b/zookeeper-server-start.sh ./config/zookeeper.properties &
+cd ../kafka_2.13-2.8.0/
+./bin/kafka-server-start.sh config/server.properties &
