@@ -1,6 +1,7 @@
+import pandas as pd
+
 from entities.FeatureVectorOne import FeatureVectorOne
 from repository.EntityManager import session, engine
-import pandas as pd
 
 
 def save_feature_vector_one(feature_vector_one_dict):
@@ -27,14 +28,20 @@ def save_feature_vector_one(feature_vector_one_dict):
                                           Shop_pos=feature_vector_one_dict['Shop_pos'],
                                           Travel=feature_vector_one_dict['Travel']
                                           )
+    #
+    # with session.begin():
+    #     check_if_exists = bool(
+    #         session.query(FeatureVectorOne).filter_by(User_Id=feature_vector_one_dict['User_Id']).first())
+    #
+    #     if check_if_exists:
+    #         session.query(FeatureVectorOne).filter_by(User_Id=feature_vector_one_dict['User_Id']).delete()
 
-    check_if_exists = bool(session.query(FeatureVectorOne).filter_by(User_Id=feature_vector_one_dict['User_Id']).first())
+    try:
+        session.merge(feature_vector_one)
+        session.commit()
+    except:
+        session.rollback()
 
-    if check_if_exists:
-        session.query(FeatureVectorOne).filter_by(User_Id=feature_vector_one_dict['User_Id']).delete()
-
-    session.add(feature_vector_one)
-    session.commit()
 
 def load_feature_vector_one_df():
     return pd.read_sql_table('feature_vector_one', engine)

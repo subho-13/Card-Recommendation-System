@@ -5,3 +5,6 @@ binaries/
 *.class
 .venv
 venv/
+__pycache__/
+node_modules/
+Data/

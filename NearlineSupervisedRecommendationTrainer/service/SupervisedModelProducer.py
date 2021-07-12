@@ -4,7 +4,7 @@ from time import sleep
 
 from kafka import KafkaProducer
 
-from Configuration import bootstrap_servers, init_sleep_time, sleep_time
+from Configuration import bootstrap_servers, init_sleep_time, sleep_time, minimum_df_size
 from lib.CommonDicts import card_dict
 from repository.DatabaseHandler import load_user_details_df
 
@@ -53,6 +53,10 @@ class SupervisedModelProducer(Thread):
         while self.event.is_set():
             with self.rwlock.gen_wlock():
                 df = load_and_preprocess_df()
+
+                if len(df) < minimum_df_size:
+                    continue
+
                 self.supervised_model.train(df)
                 self.kafka_producer.send(self.topic, self.supervised_model)
                 sleep(self.sleep_time)

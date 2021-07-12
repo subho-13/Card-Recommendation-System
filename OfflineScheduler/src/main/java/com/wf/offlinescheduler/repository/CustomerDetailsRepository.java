@@ -9,6 +9,7 @@ import java.util.Optional;
 @Repository
 public interface CustomerDetailsRepository extends CrudRepository<CustomerDetails, Integer> {
     Optional<CustomerDetails> findByCustomerID(Integer customerID);
+
     int countByNumTransactionsGreaterThanEqual(int thresholdNumTransactions);
 }
 

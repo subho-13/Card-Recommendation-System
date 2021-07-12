@@ -11,22 +11,22 @@ card_dict = {
 }
 
 purchase_category_dict = {
-        "PERSONAL": "Personal",
-        "HEALTH": "Health",
-        "MISC_POS": "Misc_pos",
-        "TRAVEL": "Travel",
-        "KIDS_PETS": "Kids_pets",
-        "SHOP_POS": "Shop_pos",
-        "FOOD": "Food",
-        "HOME": "Home",
-        "ENTERTAINMENT": "Entertainment",
-        "SHOP_NET": "Shop_net",
-        "MISC_NET": "Misc_net",
-        "GROCERY_POS": "Grocery_pos",
-        "GAS_TRANS": "Gas_trans",
-        "GROCERY_NET": "Grocery_net",
-        "EDUCATION": "Education",
-        "HOTEL": "Hotel"
+    "PERSONAL": "Personal",
+    "HEALTH": "Health",
+    "MISC_POS": "Misc_pos",
+    "TRAVEL": "Travel",
+    "KIDS_PETS": "Kids_pets",
+    "SHOP_POS": "Shop_pos",
+    "FOOD": "Food",
+    "HOME": "Home",
+    "ENTERTAINMENT": "Entertainment",
+    "SHOP_NET": "Shop_net",
+    "MISC_NET": "Misc_net",
+    "GROCERY_POS": "Grocery_pos",
+    "GAS_TRANS": "Gas_trans",
+    "GROCERY_NET": "Grocery_net",
+    "EDUCATION": "Education",
+    "HOTEL": "Hotel"
 }
 
 purchase_category_int_dict = {
@@ -49,20 +49,20 @@ purchase_category_int_dict = {
 }
 
 job_dict = {
-        "MANAGER": "manager",
-        "WORKER": "worker",
-        "DOCTOR": "doctor",
-        "ENGINEER": "engineer",
-        "TEACHER": "teacher",
-        "LAWYER": "lawyer",
-        "ACCOUNTANT": "accountant",
-        "JOURNALIST" : "journalist",
-        "SELF_EMPLOYED": "self employed",
-        "DESIGNER": "designer",
-        "SCIENTIST": "scientist",
-        "TRADER": "trader",
-        "ARTIST": "artist",
-        "CEO": "ceo",
-        "POLITICIAN": "politician",
-        "STUDENT": "student"
+    "MANAGER": "manager",
+    "WORKER": "worker",
+    "DOCTOR": "doctor",
+    "ENGINEER": "engineer",
+    "TEACHER": "teacher",
+    "LAWYER": "lawyer",
+    "ACCOUNTANT": "accountant",
+    "JOURNALIST": "journalist",
+    "SELF_EMPLOYED": "self employed",
+    "DESIGNER": "designer",
+    "SCIENTIST": "scientist",
+    "TRADER": "trader",
+    "ARTIST": "artist",
+    "CEO": "ceo",
+    "POLITICIAN": "politician",
+    "STUDENT": "student"
 }

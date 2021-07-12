@@ -1,0 +1,39 @@
+username := teamb1
+password := themonksofteamb1
+
+DataCollector
+port := 9501
+
+DataAbstraction
+db := data_abstraction_db
+port := 9502
+
+RedeemRewardPoints
+db := redeem_reward_points_db
+port := 9503
+
+FeatureExtractionOne
+db := feature_extraction_one_db
+port := 9504
+
+NearlineScheduler
+db := nearline_scheduler_db
+port := 9505
+
+OfflineScheduler
+db := offline_scheduler_db
+port := 9506
+
+RecommendationCompiler
+db := recommendation_compiler_db
+port := 9507
+
+RecommendationProvider
+db := recommendation_provider_db
+port := 9508
+
+RewardSuggestion
+port := 9509
+
+
+

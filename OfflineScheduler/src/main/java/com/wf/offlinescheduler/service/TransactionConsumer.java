@@ -10,14 +10,13 @@ public class TransactionConsumer {
     private Trigger trigger;
 
     @Autowired
-    public void setTransactionCountTrigger(Trigger tigger) {
+    public void setTransactionCountTrigger(Trigger trigger) {
         this.trigger = trigger;
     }
 
     @KafkaListener(groupId = "OfflineScheduler", topics = "AbstractedTransaction",
             containerFactory = "abstractedTransactionListenerFactory")
     public void consumeAbstractedTransaction(AbstractedTransaction abstractedTransaction) {
-        System.out.println(abstractedTransaction);
         trigger.handle(abstractedTransaction);
     }
 }

@@ -5,7 +5,6 @@ import com.wf.contractlib.contracts.OfflineTrigger;
 import com.wf.offlinescheduler.entity.CustomerDetails;
 import com.wf.offlinescheduler.repository.CustomerDetailsRepository;
 import lombok.Getter;
-import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -14,6 +13,7 @@ import javax.transaction.Transactional;
 import java.util.Optional;
 
 @Service
+@Getter
 public class Trigger {
     private TriggerProducer triggerProducer;
     private CustomerDetailsRepository customerDetailsRepository;
@@ -24,11 +24,10 @@ public class Trigger {
     @Value("${transaction-step-count}")
     private int transactionStepCount;
 
-    @Getter
     private int totalUsers = 0;
-    @Getter
+
     private int numUsersAboveThreshold = 0;
-    @Getter
+
     private int currentThresholdTransactionCount = 8;
 
     @Transactional
@@ -42,10 +41,12 @@ public class Trigger {
         if (optionalCustomerDetails.isPresent()) {
             customerDetails = optionalCustomerDetails.get();
             customerDetails.setNumTransactions(customerDetails.getNumTransactions() + 1);
+
             if (customerDetails.getNumTransactions() == currentThresholdTransactionCount) {
                 numUsersAboveThreshold++;
                 sendTrigger();
             }
+
         } else {
             totalUsers++;
         }
@@ -59,7 +60,8 @@ public class Trigger {
             triggerProducer.produce(offlineTrigger);
 
             currentThresholdTransactionCount += transactionStepCount;
-            numUsersAboveThreshold = customerDetailsRepository.countByNumTransactionsGreaterThanEqual(currentThresholdTransactionCount);
+            numUsersAboveThreshold =
+                    customerDetailsRepository.countByNumTransactionsGreaterThanEqual(currentThresholdTransactionCount);
         }
     }
 
