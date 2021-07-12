@@ -36,8 +36,7 @@ public class DatabaseHandler {
     }
 
     @Transactional
-    public void handle(GeneratedRecommendation generatedRecommendation) {
-        System.out.println("HANDLE" + generatedRecommendation);
+    public void handle(GeneratedRecommendation generatedRecommendation) {        
         RecommendationDetails recommendationDetails = detailsGenerator.generate(generatedRecommendation);
 
         Optional<RecommendationDetails> details =
@@ -49,8 +48,7 @@ public class DatabaseHandler {
             recommendationDetails.setRecommendationID(details.get().getRecommendationID());
             testVariable=true ;
         }
-        
-        System.out.println("BEFORE SAVE" + recommendationDetails);
+                
         recommendationDetailsRepository.save(recommendationDetails);
         isNewDataAvailable.set(true);
     }
