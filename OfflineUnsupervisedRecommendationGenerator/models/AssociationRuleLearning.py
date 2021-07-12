@@ -147,6 +147,6 @@ def association_rule_learning(df):
     # =============================================================================
     #     user_final_list1 = np.concatenate((user_final_list, empty_list))
     # =============================================================================
-    np.save('Model_Weights/association_based_user_final_list', user_final_list)
+    # np.save('Model_Weights/association_based_user_final_list', user_final_list)
     user_final_tuple_list = user_tuple_generator(user_final_list, 'Association Rule Learning')
     return user_final_tuple_list

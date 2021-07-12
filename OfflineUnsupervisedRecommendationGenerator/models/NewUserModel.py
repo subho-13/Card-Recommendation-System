@@ -45,6 +45,6 @@ def new_user_model(df):
 
     user_final_list = available_cards(card_data, df)
     user_final_list = standardize(user_final_list)
-    np.save('Model_Weights/new_user_final_list', user_final_list)
+    # np.save('Model_Weights/new_user_final_list', user_final_list)
     user_final_tuple_list = user_tuple_generator(user_final_list, 'New User')
     return user_final_tuple_list

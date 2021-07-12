@@ -134,6 +134,6 @@ def auto_encoder(df):
     # =============================================================================
     #     user_final_list1 = np.concatenate((user_final_list, empty_list))
     # =============================================================================
-    np.save('Model_Weights/auto_encoder_user_final_list', user_final_list)
+    # np.save('Model_Weights/auto_encoder_user_final_list', user_final_list)
     user_final_tuple_list = user_tuple_generator(user_final_list, 'Autoencoder Based')
     return user_final_tuple_list
