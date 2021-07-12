@@ -19,6 +19,7 @@ public class AbstractedTransactionProducer {
     private String topic;
 
     public void produce(AbstractedTransaction abstractedTransaction){
+        System.out.println(abstractedTransaction);
         this.template.send(topic, abstractedTransaction);
     }
 }

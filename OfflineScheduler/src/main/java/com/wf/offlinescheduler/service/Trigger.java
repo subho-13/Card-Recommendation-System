@@ -13,6 +13,7 @@ import javax.transaction.Transactional;
 import java.util.Optional;
 
 @Service
+@Getter
 public class Trigger {
     private TriggerProducer triggerProducer;
     private CustomerDetailsRepository customerDetailsRepository;
@@ -27,7 +28,7 @@ public class Trigger {
 
     private int numUsersAboveThreshold = 0;
 
-    private int currentThresholdTransactionCount = 10;
+    private int currentThresholdTransactionCount = 8;
 
     @Transactional
     public void handle(AbstractedTransaction abstractedTransaction) {

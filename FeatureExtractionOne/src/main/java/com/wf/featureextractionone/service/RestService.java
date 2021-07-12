@@ -28,6 +28,13 @@ public class RestService {
         return fetchDataFromUri(uri, Integer.class);
     }
 
+    public Long getCardIssueUnixTime(Integer cardID) {
+        String uri = dataAbstractionUrl + "/get/creditScore/" + cardID;
+        return fetchDataFromUri(uri, Long.class);
+    }
+
+
+
     private <T> T fetchDataFromUri(String url, Class<T> clazz) {
         T tmp = this.restTemplate.getForObject(url, clazz);
         int sleepTimeMilliseconds = 5;
@@ -38,6 +45,7 @@ public class RestService {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+            System.out.println("Trying" + url);
             tmp = this.restTemplate.getForObject(url, clazz);
             sleepTimeMilliseconds = (sleepTimeMilliseconds * 2 + 7) % 1000;
         }

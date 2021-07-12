@@ -17,10 +17,10 @@ public class DetailsGenerator {
     private final Map<PurchaseCategory, Float> meanPurchaseExpenditureMap = new ConcurrentHashMap<>();
     private final Map<PurchaseCategory, Long> purchaseCountMap = new ConcurrentHashMap<>();
 
-    @Value("$min-purchase-with-normal-expenditure-count")
+    @Value("${min-purchase-with-normal-expenditure-count}")
     private int minPurchaseWithNormalExpenditureCount;
 
-    @Value("$percent-of-average")
+    @Value("${percent-of-average}")
     private float percentOfAverage;
 
     private RestService restService;
@@ -34,10 +34,13 @@ public class DetailsGenerator {
         FeatureVector featureVector = new FeatureVector();
 
         Integer customerID = abstractedTransaction.getCustomerID();
+        Integer cardID = abstractedTransaction.getCardID();
+
         featureVector.setCustomerID(customerID);
 
         featureVector.setJob(restService.getCustomerJob(customerID));
         featureVector.setCreditScore(restService.getCustomerCreditScore(customerID));
+        featureVector.setCardIssueUnixTime(restService.getCardIssueUnixTime(cardID));
 
         featureVector.setNewUser(true);
         featureVector.setCardType(abstractedTransaction.getCardType());
@@ -55,6 +58,7 @@ public class DetailsGenerator {
         newFeatureVector.setCustomerID(featureVector.getCustomerID());
         newFeatureVector.setJob(featureVector.getJob());
         newFeatureVector.setCreditScore(featureVector.getCreditScore());
+        newFeatureVector.setCardIssueUnixTime(featureVector.getCardIssueUnixTime());
         newFeatureVector.setCardType(featureVector.getCardType());
         newFeatureVector.setPurchaseExpenditureMap(featureVector.getPurchaseExpenditureMap());
 
@@ -116,27 +120,30 @@ public class DetailsGenerator {
 
         meanPurchaseExpenditureMap.put(purchaseCategory, newMeanExpenditure);
         purchaseCountMap.put(purchaseCategory, count + 1);
+        System.out.println(meanPurchaseExpenditureMap);
+        System.out.println(purchaseCountMap);
     }
 
     private boolean isNewUser(FeatureVector featureVector) {
         int purchaseWithNormalExpenditure = 0;
         Map<PurchaseCategory, Float> userPurchaseExpenditureMap = featureVector.getPurchaseExpenditureMap();
 
-        for (Map.Entry<PurchaseCategory, Float> purchaseExpenditureMean : meanPurchaseExpenditureMap.entrySet()) {
-            PurchaseCategory purchaseCategory = purchaseExpenditureMean.getKey();
+        for (Map.Entry<PurchaseCategory, Float> purchaseExpenditure : userPurchaseExpenditureMap.entrySet()) {
+            PurchaseCategory purchaseCategory = purchaseExpenditure.getKey();
 
-            float meanExpenditure = purchaseExpenditureMean.getValue();
-            float userExpenditure = userPurchaseExpenditureMap.get(purchaseCategory);
+            if (! meanPurchaseExpenditureMap.containsKey(purchaseCategory)) {
+                purchaseWithNormalExpenditure++;
+                continue;
+            }
 
-            if (userExpenditure >= roundOff(percentOfAverage * meanExpenditure)) {
+            float meanExpenditure = meanPurchaseExpenditureMap.get(purchaseCategory);
+            float userExpenditure = purchaseExpenditure.getValue();
+
+            if (userExpenditure >= percentOfAverage * meanExpenditure) {
                 purchaseWithNormalExpenditure++;
             }
         }
 
-        return purchaseWithNormalExpenditure >= minPurchaseWithNormalExpenditureCount;
-    }
-
-    private float roundOff(float num) {
-        return Math.round(num * 100.0) / 100.0F;
+        return purchaseWithNormalExpenditure < minPurchaseWithNormalExpenditureCount;
     }
 }

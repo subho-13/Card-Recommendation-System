@@ -22,7 +22,6 @@ public class CollectedTransactionConsumer {
     @KafkaListener(groupId = "DataAbstraction", topics = "CollectedTransaction",
             containerFactory = "collectedTransactionListenerFactory")
     public void consumeCollectedTransaction(CollectedTransaction collectedTransaction) {
-        System.out.println("Consumed :: " + collectedTransaction);
         Map<String, Integer> mapDetailsID =
                 databaseHandler.saveTransactionDetails(collectedTransaction);
         AbstractedTransaction abstractedTransaction =

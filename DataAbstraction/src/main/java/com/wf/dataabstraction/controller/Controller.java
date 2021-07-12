@@ -31,12 +31,13 @@ public class Controller {
     }
 
     @GetMapping(value = "/get/cardIssueUnixTime/{cardID}")
-    public Long getCardIsseUnixTime(@PathVariable Integer cardID) {
+    public Long getCardIssueUnixTime(@PathVariable Integer cardID) {
         Optional<CardDetails> optionalCardDetails = cardDetailsRepository.findByCardID(cardID);
 
         if (optionalCardDetails.isEmpty()) {
             return null;
         }
+
         return optionalCardDetails.get().getCardIssueUnixTime();
     }
 

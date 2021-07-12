@@ -18,6 +18,7 @@ public class FeatureVectorOneProducer {
     }
 
     public void produce(FeatureVectorOne featureVectorOne) {
+        System.out.println(featureVectorOne);
         this.template.send(topic, featureVectorOne);
     }
 }

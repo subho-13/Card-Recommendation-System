@@ -78,7 +78,6 @@ def card_count_converter(card_list, card_num):
 
 def get_card_probability(user_embeddings, initial_cards, card_data, df, card_mapper, similarity_count):
     '''Returns the probability of each card to be allotted for every user'''
-
     user_final_list = []
 
     for i in range(len(user_embeddings)):
@@ -140,6 +139,6 @@ def neural_embedding(df):
     # =============================================================================
     #     user_final_list1 = np.concatenate((user_final_list, empty_list))
     # =============================================================================
-    np.save('Model_Weights/neural_embedding_user_final_list', user_final_list)
+    # np.save('Model_Weights/neural_embedding_user_final_list', user_final_list)
     user_final_tuple_list = user_tuple_generator(user_final_list, 'Neural Based')
     return user_final_tuple_list

@@ -15,7 +15,6 @@ public class GeneratedRecommendationConsumer {
     @KafkaListener(groupId = "RecommendationCompiler", topics = "GeneratedRecommendation",
             containerFactory = "generatedRecommendationListenerFactory")
     public void consumeGeneratedRecommendation(GeneratedRecommendation generatedRecommendation) {
-        System.out.println("Consumed :: " + generatedRecommendation);
         databaseHandler.handle(generatedRecommendation);
     }
 }
