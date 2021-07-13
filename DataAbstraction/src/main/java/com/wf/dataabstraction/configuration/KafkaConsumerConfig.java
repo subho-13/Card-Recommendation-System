@@ -20,7 +20,7 @@ public class KafkaConsumerConfig {
     @Value("${spring.kafka.bootstrap-servers}")
     private String bootstrapServers;
 
-    private static final int concurrency = 5;
+    private static final int concurrency = 1;
 
     private Map<String, Object> getConfig() {
         Map<String, Object> configs = new HashMap<>();
