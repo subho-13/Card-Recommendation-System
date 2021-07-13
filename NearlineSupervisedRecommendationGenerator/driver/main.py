@@ -15,7 +15,7 @@ def main(topic, group_id, supervised_model):
     rwlock_writer = rwlock.RWLockWriteD()
 
     feature_vector_one_consumer = FeatureVectorOneConsumer(event, rwlock_writer)
-    supervised_model_consumer = SupervisedModelConsumer(event, rwlock, topic, group_id, supervised_model)
+    supervised_model_consumer = SupervisedModelConsumer(event, rwlock_writer, topic, group_id, supervised_model)
     generated_recommendation_producer = GeneratedRecommendationProducer(supervised_model)
     nearline_trigger_consumer = NearlineTriggerConsumer(event, rwlock_writer, group_id,
                                                         generated_recommendation_producer)

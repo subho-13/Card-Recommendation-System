@@ -4,8 +4,9 @@ import { Bar } from 'react-chartjs-2';
 const Purchase = ({customerID}) => {
     const [datax, setDataxChart] = useState();
     const [labels, setLabelsChart] = useState();
-    const [backgroundColor, setBorderColor] = useState();
+    const [backgroundColor, setBackgroundColor] = useState();
     const [borderColor, setBorderColor] = useState();
+
     const globalLabels = [
           'EDUCATION',
           'ENTERTAINMENT',
