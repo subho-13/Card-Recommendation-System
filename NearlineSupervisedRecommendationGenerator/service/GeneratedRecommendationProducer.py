@@ -33,6 +33,7 @@ class GeneratedRecommendationProducer:
 
         self.supervised_model = supervised_model
 
+
     def produce(self, customerID):
         feature_vector_one = get_feature_vector_one(customerID)
 
@@ -40,6 +41,12 @@ class GeneratedRecommendationProducer:
             return
 
         if feature_vector_one.new_user:
+            return
+
+        if self.supervised_model.sc is None:
+            return
+
+        if self.supervised_model.model is None:
             return
 
         user_card_confidence = self.supervised_model.generate_rec(feature_vector_one.__dict__)
