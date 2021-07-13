@@ -18,6 +18,7 @@ public class TriggerProducer {
     }
 
     public void produce(OfflineTrigger offlineTrigger) {
+        System.out.println(offlineTrigger);
         this.template.send(topic, offlineTrigger);
     }
 }

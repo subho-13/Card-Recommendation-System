@@ -19,9 +19,9 @@ def generate_card_confidence_map(card_confidence_list):
 
 class GeneratedRecommendation:
     def __init__(self, customer_id, model_name, card_confidence_list):
-        self.customer_id = customer_id
-        self.model_name = model_name
-        self.card_confidence_map = generate_card_confidence_map(card_confidence_list)
+        self.customerID = customer_id
+        self.modelName = model_name
+        self.cardConfidenceMap = generate_card_confidence_map(card_confidence_list)
 
 
 class RecommendationProducer(Thread):
@@ -64,6 +64,7 @@ class RecommendationProducer(Thread):
                 generated_recommendation = GeneratedRecommendation(user_card_confidence[0],
                                                                    user_card_confidence[1],
                                                                    user_card_confidence[2])
+                print(generated_recommendation.__dict__)
                 self.producer.send("GeneratedRecommendation", generated_recommendation.__dict__)
 
     def load_and_preprocess_df(self):
@@ -73,8 +74,8 @@ class RecommendationProducer(Thread):
             df = df[df['new_user'] == False]
 
         df.drop('new_user', axis=1, inplace=True)
+        df.reset_index(drop=True, inplace=True)
         df = self.replace_user_id_with_index(df)
-
         return df
 
     def replace_user_id_with_index(self, df):
@@ -87,5 +88,5 @@ class RecommendationProducer(Thread):
 
     def replace_index_with_user_id(self, user_card_confidence):
         assigned_user_id = user_card_confidence[0]
-        user_card_confidence[0] = self.user_map[assigned_user_id]
+        user_card_confidence[0] = int(self.user_map[assigned_user_id])
         return user_card_confidence

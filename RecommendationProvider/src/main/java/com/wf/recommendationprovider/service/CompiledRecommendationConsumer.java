@@ -16,8 +16,7 @@ public class CompiledRecommendationConsumer {
 
     @KafkaListener(groupId = "RecommendationProvider", topics = "CompiledRecommendation",
             containerFactory = "compiledRecommendationListenerFactory")
-    public void consumeFeatureVectorOne(CompiledRecommendation compiledRecommendation) {
-        System.out.println("Consumed :: " + compiledRecommendation);
+    public void consumeCompiledRecommendation(CompiledRecommendation compiledRecommendation) {
         databaseHandler.handle(compiledRecommendation);
     }
 }

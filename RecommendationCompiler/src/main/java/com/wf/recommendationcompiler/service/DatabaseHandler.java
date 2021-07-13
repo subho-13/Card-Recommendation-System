@@ -36,7 +36,7 @@ public class DatabaseHandler {
     }
 
     @Transactional
-    public void handle(GeneratedRecommendation generatedRecommendation) {
+    public void handle(GeneratedRecommendation generatedRecommendation) {        
         RecommendationDetails recommendationDetails = detailsGenerator.generate(generatedRecommendation);
 
         Optional<RecommendationDetails> details =
@@ -48,7 +48,7 @@ public class DatabaseHandler {
             recommendationDetails.setRecommendationID(details.get().getRecommendationID());
             testVariable=true ;
         }
-
+                
         recommendationDetailsRepository.save(recommendationDetails);
         isNewDataAvailable.set(true);
     }

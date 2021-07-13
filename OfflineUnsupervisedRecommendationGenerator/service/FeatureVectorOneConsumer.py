@@ -52,6 +52,5 @@ class FeatureVectorOneConsumer(Thread):
             with self.rwlock.gen_rlock():
                 feature_vector_one_dict = convert_to_feature_vector_one_dict(message.value)
                 save_feature_vector_one(feature_vector_one_dict)
-
                 if not self.event.is_set():
                     return

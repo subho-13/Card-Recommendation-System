@@ -1,6 +1,6 @@
 package com.wf.featureextractionone.configuration;
 
-import com.wf.contractlib.contracts.AbstractedTransaction;
+import com.wf.contractlib.contracts.featurevector.FeatureVectorOne;
 import org.apache.kafka.clients.admin.NewTopic;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
@@ -38,10 +38,10 @@ public class KafkaProducerConfig {
     }
 
     @Bean
-    public KafkaTemplate<String, AbstractedTransaction> kafkaAbstractedTransactionTemplate() {
-        JsonSerializer<AbstractedTransaction> jsonSerializer = new JsonSerializer<>();
+    public KafkaTemplate<String, FeatureVectorOne> kafkaFeatureVectorOneTemplate() {
+        JsonSerializer<FeatureVectorOne> jsonSerializer = new JsonSerializer<>();
         StringSerializer stringSerializer = new StringSerializer();
-        DefaultKafkaProducerFactory<String, AbstractedTransaction> defaultKafkaProducerFactory
+        DefaultKafkaProducerFactory<String, FeatureVectorOne> defaultKafkaProducerFactory
                 = new DefaultKafkaProducerFactory<>(getConfig(), stringSerializer, jsonSerializer);
         return new KafkaTemplate<>(defaultKafkaProducerFactory);
     }

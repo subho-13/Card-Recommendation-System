@@ -111,6 +111,6 @@ def self_organizing_maps(df):
     # =============================================================================
     #     user_final_list1 = np.concatenate((user_final_list, empty_list))
     # =============================================================================
-    np.save('Model_Weights/som_user_final_list', user_final_list)
+    # np.save('Model_Weights/som_user_final_list', user_final_list)
     user_final_tuple_list = user_tuple_generator(user_final_list, 'SOM Based')
     return user_final_tuple_list

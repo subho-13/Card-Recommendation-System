@@ -36,5 +36,4 @@ class FeatureVectorOne(BaseFeatureVectorOne):
         return "FeatureVectorOne"
 
 
-BaseFeatureVectorOne.metadata.drop_all(engine)
 BaseFeatureVectorOne.metadata.create_all(engine)

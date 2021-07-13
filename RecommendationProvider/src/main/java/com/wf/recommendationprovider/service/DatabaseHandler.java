@@ -37,10 +37,10 @@ public class DatabaseHandler {
         Optional<CustomerDetails> optionalCustomerDetails =
                 customerDetailsRepository.findByCustomerID(customerDetails.getCustomerID());
 
-        optionalCustomerDetails.ifPresent(details -> {
-            customerDetails.setCardConfidenceMap(details.getCardConfidenceMap())  ;
+        if (optionalCustomerDetails.isPresent()) {
+            customerDetails.setCardConfidenceMap(optionalCustomerDetails.get().getCardConfidenceMap())  ;
             testVariable =true ; //to test only
-        });
+        };
 
         customerDetailsRepository.save(customerDetails);
     }
@@ -53,11 +53,11 @@ public class DatabaseHandler {
                 customerDetailsRepository.findByCustomerID(customerDetails.getCustomerID());
 
         if (optionalCustomerDetails.isPresent()) {
-            optionalCustomerDetails.get().setCardConfidenceMap(customerDetails.getCardConfidenceMap());
-            customerDetails = optionalCustomerDetails.get();
-            testVariable=true ; //for testing
+            CustomerDetails temp =
+                    optionalCustomerDetails.get();
+            temp.setCardConfidenceMap(customerDetails.getCardConfidenceMap());
+            customerDetails = temp;
         }
-
         customerDetailsRepository.save(customerDetails);
     }
 }
