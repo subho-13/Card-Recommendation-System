@@ -2,27 +2,28 @@ package com.wf.recommendationprovider.service;
 
 import com.wf.contractlib.contracts.CompiledRecommendation;
 import com.wf.contractlib.contracts.featurevector.FeatureVectorOne;
-import com.wf.recommendationprovider.entity.CustomerDetails;
+import com.wf.recommendationprovider.entity.CompiledRec;
+import com.wf.recommendationprovider.entity.FeatureVector;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 
 @Service
 public class DetailsGenerator {
-    public CustomerDetails generate(@NotNull FeatureVectorOne featureVectorOne) {
-        CustomerDetails customerDetails = new CustomerDetails();
-        customerDetails.setCustomerID(featureVectorOne.getCustomerID());
-        customerDetails.setJob(featureVectorOne.getJob());
-        customerDetails.setCreditScore(featureVectorOne.getCreditScore());
-        customerDetails.setNewUser(featureVectorOne.getNewUser());
-        customerDetails.setCardType(featureVectorOne.getCardType());
-        customerDetails.setPurchaseExpenditureMap(featureVectorOne.getPurchaseExpenditureMap());
-        return customerDetails;
+    public FeatureVector generate(@NotNull FeatureVectorOne featureVectorOne) {
+        FeatureVector featureVector = new FeatureVector();
+        featureVector.setCustomerID(featureVectorOne.getCustomerID());
+        featureVector.setJob(featureVectorOne.getJob());
+        featureVector.setCreditScore(featureVectorOne.getCreditScore());
+        featureVector.setNewUser(featureVectorOne.getNewUser());
+        featureVector.setCardType(featureVectorOne.getCardType());
+        featureVector.setPurchaseExpenditureMap(featureVectorOne.getPurchaseExpenditureMap());
+        return featureVector;
     }
 
-    public CustomerDetails generate(@NotNull CompiledRecommendation compiledRecommendation) {
-        CustomerDetails customerDetails = new CustomerDetails();
-        customerDetails.setCustomerID(compiledRecommendation.getCustomerID());
-        customerDetails.setCardConfidenceMap(compiledRecommendation.getCardConfidenceMap());
-        return customerDetails;
+    public CompiledRec generate(@NotNull CompiledRecommendation compiledRecommendation) {
+        CompiledRec compiledRec = new CompiledRec();
+        compiledRec.setCustomerID(compiledRecommendation.getCustomerID());
+        compiledRec.setCardConfidenceMap(compiledRecommendation.getCardConfidenceMap());
+        return compiledRec;
     }
 }

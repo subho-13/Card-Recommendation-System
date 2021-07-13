@@ -60,6 +60,7 @@ public class Controller {
         if (optionalCustomerDetails.isEmpty()) {
             return null;
         }
+
         return optionalCustomerDetails.get().getCreditScore();
     }
 

@@ -4,7 +4,8 @@ import com.wf.contractlib.entities.CardType;
 import com.wf.contractlib.entities.JobType;
 import com.wf.contractlib.entities.PurchaseCategory;
 import com.wf.recommendationprovider.entity.CardBenefits;
-import com.wf.recommendationprovider.entity.CustomerDetails;
+import com.wf.recommendationprovider.entity.CompiledRec;
+import com.wf.recommendationprovider.entity.FeatureVector;
 import com.wf.recommendationprovider.util.ComplimentaryCardRepositoryBuilder;
 import org.springframework.stereotype.Service;
 
@@ -39,8 +40,8 @@ public class ComplimentaryCardProvider {
         return rewardPoints/10;
     }
 
-    public CardType getComplimentaryCard(CustomerDetails customerDetails) {
-        CardType proposedCard = customerDetails.getCardType();
+    public CardType getComplimentaryCard(FeatureVector featureVector) {
+        CardType proposedCard = featureVector.getCardType();
         Map<CardType, CardBenefits> cardBenefitsMap = complimentaryCardMapping.get(proposedCard);
 
         CardType recommendedCard = CardType.UNKNOWN;
@@ -52,15 +53,15 @@ public class ComplimentaryCardProvider {
             CardType card = cardBenefitsEntry.getKey();
             CardBenefits cardBenefits = cardBenefitsEntry.getValue();
 
-            if (card == CardType.COLLEGE && customerDetails.getJob() != JobType.STUDENT) {
+            if (card == CardType.COLLEGE && featureVector.getJob() != JobType.STUDENT) {
                 continue;
             }
 
-            if (customerDetails.getCreditScore() < cardBenefits.getCreditScore()) {
+            if (featureVector.getCreditScore() < cardBenefits.getCreditScore()) {
                 continue;
             }
 
-            float rewardPoints = getRewardPoints(customerDetails.getPurchaseExpenditureMap(),
+            float rewardPoints = getRewardPoints(featureVector.getPurchaseExpenditureMap(),
                     cardBenefits.getPurchaseBenefitsMap());
 
             if (rewardPoints > maxRewardPoints) {
