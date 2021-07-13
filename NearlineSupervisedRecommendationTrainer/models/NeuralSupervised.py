@@ -1,6 +1,6 @@
 import numpy as np
 import tensorflow as tf
-from CommonFunctions1 import *
+from lib.CommonFunctions1 import *
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from tensorflow import keras
@@ -73,12 +73,12 @@ def neural_supervised(df):
 
 
 class ANNObject:
-    def __init__(self, sc, model):
-        self.sc = sc
-        self.model = model
+    def __init__(self):
+        self.sc = None
+        self.model = None
 
-    def train(self):
-        self.sc, self.model = neural_supervised()
+    def train(self, df):
+        self.sc, self.model = neural_supervised(df)
 
     def update(self, new_model):
         self.sc = new_model.sc

@@ -4,4 +4,4 @@ from models.NeuralSupervised import ANNObject
 ann_object = ANNObject()
 
 if __name__ == "__main__":
-    main("Neural Supervised", ann_object)
+    main("NeuralModel", ann_object)
