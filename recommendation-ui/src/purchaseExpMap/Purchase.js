@@ -31,10 +31,11 @@ const Purchase = ({customerID}) => {
                 const temp_purchaseExpenditureMap = response.data.purchaseExpenditureMap;
 
                 let temp_datax = [];                
-                let temp_labels = []
+                let temp_labels = [];
+                
                 for(let i = 0; i < globalLabels.length; i++){
                     if(globalLabels[i] in temp_purchaseExpenditureMap){
-
+                        temp_labels.push()
                         temp_datax.push(temp_purchaseExpenditureMap[globalLabels[i]]);
                     }                    
                 }

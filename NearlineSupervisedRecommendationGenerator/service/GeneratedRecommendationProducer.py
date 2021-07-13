@@ -48,4 +48,5 @@ class GeneratedRecommendationProducer:
                                                            user_card_confidence[1],
                                                            user_card_confidence[2])
 
+        print(generated_recommendation.__dict__)
         self.producer.send("GeneratedRecommendation", generated_recommendation.__dict__)
