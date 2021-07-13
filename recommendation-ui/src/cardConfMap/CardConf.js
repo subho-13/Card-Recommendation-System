@@ -2,15 +2,8 @@ import React, {useState, useEffect} from "react";
 import { Bar, Doughnut } from 'react-chartjs-2';
 
 const CardConf = ({customerID}) => {
-  
-    useEffect(() => {
-
-    }, [])
-
-    const datax = [10, 10, 10, 10, 10, 10, 10, 10, 10]
-
-    const data = {
-        labels: [
+    const [datax, setDataxChart] = useState();
+    const globalLabels = [
           'CASH_WISE',
           'PLATINUM',
           'HOTEL',
@@ -20,7 +13,26 @@ const CardConf = ({customerID}) => {
           'SHOPPING',
           'ENTERTAINMENT',
           'CREDIT_BUILDER',
-        ],
+        ];
+
+    useEffect(() => {
+         axios.get(`http://localhost:9508/get/${customerID}`)
+          .then((response) => {
+                console.log(response.data.cardConfidenceMap)
+                const temp_cardConfidenceMap = response.data.cardConfidenceMap;
+
+                let temp_datax = [];                                
+                for(let i = 0; i < globalLabels.length; i++){
+                    if(globalLabels[i] in temp_card){                                              
+                        temp_datax.push(temp_cardConfidenceMap[globalLabels[i]]);                        
+                    }                    
+                }
+
+                setDatax(temp_datax);
+    }, [customerID])    
+
+    const data = {
+        labels: labels,
         datasets: [
           {
             label: 'Card Confidence',

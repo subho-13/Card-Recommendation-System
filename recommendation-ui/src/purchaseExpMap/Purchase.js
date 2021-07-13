@@ -27,18 +27,29 @@ const Purchase = ({customerID}) => {
         ]
 
     useEffect(() => {
-        axios.get(`http://localhost:9508/${customerID}`)
+        axios.get(`http://localhost:9508/get/${customerID}`)
           .then((response) => {
                 console.log(response.data.purchaseExpenditureMap)
                 const temp_purchaseExpenditureMap = response.data.purchaseExpenditureMap;
 
                 let temp_datax = [];                
                 let temp_labels = [];
-
+                let temp_borderColor = []
+                let temp_backgroundColor = []
+                let cnt = 0;
                 for(let i = 0; i < globalLabels.length; i++){
                     if(globalLabels[i] in temp_purchaseExpenditureMap){
+                        cnt++;
                         temp_labels.push(globalLabels[i]);
                         temp_datax.push(temp_purchaseExpenditureMap[globalLabels[i]]);
+
+                        if(cnt % 2 == 0){
+                            temp_backgroundColor.push('rgba(253, 35, 35, 0.2)');
+                            temp_borderColor.push('rgba(253, 35, 35, 1)');
+                        }else {
+                            temp_backgroundColor.push('rgba(255, 238, 112, 0.6)');
+                            temp_borderColor.push('rgba(255, 238, 112, 1)');
+                        }
                     }                    
                 }
 
@@ -48,9 +59,7 @@ const Purchase = ({customerID}) => {
             .catch((err) => {
                 console.log(err)
             })
-    }, [customerID])
-
-    // const datax = [10, 10, 10, 10, 10, 10, 10, 10,10, 10, 10, 10, 10, 10, 10, 10]
+    }, [customerID])    
 
     const data = {
         labels: labels,
@@ -58,42 +67,8 @@ const Purchase = ({customerID}) => {
           {
             label: 'Amount Spent per Category',
             data: datax,
-            backgroundColor: [
-              'rgba(253, 35, 35, 0.2)',
-              'rgba(255, 238, 112, 0.6)',
-              'rgba(253, 35, 35, 0.2)',
-              'rgba(255, 238, 112, 0.6)',
-              'rgba(253, 35, 35, 0.2)',
-              'rgba(255, 238, 112, 0.6)',
-              'rgba(253, 35, 35, 0.2)',
-              'rgba(255, 238, 112, 0.6)',
-              'rgba(253, 35, 35, 0.2)',
-              'rgba(255, 238, 112, 0.6)',
-              'rgba(253, 35, 35, 0.2)',
-              'rgba(255, 238, 112, 0.6)',
-              'rgba(253, 35, 35, 0.2)',
-              'rgba(255, 238, 112, 0.6)',
-              'rgba(253, 35, 35, 0.2)',
-              'rgba(255, 238, 112, 0.6)',              
-            ],
-            borderColor: [
-              'rgba(253, 35, 35, 1)',
-              'rgba(255, 238, 112, 1)',
-              'rgba(253, 35, 35, 1)',
-              'rgba(255, 238, 112, 1)',
-              'rgba(253, 35, 35, 1)',
-              'rgba(255, 238, 112, 1)',
-              'rgba(253, 35, 35, 1)',
-              'rgba(255, 238, 112, 1)',
-              'rgba(253, 35, 35, 1)',
-              'rgba(255, 238, 112, 1)',
-              'rgba(253, 35, 35, 1)',
-              'rgba(255, 238, 112, 1)',
-              'rgba(253, 35, 35, 1)',
-              'rgba(255, 238, 112, 1)',
-              'rgba(253, 35, 35, 1)',
-              'rgba(255, 238, 112, 1)',          
-            ],
+            backgroundColor: backgroundColor,
+            borderColor:  borderColor,
             borderWidth: 2,
           },
         ],
