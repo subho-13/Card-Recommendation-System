@@ -1,6 +1,6 @@
-from entities.CardDetails import CardDetails
 from entities.ExpenditureDetails import ExpenditureDetails
 from entities.RewardDetails import RewardDetails
+from entities.CustomerDetails import CustomerDetails
 
 from repository.EntityManager import session
 
@@ -15,34 +15,14 @@ def get_reward_details(card_id):
     return reward_details
 
 
-def save_expenditure_details(expenditure_details):
-    is_present = bool(
-        session.query(ExpenditureDetails).filter_by(expenditure_id=expenditure_details.expenditure_id).first())
-
-    if is_present:
-        session.query(ExpenditureDetails).filter_by(expenditure_id=expenditure_details.expenditure_id).delete()
-
-    session.add(expenditure_details)
-    session.commit()
-
-
-def save_reward_details(reward_details):
-    is_present = bool(session.query(RewardDetails).filter_by(reward_id=reward_details.reward_id).first())
-
-    if is_present:
-        session.query(RewardDetails).filter_by(reward_id=reward_details.reward_id).delete()
-
-    session.add(reward_details)
-    session.commit()
-
-
-def save_card_details(card_details):
-    is_present = bool(session.query(CardDetails).filter_by(card_id=card_details.card_id).first())
-
-    if not is_present:
-        session.add(card_details)
+def save_details(details):
+    print(details)
+    try:
+        session.merge(details)
         session.commit()
+    except:
+        session.rollback()
 
 
-def get_card_details(customer_id):
-    return session.query(CardDetails).filter_by(customer_id=customer_id)
+def get_customer_details(customer_id):
+    return session.query(CustomerDetails).filter_by(customer_id=customer_id)

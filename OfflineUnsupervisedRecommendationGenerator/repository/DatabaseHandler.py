@@ -4,7 +4,7 @@ from entities.FeatureVectorOne import FeatureVectorOne
 from repository.EntityManager import session, engine
 
 
-def save_feature_vector_one(feature_vector_one_dict):
+def convert_dict_to_feature_vector_one(feature_vector_one_dict):
     feature_vector_one = FeatureVectorOne(User_Id=feature_vector_one_dict['User_Id'],
                                           new_user=feature_vector_one_dict['new_user'],
                                           credit_score=feature_vector_one_dict['credit_score'],
@@ -28,13 +28,11 @@ def save_feature_vector_one(feature_vector_one_dict):
                                           Shop_pos=feature_vector_one_dict['Shop_pos'],
                                           Travel=feature_vector_one_dict['Travel']
                                           )
-    #
-    # with session.begin():
-    #     check_if_exists = bool(
-    #         session.query(FeatureVectorOne).filter_by(User_Id=feature_vector_one_dict['User_Id']).first())
-    #
-    #     if check_if_exists:
-    #         session.query(FeatureVectorOne).filter_by(User_Id=feature_vector_one_dict['User_Id']).delete()
+    return feature_vector_one
+
+
+def save_feature_vector_one(feature_vector_one_dict):
+    feature_vector_one = convert_dict_to_feature_vector_one(feature_vector_one_dict)
 
     try:
         session.merge(feature_vector_one)

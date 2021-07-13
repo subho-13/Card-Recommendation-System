@@ -4,7 +4,7 @@ from threading import Thread
 from kafka import KafkaConsumer
 from kafka.coordinator.assignors.roundrobin import RoundRobinPartitionAssignor
 
-from Configuration import bootstrap_servers, abstracted_transaction_consumer_gid
+from Configuration import bootstrap_servers, consumer_gid
 from lib.CommonDict import card_dict, purchase_category_int_dict
 from repository.DatabaseHandler import *
 from service.RewardPointsCalculator import calculate_reward_points
@@ -19,10 +19,10 @@ class AbstractedTransaction:
         self.card_type = card_type
 
 
-def get_card_details(abstracted_transaction):
-    card_details = CardDetails()
-    card_details.customer_id = abstracted_transaction.customer_id
-    card_details.card_id = abstracted_transaction.card_id
+def get_customer_details(abstracted_transaction):
+    customer_details = CustomerDetails()
+    customer_details.customer_id = abstracted_transaction.customer_id
+    customer_details.card_id = abstracted_transaction.card_id
 
 
 def convert_to_abstracted_transaction(message):
@@ -30,8 +30,8 @@ def convert_to_abstracted_transaction(message):
         message['customerID'],
         message['cardID'],
         purchase_category_int_dict[message['purchaseCategory']],
-        card_dict[message['cardType']],
-        message['transactionAmount']
+        message['transactionAmount'],
+        card_dict[message['cardType']]
     )
 
     return abstracted_transaction
@@ -40,7 +40,7 @@ def convert_to_abstracted_transaction(message):
 class AbstractedTransactionConsumer(Thread):
     def __init__(self, event, rwlock, purchase_category_min_max_dict):
         super(AbstractedTransactionConsumer, self).__init__()
-        self.kafka_consumer = KafkaConsumer("AbstractedTransaction", group_id=abstracted_transaction_consumer_gid,
+        self.kafka_consumer = KafkaConsumer("AbstractedTransaction", group_id=consumer_gid,
                                             bootstrap_servers=bootstrap_servers,
                                             auto_offset_reset='latest',
                                             value_deserializer=lambda message: json.loads(message.decode('utf-8')),
@@ -54,17 +54,18 @@ class AbstractedTransactionConsumer(Thread):
         for message in self.kafka_consumer:
             abstracted_transaction = convert_to_abstracted_transaction(message.value)
             self.update_purchase_dict(abstracted_transaction)
+            print(abstracted_transaction.__dict__)
             reward_details = get_reward_details(abstracted_transaction.card_id)
             expenditure_details = get_expenditure_details(abstracted_transaction.card_id)
 
-            print(reward_details, expenditure_details)
+            updated_expenditure_details, updated_reward_details = calculate_reward_points(abstracted_transaction,
+                                                                                          expenditure_details,
+                                                                                          reward_details)
 
-            expenditure_details, reward_details = calculate_reward_points(abstracted_transaction, expenditure_details,
-                                                                          reward_details)
-
-            save_reward_details(reward_details)
-            save_expenditure_details(expenditure_details)
-            save_card_details(get_card_details(abstracted_transaction))
+            save_details(updated_reward_details)
+            save_details(updated_expenditure_details)
+            customer_details = get_customer_details(abstracted_transaction)
+            save_details(customer_details)
 
             if not self.event.is_set():
                 return

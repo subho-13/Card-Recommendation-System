@@ -14,7 +14,7 @@ app = Flask(__name__)
 
 @app.route('/get/<customer_id>')
 def hello_world(customer_id):
-    list_of_cards = get_card_details(customer_id)
+    list_of_cards = get_customer_details(customer_id)
 
     if len(list_of_cards) == 0:
         return {}
