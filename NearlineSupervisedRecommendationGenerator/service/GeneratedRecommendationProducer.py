@@ -18,9 +18,9 @@ def generate_card_confidence_map(card_confidence_list):
 
 class GeneratedRecommendation:
     def __init__(self, customer_id, model_name, card_confidence_list):
-        self.customer_id = customer_id
-        self.model_name = model_name
-        self.card_confidence_map = generate_card_confidence_map(card_confidence_list)
+        self.customerID = customer_id
+        self.modelName = model_name
+        self.cardConfidenceMap = generate_card_confidence_map(card_confidence_list)
 
 
 class GeneratedRecommendationProducer:
