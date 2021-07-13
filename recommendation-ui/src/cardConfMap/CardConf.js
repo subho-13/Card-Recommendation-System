@@ -17,7 +17,7 @@ const CardConf = ({customerID}) => {
 
     useEffect(() => {
          axios.get(`http://localhost:9508/get/${customerID}`)
-          .then((response) => {
+          .then((response) => { 
                 console.log(response.data.cardConfidenceMap)
                 const temp_cardConfidenceMap = response.data.cardConfidenceMap;
 
@@ -29,6 +29,10 @@ const CardConf = ({customerID}) => {
                 }
 
                 setDatax(temp_datax);
+              }).catch((err) => {
+                console.log(err);
+              })
+
     }, [customerID])    
 
     const data = {
