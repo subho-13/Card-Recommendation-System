@@ -23,7 +23,7 @@ def get_customer_details(abstracted_transaction):
     customer_details = CustomerDetails()
     customer_details.customer_id = abstracted_transaction.customer_id
     customer_details.card_id = abstracted_transaction.card_id
-
+    return customer_details
 
 def convert_to_abstracted_transaction(message):
     abstracted_transaction = AbstractedTransaction(
@@ -54,7 +54,6 @@ class AbstractedTransactionConsumer(Thread):
         for message in self.kafka_consumer:
             abstracted_transaction = convert_to_abstracted_transaction(message.value)
             self.update_purchase_dict(abstracted_transaction)
-            print(abstracted_transaction.__dict__)
             reward_details = get_reward_details(abstracted_transaction.card_id)
             expenditure_details = get_expenditure_details(abstracted_transaction.card_id)
 

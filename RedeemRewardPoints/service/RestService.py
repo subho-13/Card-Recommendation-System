@@ -14,16 +14,21 @@ class RestService:
     def __init__(self, rwlock, purchase_min_max_dict):
         self.rwlock = rwlock
         self.purchase_min_max_dict = purchase_min_max_dict
-        self.reward_suggestion_url = 'http://localhost:9509'
+        self.reward_suggestion_url = 'http://localhost:9509/post/RewardSuggestion'
 
     def call_reward_redeem_suggestion_service(self, expenditure_details, reward_details):
         expenditure_details = self.min_max_scale_expenditure(expenditure_details)
         reward_points = total_amount(reward_details)
 
-        val = requests.post(self.reward_suggestion_url, data={
-            'expenditure_details': expenditure_details.__dict__,
+        expenditure_details_dict = expenditure_details.__dict__
+        del expenditure_details_dict['_sa_instance_state']
+        print(expenditure_details_dict)
+        val = requests.post(self.reward_suggestion_url, json={
+            'expenditure_details': expenditure_details_dict,
             'reward_points': reward_points
         })
+
+        print(val.raw)
 
         return val.json()
 

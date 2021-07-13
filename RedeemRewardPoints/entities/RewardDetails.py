@@ -31,9 +31,9 @@ class RewardDetails(BaseRewardDetails):
     is_any_reward_given = Column(Boolean, default=False)
     is_reward_given_in_category = Column(Integer, default=0)
 
-    def __init__(self):
-        self.reward_id = 0
-        self.card_type = 0
+    def __init__(self, id, card_type):
+        self.reward_id = id
+        self.card_type = card_type
         self.Education = 0
         self.Entertainment = 0
         self.Food = 0

@@ -29,9 +29,9 @@ class ExpenditureDetails(BaseExpenditureDetails):
     Shop_pos = Column(Float, default=0)
     Travel = Column(Float, default=0)
     
-    def __init__(self):
-        self.expenditure_id = 0
-        self.card_type = 0
+    def __init__(self, id, card_type):
+        self.expenditure_id = id
+        self.card_type = card_type
         self.Education = 0
         self.Entertainment = 0
         self.Food = 0

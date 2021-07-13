@@ -96,8 +96,11 @@ def cat_wise_amt(expenditure_details, cat):
 
 
 def calculate_reward_points(abstracted_transaction, expenditure_details, reward_details):
-    if expenditure_details is None or reward_details is None:
-        expenditure_details, reward_details = ExpenditureDetails(), RewardDetails()
+    if expenditure_details is None:
+        expenditure_details = ExpenditureDetails(abstracted_transaction.card_id, abstracted_transaction.card_type)
+
+    if reward_details is None:
+        reward_details = RewardDetails(abstracted_transaction.card_id, abstracted_transaction.card_type)
 
     card_data = card_data_generator()
     card_mapper = card_map_generator(card_data)
