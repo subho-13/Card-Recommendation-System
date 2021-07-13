@@ -1,7 +1,7 @@
 import warnings
 
 import numpy as np
-from CommonFunctions1 import *
+from lib.CommonFunctions1 import *
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from xgboost import XGBClassifier
