@@ -6,6 +6,7 @@ import com.wf.contractlib.entities.PurchaseCategory;
 import com.wf.recommendationprovider.entity.CardBenefits;
 import com.wf.recommendationprovider.entity.CustomerDetails;
 import com.wf.recommendationprovider.util.ComplimentaryCardRepositoryBuilder;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
@@ -15,7 +16,7 @@ public class ComplimentaryCardProvider {
     private final Map<CardType, Map<CardType, CardBenefits>> complimentaryCardMapping =
             ComplimentaryCardRepositoryBuilder.getComplimentaryCardMap();
 
-    private float getSumOfPurchaseBenefits(Map<PurchaseCategory, Float> purchaseBenefits) {
+    private float getSumOfPurchaseBenefits(@NotNull Map<PurchaseCategory, Float> purchaseBenefits) {
         float sum = 0;
 
         for(Map.Entry<PurchaseCategory, Float> purchaseBenefitsEntry : purchaseBenefits.entrySet()) {
@@ -25,7 +26,7 @@ public class ComplimentaryCardProvider {
         return sum;
     }
 
-    private float getRewardPoints(Map<PurchaseCategory, Float> purchaseExpenditureMap,
+    private float getRewardPoints(@NotNull Map<PurchaseCategory, Float> purchaseExpenditureMap,
                                   Map<PurchaseCategory, Float> purchaseBenefitMap) {
         float rewardPoints = 0;
 
@@ -39,7 +40,7 @@ public class ComplimentaryCardProvider {
         return rewardPoints/10;
     }
 
-    public CardType getComplimentaryCard(CustomerDetails customerDetails) {
+    public CardType getComplimentaryCard(@NotNull CustomerDetails customerDetails) {
         CardType proposedCard = customerDetails.getCardType();
         Map<CardType, CardBenefits> cardBenefitsMap = complimentaryCardMapping.get(proposedCard);
 

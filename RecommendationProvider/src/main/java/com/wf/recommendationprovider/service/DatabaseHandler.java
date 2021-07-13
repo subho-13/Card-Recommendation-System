@@ -4,6 +4,8 @@ import com.wf.contractlib.contracts.CompiledRecommendation;
 import com.wf.contractlib.contracts.featurevector.FeatureVectorOne;
 import com.wf.recommendationprovider.entity.CustomerDetails;
 import com.wf.recommendationprovider.repository.CustomerDetailsRepository;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,6 +16,9 @@ import java.util.Optional;
 public class DatabaseHandler {
     private DetailsGenerator detailsGenerator;
     private CustomerDetailsRepository customerDetailsRepository;
+
+    @Getter @Setter
+    private Boolean testVariable = false ;
 
     @Autowired
     public void setDetailsGenerator(DetailsGenerator detailsGenerator) {
@@ -32,7 +37,10 @@ public class DatabaseHandler {
         Optional<CustomerDetails> optionalCustomerDetails =
                 customerDetailsRepository.findByCustomerID(customerDetails.getCustomerID());
 
-        optionalCustomerDetails.ifPresent(details -> customerDetails.setCardConfidenceMap(details.getCardConfidenceMap()));
+        optionalCustomerDetails.ifPresent(details -> {
+            customerDetails.setCardConfidenceMap(details.getCardConfidenceMap())  ;
+            testVariable =true ; //to test only
+        });
 
         customerDetailsRepository.save(customerDetails);
     }
@@ -47,6 +55,7 @@ public class DatabaseHandler {
         if (optionalCustomerDetails.isPresent()) {
             optionalCustomerDetails.get().setCardConfidenceMap(customerDetails.getCardConfidenceMap());
             customerDetails = optionalCustomerDetails.get();
+            testVariable=true ; //for testing
         }
 
         customerDetailsRepository.save(customerDetails);
