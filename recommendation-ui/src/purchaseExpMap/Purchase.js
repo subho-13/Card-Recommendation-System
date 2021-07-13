@@ -4,7 +4,8 @@ import { Bar } from 'react-chartjs-2';
 const Purchase = ({customerID}) => {
     const [datax, setDataxChart] = useState();
     const [labels, setLabelsChart] = useState();
-
+    const [backgroundColor, setBorderColor] = useState();
+    const [borderColor, setBorderColor] = useState();
     const globalLabels = [
           'EDUCATION',
           'ENTERTAINMENT',
@@ -32,13 +33,15 @@ const Purchase = ({customerID}) => {
 
                 let temp_datax = [];                
                 let temp_labels = [];
-                
+
                 for(let i = 0; i < globalLabels.length; i++){
                     if(globalLabels[i] in temp_purchaseExpenditureMap){
-                        temp_labels.push()
+                        temp_labels.push(globalLabels[i]);
                         temp_datax.push(temp_purchaseExpenditureMap[globalLabels[i]]);
                     }                    
                 }
+
+                setLabelsChart(temp_labels);
                 setDatax(temp_datax);
             })
             .catch((err) => {
@@ -49,7 +52,7 @@ const Purchase = ({customerID}) => {
     // const datax = [10, 10, 10, 10, 10, 10, 10, 10,10, 10, 10, 10, 10, 10, 10, 10]
 
     const data = {
-        labels: globalLabels,
+        labels: labels,
         datasets: [
           {
             label: 'Amount Spent per Category',
