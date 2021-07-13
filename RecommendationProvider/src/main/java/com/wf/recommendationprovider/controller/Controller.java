@@ -56,7 +56,7 @@ public class Controller {
 
         List<CardType> cards = getFinalRecommendation(providedRecommendation.getCardConfidenceMap());
 
-        if(cards.size() == 1) {
+        if (cards.size() == 1) {
             CardType card = cards.get(0);
 
             if (card == featureVector.getCardType()) {
@@ -73,7 +73,7 @@ public class Controller {
     private List<CardType> getFinalRecommendation(Map<CardType, Float> cardConfidenceMap) {
         float confidenceScore = 0;
 
-        for(Map.Entry<CardType, Float> cardConfidenceEntry : cardConfidenceMap.entrySet()) {
+        for (Map.Entry<CardType, Float> cardConfidenceEntry : cardConfidenceMap.entrySet()) {
             if (cardConfidenceEntry.getValue() > confidenceScore) {
                 confidenceScore = cardConfidenceEntry.getValue();
             }
@@ -81,7 +81,7 @@ public class Controller {
 
         List<CardType> cards = new ArrayList<>();
 
-        for(Map.Entry<CardType, Float> cardConfidenceEntry : cardConfidenceMap.entrySet()) {
+        for (Map.Entry<CardType, Float> cardConfidenceEntry : cardConfidenceMap.entrySet()) {
             if (cardConfidenceEntry.getValue() == confidenceScore) {
                 cards.add(cardConfidenceEntry.getKey());
             }

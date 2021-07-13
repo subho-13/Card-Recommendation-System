@@ -2,6 +2,7 @@ package com.wf.dataabstraction.service;
 
 import com.wf.contractlib.contracts.AbstractedTransaction;
 import com.wf.contractlib.contracts.CollectedTransaction;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
@@ -9,7 +10,7 @@ import java.util.Map;
 @Service
 public class TransactionConverter {
 
-    public AbstractedTransaction convert(CollectedTransaction collectedTransaction, Map<String,
+    public AbstractedTransaction convert(@NotNull CollectedTransaction collectedTransaction, @NotNull Map<String,
             Integer> mapDetailsID){
         AbstractedTransaction abstractedTransaction = new AbstractedTransaction();
         abstractedTransaction.setCustomerID(mapDetailsID.get("customerID"));

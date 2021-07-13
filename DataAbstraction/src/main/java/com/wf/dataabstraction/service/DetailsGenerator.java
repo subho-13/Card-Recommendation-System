@@ -2,11 +2,12 @@ package com.wf.dataabstraction.service;
 
 import com.wf.contractlib.contracts.CollectedTransaction;
 import com.wf.dataabstraction.entity.*;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 
 @Service
 public class DetailsGenerator {
-    public CustomerDetails generateCustomer(CollectedTransaction transaction) {
+    public CustomerDetails generateCustomer(@NotNull CollectedTransaction transaction) {
         CustomerDetails customerDetails = new CustomerDetails();
         customerDetails.setFirstName(transaction.getFirstName());
         customerDetails.setLastName(transaction.getLastName());
@@ -17,7 +18,7 @@ public class DetailsGenerator {
         return customerDetails;
     }
 
-    public CardDetails generateCard(CollectedTransaction transaction , CustomerDetails customerDetails) {
+    public CardDetails generateCard(@NotNull CollectedTransaction transaction , @NotNull CustomerDetails customerDetails) {
         CardDetails cardDetails = new CardDetails();
         cardDetails.setCardNum(transaction.getCardNum());
         cardDetails.setCustomerDetails(customerDetails);
@@ -26,7 +27,7 @@ public class DetailsGenerator {
         return cardDetails;
     }
 
-    public CityDetails generateCity(CollectedTransaction transaction) {
+    public CityDetails generateCity(@NotNull CollectedTransaction transaction) {
         CityDetails cityDetails = new CityDetails();
         cityDetails.setCityName(transaction.getCity());
         cityDetails.setCityPop(transaction.getPopulation());
@@ -34,7 +35,7 @@ public class DetailsGenerator {
         return cityDetails;
     }
 
-    public AddressDetails generateAddress(CollectedTransaction transaction, CustomerDetails customerDetails, CityDetails cityDetails) {
+    public AddressDetails generateAddress(@NotNull CollectedTransaction transaction, @NotNull CustomerDetails customerDetails, @NotNull CityDetails cityDetails) {
         AddressDetails addressDetails = new AddressDetails();
         addressDetails.setCustomerDetails(customerDetails);
         addressDetails.setCityDetails(cityDetails);
@@ -45,7 +46,7 @@ public class DetailsGenerator {
         return addressDetails;
     }
 
-    public MerchantDetails getMerchant(CollectedTransaction transaction) {
+    public MerchantDetails getMerchant(@NotNull CollectedTransaction transaction) {
         MerchantDetails merchantDetails = new MerchantDetails();
         merchantDetails.setMerchantName(transaction.getMerchant());
 

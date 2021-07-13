@@ -6,26 +6,46 @@ import com.wf.contractlib.entities.CardType;
 import com.wf.contractlib.entities.JobType;
 import com.wf.contractlib.entities.PurchaseCategory;
 import com.wf.recommendationprovider.entity.CustomerDetails;
+import com.wf.recommendationprovider.repository.CustomerDetailsRepository;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
-@ExtendWith(MockitoExtension.class)
-class DetailsGeneratorTest {
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.Mockito.when;
 
+class DatabaseHandlerTest {
+
+    @InjectMocks
+    DatabaseHandler databaseHandler;
+    @Mock
+    AutoCloseable closeable;
+    @Mock
+    private CustomerDetailsRepository customerDetailsRepository;
+    @Mock
     private DetailsGenerator detailsGenerator;
 
     @BeforeEach
     void setUp() {
-        detailsGenerator = new DetailsGenerator();
+        databaseHandler = new DatabaseHandler();
+        closeable = MockitoAnnotations.openMocks(this);
+
+    }
+
+    @AfterEach
+    void tearDown() throws Exception {
+        closeable.close();
     }
 
     @Test
-    public void generateFromFeatureVector() {
+    public void featureVectorHandlerTest() {
         Map<PurchaseCategory, Float> purchaseExpenditureMap = new HashMap<>();
         purchaseExpenditureMap.put(PurchaseCategory.EDUCATION, 2345f);
         purchaseExpenditureMap.put(PurchaseCategory.ENTERTAINMENT, 1432f);
@@ -61,13 +81,20 @@ class DetailsGeneratorTest {
         customerDetails.setCardType(CardType.CASH_WISE);
         customerDetails.setPurchaseExpenditureMap(purchaseExpenditureMap);
 
-        assertEquals(customerDetails, detailsGenerator.generate(featureVectorOne));
+        when(detailsGenerator.generate(featureVectorOne)).thenReturn(customerDetails);
+        when(customerDetailsRepository.findByCustomerID(anyInt())).thenReturn(Optional.of(customerDetails));
+        databaseHandler.handle(featureVectorOne);
+        assertEquals(true, databaseHandler.getTestVariable());
 
+        databaseHandler.setTestVariable(false);
+        when(detailsGenerator.generate(featureVectorOne)).thenReturn(customerDetails);
+        when(customerDetailsRepository.findByCustomerID(anyInt())).thenReturn(Optional.empty());
+        databaseHandler.handle(featureVectorOne);
+        assertEquals(false, databaseHandler.getTestVariable());
     }
 
     @Test
-    public void generatorTest() {
-
+    public void CompiledRecommendationHandlerTest() {
         Map<CardType, Float> confidenceMap = new HashMap<>();
         confidenceMap.put(CardType.CASH_WISE, 0.1f);
         confidenceMap.put(CardType.COLLEGE, 0.02f);
@@ -87,8 +114,18 @@ class DetailsGeneratorTest {
         customerDetails.setCustomerID(1);
         customerDetails.setCardConfidenceMap(confidenceMap);
 
-        System.out.println(customerDetails);
-        System.out.println(detailsGenerator.generate(compiledRecommendation));
-        assertEquals(customerDetails, detailsGenerator.generate(compiledRecommendation));
+        when(detailsGenerator.generate(compiledRecommendation)).thenReturn(customerDetails);
+        when(customerDetailsRepository.findByCustomerID(anyInt())).thenReturn(Optional.of(customerDetails));
+        databaseHandler.handle(compiledRecommendation);
+        assertEquals(true, databaseHandler.getTestVariable());
+
+        databaseHandler.setTestVariable(false);
+        when(detailsGenerator.generate(compiledRecommendation)).thenReturn(customerDetails);
+        when(customerDetailsRepository.findByCustomerID(anyInt())).thenReturn(Optional.empty());
+        databaseHandler.handle(compiledRecommendation);
+        assertEquals(false, databaseHandler.getTestVariable());
+
     }
+
+
 }

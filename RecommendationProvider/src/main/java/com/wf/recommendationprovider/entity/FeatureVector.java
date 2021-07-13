@@ -18,13 +18,11 @@ import java.util.Map;
 @Table(name = "feature_vector")
 @ToString
 public class FeatureVector {
+    @Column(name = "job")
+    JobType job;
     @Id
     @Column(name = "customer_id")
     private Integer customerID;
-
-    @Column(name = "job")
-    JobType job;
-
     @Column(name = "credit_score")
     private Integer creditScore;
 

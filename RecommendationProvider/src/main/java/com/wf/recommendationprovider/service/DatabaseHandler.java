@@ -53,7 +53,7 @@ public class DatabaseHandler {
     @Transactional
     public void handle(CompiledRecommendation compiledRecommendation) {
         CompiledRec compiledRec = detailsGenerator.generate(compiledRecommendation);
-        
+
         Optional<CompiledRec> optionalCompiledRec =
                 compiledRecRepository.findByCustomerID(compiledRec.getCustomerID());
 

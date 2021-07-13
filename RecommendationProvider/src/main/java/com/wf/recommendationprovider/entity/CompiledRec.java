@@ -1,8 +1,6 @@
 package com.wf.recommendationprovider.entity;
 
 import com.wf.contractlib.entities.CardType;
-import com.wf.contractlib.entities.JobType;
-import com.wf.contractlib.entities.PurchaseCategory;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

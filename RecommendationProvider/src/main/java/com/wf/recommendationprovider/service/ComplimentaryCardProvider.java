@@ -4,7 +4,6 @@ import com.wf.contractlib.entities.CardType;
 import com.wf.contractlib.entities.JobType;
 import com.wf.contractlib.entities.PurchaseCategory;
 import com.wf.recommendationprovider.entity.CardBenefits;
-import com.wf.recommendationprovider.entity.CompiledRec;
 import com.wf.recommendationprovider.entity.FeatureVector;
 import com.wf.recommendationprovider.util.ComplimentaryCardRepositoryBuilder;
 import org.springframework.stereotype.Service;
@@ -19,7 +18,7 @@ public class ComplimentaryCardProvider {
     private float getSumOfPurchaseBenefits(Map<PurchaseCategory, Float> purchaseBenefits) {
         float sum = 0;
 
-        for(Map.Entry<PurchaseCategory, Float> purchaseBenefitsEntry : purchaseBenefits.entrySet()) {
+        for (Map.Entry<PurchaseCategory, Float> purchaseBenefitsEntry : purchaseBenefits.entrySet()) {
             sum += purchaseBenefitsEntry.getValue();
         }
 
@@ -30,14 +29,14 @@ public class ComplimentaryCardProvider {
                                   Map<PurchaseCategory, Float> purchaseBenefitMap) {
         float rewardPoints = 0;
 
-        for(Map.Entry<PurchaseCategory, Float> purchaseExpenditureEntry: purchaseExpenditureMap.entrySet()) {
+        for (Map.Entry<PurchaseCategory, Float> purchaseExpenditureEntry : purchaseExpenditureMap.entrySet()) {
             float expenditure = purchaseExpenditureEntry.getValue();
             PurchaseCategory purchaseCategory = purchaseExpenditureEntry.getKey();
             float benefit = purchaseBenefitMap.get(purchaseCategory);
-            rewardPoints += expenditure*benefit;
+            rewardPoints += expenditure * benefit;
         }
 
-        return rewardPoints/10;
+        return rewardPoints / 10;
     }
 
     public CardType getComplimentaryCard(FeatureVector featureVector) {
@@ -49,7 +48,7 @@ public class ComplimentaryCardProvider {
         float maxRewardPoints = 0;
         float maxBenefitsSum = 0;
 
-        for(Map.Entry<CardType, CardBenefits> cardBenefitsEntry: cardBenefitsMap.entrySet()) {
+        for (Map.Entry<CardType, CardBenefits> cardBenefitsEntry : cardBenefitsMap.entrySet()) {
             CardType card = cardBenefitsEntry.getKey();
             CardBenefits cardBenefits = cardBenefitsEntry.getValue();
 
