@@ -65,9 +65,9 @@ def xgb_supervised(df):
 
 
 class XGBoostObject:
-    def __init__(self, sc, model):
-        self.sc = sc
-        self.model = model
+    # def __init__(self, sc, model):
+    #     self.sc = sc
+    #     self.model = model
 
     def train(self, df):
         self.sc, self.model = xgb_supervised(df)
