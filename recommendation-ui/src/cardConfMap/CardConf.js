@@ -24,7 +24,7 @@ const CardConf = ({customerID}) => {
 
                 let temp_datax = [];                                
                 for(let i = 0; i < globalLabels.length; i++){
-                    if(globalLabels[i] in temp_card){                                              
+                    if(globalLabels[i] in temp_cardConfidenceMap){                                              
                         temp_datax.push(temp_cardConfidenceMap[globalLabels[i]]);                        
                     }                    
                 }
