@@ -25,7 +25,7 @@ class GeneratedRecommendation:
         self.card_confidence_map = generate_card_confidence_map(card_confidence_list)
 
 
-def load_and_preprocess_df(self):
+def load_and_preprocess_df():
     df = load_user_details_df()
     df = df[df['new_user'] == False]
     df.drop('new_user', axis=1, inplace=True)
