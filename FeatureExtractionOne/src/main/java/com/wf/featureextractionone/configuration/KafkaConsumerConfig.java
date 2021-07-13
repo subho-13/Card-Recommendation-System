@@ -17,7 +17,7 @@ import java.util.Map;
 @EnableKafka
 @Configuration
 public class KafkaConsumerConfig {
-    private static final int concurrency = 5;
+    private static final int concurrency = 1;
     @Value("${spring.kafka.bootstrap-servers}")
     private String bootstrapServers;
 
