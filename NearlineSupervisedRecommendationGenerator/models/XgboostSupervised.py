@@ -65,7 +65,7 @@ def xgb_supervised(df):
 
 
 class XGBoostObject:
-    def __init__(self, sc, model):
+    def __init__(self):
         self.sc = None
         self.model = None
 

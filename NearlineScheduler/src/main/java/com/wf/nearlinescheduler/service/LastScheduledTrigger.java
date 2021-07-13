@@ -16,7 +16,7 @@ import java.util.List;
 @Service
 @Configurable
 public class LastScheduledTrigger  implements DisposableBean, Runnable {
-    @Value("${init-sleep-time-ms")
+    @Value("${init-sleep-time-ms}")
     private int initSleepTime;
 
     @Value("${sleep-time-ms}")

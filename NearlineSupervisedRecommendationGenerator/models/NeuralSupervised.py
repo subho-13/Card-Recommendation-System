@@ -71,9 +71,9 @@ def neural_supervised(df):
 
 
 class ANNObject:
-    def __init__(self, sc, model):
-        self.sc = sc
-        self.model = model
+    def __init__(self):
+        self.sc = None
+        self.model = None
 
     def train(self, df):
         self.sc, self.model = neural_supervised(df)
