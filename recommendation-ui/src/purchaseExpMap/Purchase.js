@@ -2,15 +2,9 @@ import React, {useState, useEffect} from "react";
 import { Bar } from 'react-chartjs-2';
 
 const Purchase = ({customerID}) => {
-
-    useEffect(() => {
-        
-    }, [customerID])
-
-    const datax = [10, 10, 10, 10, 10, 10, 10, 10,10, 10, 10, 10, 10, 10, 10, 10]
-
-    const data = {
-        labels: ['EDUCATION',
+    const [datax, setDatax] = useState();
+    const globalLabels = [
+          'EDUCATION',
           'ENTERTAINMENT',
           'FOOD',
           'GAS_TRANS',
@@ -26,7 +20,27 @@ const Purchase = ({customerID}) => {
           'SHOP_NET',
           'SHOP_POS',
           'TRAVEL'
-        ],
+        ]
+    useEffect(() => {
+        axios.get(`http://localhost:9508/${customerID}`)
+          .then((response) => {
+                console.log(response.data.purchaseExpenditureMap)
+                const temp_purchaseExpenditureMap = response.data.purchaseExpenditureMap;
+                let temp_datax = []
+                for(let i = 0; i < globalLabels.length; i++){
+
+                }
+                setData(response.data.modelCardMap)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    }, [customerID])
+
+    const datax = [10, 10, 10, 10, 10, 10, 10, 10,10, 10, 10, 10, 10, 10, 10, 10]
+
+    const data = {
+        labels: globalLabels,
         datasets: [
           {
             label: 'Amount Spent per Category',
