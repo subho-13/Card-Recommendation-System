@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import { Bar, Doughnut } from 'react-chartjs-2';
+import axios from "axios"
 
 const CardConf = ({customerID}) => {
     const [datax, setDataxChart] = useState();
@@ -28,7 +29,7 @@ const CardConf = ({customerID}) => {
                     }                    
                 }
 
-                setDatax(temp_datax);
+                setDataxChart(temp_datax);
               }).catch((err) => {
                 console.log(err);
               })
@@ -36,7 +37,7 @@ const CardConf = ({customerID}) => {
     }, [customerID])    
 
     const data = {
-        labels: labels,
+        labels: globalLabels,
         datasets: [
           {
             label: 'Card Confidence',

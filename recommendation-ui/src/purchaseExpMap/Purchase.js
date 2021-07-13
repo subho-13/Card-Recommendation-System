@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import { Bar } from 'react-chartjs-2';
+import axios from "axios"
 
 const Purchase = ({customerID}) => {
     const [datax, setDataxChart] = useState();
@@ -54,7 +55,9 @@ const Purchase = ({customerID}) => {
                 }
 
                 setLabelsChart(temp_labels);
-                setDatax(temp_datax);
+                setDataxChart(temp_datax);
+                setBackgroundColor(temp_backgroundColor);
+                setBorderColor(temp_borderColor);
             })
             .catch((err) => {
                 console.log(err)
