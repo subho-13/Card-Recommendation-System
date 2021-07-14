@@ -15,16 +15,14 @@ import java.util.Map;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "customer_details")
+@Table(name = "feature_vector")
 @ToString
-public class CustomerDetails {
+public class FeatureVector {
+    @Column(name = "job")
+    JobType job;
     @Id
     @Column(name = "customer_id")
     private Integer customerID;
-
-    @Column(name = "job")
-    JobType job;
-
     @Column(name = "credit_score")
     private Integer creditScore;
 
@@ -37,12 +35,6 @@ public class CustomerDetails {
     @ElementCollection
     @MapKeyColumn(name = "purchase_category")
     @MapKeyEnumerated(EnumType.STRING)
-    @CollectionTable(name = "purchase_expenditure", joinColumns = @JoinColumn(name = "customer_id"))
+    @CollectionTable(name = "purchase_expenditure")
     private Map<PurchaseCategory, Float> purchaseExpenditureMap;
-
-    @ElementCollection
-    @MapKeyColumn(name = "card_type")
-    @MapKeyEnumerated(EnumType.STRING)
-    @CollectionTable(name = "confidence_score", joinColumns = @JoinColumn(name = "customer_id"))
-    private Map<CardType, Float> cardConfidenceMap;
 }

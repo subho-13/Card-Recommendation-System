@@ -1,16 +1,15 @@
 import React, {useState, useEffect} from "react";
 import { Bar } from 'react-chartjs-2';
+import axios from "axios"
 
 const Purchase = ({customerID}) => {
+    const [datax, setDataxChart] = useState();
+    const [labels, setLabelsChart] = useState();
+    const [backgroundColor, setBackgroundColor] = useState();
+    const [borderColor, setBorderColor] = useState();
 
-    useEffect(() => {
-        
-    }, [customerID])
-
-    const datax = [10, 10, 10, 10, 10, 10, 10, 10,10, 10, 10, 10, 10, 10, 10, 10]
-
-    const data = {
-        labels: ['EDUCATION',
+    const globalLabels = [
+          'EDUCATION',
           'ENTERTAINMENT',
           'FOOD',
           'GAS_TRANS',
@@ -26,47 +25,53 @@ const Purchase = ({customerID}) => {
           'SHOP_NET',
           'SHOP_POS',
           'TRAVEL'
-        ],
+        ]
+
+    useEffect(() => {
+        axios.get(`http://localhost:9508/get/${customerID}`)
+          .then((response) => {
+                console.log(response.data.purchaseExpenditureMap)
+                const temp_purchaseExpenditureMap = response.data.purchaseExpenditureMap;
+
+                let temp_datax = [];                
+                let temp_labels = [];
+                let temp_borderColor = []
+                let temp_backgroundColor = []
+                let cnt = 0;
+                for(let i = 0; i < globalLabels.length; i++){
+                    if(globalLabels[i] in temp_purchaseExpenditureMap){
+                        cnt++;
+                        temp_labels.push(globalLabels[i]);
+                        temp_datax.push(temp_purchaseExpenditureMap[globalLabels[i]]);
+
+                        if(cnt % 2 == 0){
+                            temp_backgroundColor.push('rgba(253, 35, 35, 0.2)');
+                            temp_borderColor.push('rgba(253, 35, 35, 1)');
+                        }else {
+                            temp_backgroundColor.push('rgba(255, 238, 112, 0.6)');
+                            temp_borderColor.push('rgba(255, 238, 112, 1)');
+                        }
+                    }                    
+                }
+
+                setLabelsChart(temp_labels);
+                setDataxChart(temp_datax);
+                setBackgroundColor(temp_backgroundColor);
+                setBorderColor(temp_borderColor);
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    }, [customerID])    
+
+    const data = {
+        labels: labels,
         datasets: [
           {
             label: 'Amount Spent per Category',
             data: datax,
-            backgroundColor: [
-              'rgba(253, 35, 35, 0.2)',
-              'rgba(255, 238, 112, 0.6)',
-              'rgba(253, 35, 35, 0.2)',
-              'rgba(255, 238, 112, 0.6)',
-              'rgba(253, 35, 35, 0.2)',
-              'rgba(255, 238, 112, 0.6)',
-              'rgba(253, 35, 35, 0.2)',
-              'rgba(255, 238, 112, 0.6)',
-              'rgba(253, 35, 35, 0.2)',
-              'rgba(255, 238, 112, 0.6)',
-              'rgba(253, 35, 35, 0.2)',
-              'rgba(255, 238, 112, 0.6)',
-              'rgba(253, 35, 35, 0.2)',
-              'rgba(255, 238, 112, 0.6)',
-              'rgba(253, 35, 35, 0.2)',
-              'rgba(255, 238, 112, 0.6)',              
-            ],
-            borderColor: [
-              'rgba(253, 35, 35, 1)',
-              'rgba(255, 238, 112, 1)',
-              'rgba(253, 35, 35, 1)',
-              'rgba(255, 238, 112, 1)',
-              'rgba(253, 35, 35, 1)',
-              'rgba(255, 238, 112, 1)',
-              'rgba(253, 35, 35, 1)',
-              'rgba(255, 238, 112, 1)',
-              'rgba(253, 35, 35, 1)',
-              'rgba(255, 238, 112, 1)',
-              'rgba(253, 35, 35, 1)',
-              'rgba(255, 238, 112, 1)',
-              'rgba(253, 35, 35, 1)',
-              'rgba(255, 238, 112, 1)',
-              'rgba(253, 35, 35, 1)',
-              'rgba(255, 238, 112, 1)',          
-            ],
+            backgroundColor: backgroundColor,
+            borderColor:  borderColor,
             borderWidth: 2,
           },
         ],

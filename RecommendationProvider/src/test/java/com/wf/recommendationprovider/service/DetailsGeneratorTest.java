@@ -5,18 +5,15 @@ import com.wf.contractlib.contracts.featurevector.FeatureVectorOne;
 import com.wf.contractlib.entities.CardType;
 import com.wf.contractlib.entities.JobType;
 import com.wf.contractlib.entities.PurchaseCategory;
-import com.wf.recommendationprovider.entity.CustomerDetails;
+import com.wf.recommendationprovider.entity.CompiledRec;
+import com.wf.recommendationprovider.entity.FeatureVector;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.MockitoAnnotations;
-import org.mockito.junit.jupiter.MockitoExtension;
-
 import java.util.HashMap;
 import java.util.Map;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@ExtendWith(MockitoExtension.class)
+
 class DetailsGeneratorTest {
 
     private DetailsGenerator detailsGenerator;
@@ -55,43 +52,40 @@ class DetailsGeneratorTest {
         featureVectorOne.setCardIssueUnixTime(987654L);
         featureVectorOne.setCreditScore(360);
 
-        CustomerDetails customerDetails = new CustomerDetails();
-        customerDetails.setCustomerID(1);
-        customerDetails.setJob(JobType.ACCOUNTANT);
-        customerDetails.setCreditScore(360);
-        customerDetails.setNewUser(false);
-        customerDetails.setCardType(CardType.CASH_WISE);
-        customerDetails.setPurchaseExpenditureMap(purchaseExpenditureMap);
+        FeatureVector featureVector = new FeatureVector();
+        featureVector.setCustomerID(1);
+        featureVector.setJob(JobType.ACCOUNTANT);
+        featureVector.setCreditScore(360);
+        featureVector.setNewUser(false);
+        featureVector.setCardType(CardType.CASH_WISE);
+        featureVector.setPurchaseExpenditureMap(purchaseExpenditureMap);
 
-        assertEquals(customerDetails,detailsGenerator.generate(featureVectorOne));
+        assertEquals(featureVector, detailsGenerator.generate(featureVectorOne));
 
     }
 
     @Test
-    public void generatorTest()
-    {
+    public void generatorTest() {
 
-        Map<CardType,Float> confidenceMap = new HashMap<>() ;
-        confidenceMap.put(CardType.CASH_WISE, 0.1f) ;
-        confidenceMap.put(CardType.COLLEGE, 0.02f) ;
-        confidenceMap.put(CardType.CREDIT_BUILDER, 0.03f) ;
-        confidenceMap.put(CardType.ENTERTAINMENT, 0.07f) ;
-        confidenceMap.put(CardType.HOLIDAY, 0.08f) ;
-        confidenceMap.put(CardType.HOTEL, 0.12f) ;
-        confidenceMap.put(CardType.PLATINUM, 0.18f) ;
-        confidenceMap.put(CardType.SHOPPING, 0.1f) ;
-        confidenceMap.put(CardType.VISA_SIGNATURE,0.09f) ;
+        Map<CardType, Float> confidenceMap = new HashMap<>();
+        confidenceMap.put(CardType.CASH_WISE, 0.1f);
+        confidenceMap.put(CardType.COLLEGE, 0.02f);
+        confidenceMap.put(CardType.CREDIT_BUILDER, 0.03f);
+        confidenceMap.put(CardType.ENTERTAINMENT, 0.07f);
+        confidenceMap.put(CardType.HOLIDAY, 0.08f);
+        confidenceMap.put(CardType.HOTEL, 0.12f);
+        confidenceMap.put(CardType.PLATINUM, 0.18f);
+        confidenceMap.put(CardType.SHOPPING, 0.1f);
+        confidenceMap.put(CardType.VISA_SIGNATURE, 0.09f);
 
-        CompiledRecommendation compiledRecommendation = new CompiledRecommendation() ;
+        CompiledRecommendation compiledRecommendation = new CompiledRecommendation();
         compiledRecommendation.setCustomerID(1);
         compiledRecommendation.setCardConfidenceMap(confidenceMap);
 
-        CustomerDetails customerDetails = new CustomerDetails();
-        customerDetails.setCustomerID(1);
-        customerDetails.setCardConfidenceMap(confidenceMap);
+        CompiledRec compiledRec = new CompiledRec() ;
+        compiledRec.setCustomerID(1);
+        compiledRec.setCardConfidenceMap(confidenceMap);
 
-        System.out.println(customerDetails);
-        System.out.println(detailsGenerator.generate(compiledRecommendation));
-        assertEquals(customerDetails,detailsGenerator.generate(compiledRecommendation));
+        assertEquals(compiledRec, detailsGenerator.generate(compiledRecommendation));
     }
 }

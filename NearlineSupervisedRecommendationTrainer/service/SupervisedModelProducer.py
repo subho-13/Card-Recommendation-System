@@ -29,6 +29,7 @@ def load_and_preprocess_df():
     df = load_user_details_df()
     df = df[df['new_user'] == False]
     df.drop('new_user', axis=1, inplace=True)
+    df.reset_index(drop=True, inplace=True)
     return df
 
 

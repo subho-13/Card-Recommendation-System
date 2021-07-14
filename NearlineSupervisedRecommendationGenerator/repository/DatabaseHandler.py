@@ -1,12 +1,24 @@
+from sqlalchemy.orm import sessionmaker
+
 from entities.FeatureVectorOne import FeatureVectorOne
-from repository.EntityManager import session
+from repository.EntityManager import engine
+
+
+def get_session():
+    Session = sessionmaker(bind=engine)
+    Session.configure(bind=engine)
+    session = Session()
+    return session
 
 
 def get_feature_vector_one(User_Id):
-    return session.query(FeatureVectorOne).filter_by(User_Id=User_Id).first()
+    session = get_session()
+    feature_vector_one  = session.query(FeatureVectorOne).filter_by(User_Id=User_Id).first()
+    session.expunge_all()
+    return feature_vector_one
 
 
-def save_feature_vector_one(feature_vector_one_dict):
+def convert_dict_to_feature_vector_one(feature_vector_one_dict):
     feature_vector_one = FeatureVectorOne(User_Id=feature_vector_one_dict['User_Id'],
                                           new_user=feature_vector_one_dict['new_user'],
                                           credit_score=feature_vector_one_dict['credit_score'],
@@ -30,16 +42,12 @@ def save_feature_vector_one(feature_vector_one_dict):
                                           Shop_pos=feature_vector_one_dict['Shop_pos'],
                                           Travel=feature_vector_one_dict['Travel']
                                           )
+    return feature_vector_one
 
-#     check_if_exists = bool(
-#         session.query(FeatureVectorOne).filter_by(User_Id=feature_vector_one_dict['User_Id']).first())
 
-#     if check_if_exists:
-#         session.query(FeatureVectorOne).filter_by(User_Id=feature_vector_one_dict['User_Id']).delete()
-
-#     session.add(feature_vector_one)
-#     session.commit()
-    
+def save_feature_vector_one(feature_vector_one_dict):
+    feature_vector_one = convert_dict_to_feature_vector_one(feature_vector_one_dict)
+    session = get_session()
     try:
         session.merge(feature_vector_one)
         session.commit()

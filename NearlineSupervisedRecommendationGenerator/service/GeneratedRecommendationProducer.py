@@ -18,9 +18,9 @@ def generate_card_confidence_map(card_confidence_list):
 
 class GeneratedRecommendation:
     def __init__(self, customer_id, model_name, card_confidence_list):
-        self.customer_id = customer_id
-        self.model_name = model_name
-        self.card_confidence_map = generate_card_confidence_map(card_confidence_list)
+        self.customerID = customer_id
+        self.modelName = model_name
+        self.cardConfidenceMap = generate_card_confidence_map(card_confidence_list)
 
 
 class GeneratedRecommendationProducer:
@@ -33,6 +33,7 @@ class GeneratedRecommendationProducer:
 
         self.supervised_model = supervised_model
 
+
     def produce(self, customerID):
         feature_vector_one = get_feature_vector_one(customerID)
 
@@ -42,10 +43,17 @@ class GeneratedRecommendationProducer:
         if feature_vector_one.new_user:
             return
 
+        if self.supervised_model.sc is None:
+            return
+
+        if self.supervised_model.model is None:
+            return
+
         user_card_confidence = self.supervised_model.generate_rec(feature_vector_one.__dict__)
 
         generated_recommendation = GeneratedRecommendation(user_card_confidence[0],
                                                            user_card_confidence[1],
                                                            user_card_confidence[2])
 
+        print(generated_recommendation.__dict__)
         self.producer.send("GeneratedRecommendation", generated_recommendation.__dict__)

@@ -18,10 +18,9 @@ import java.util.concurrent.ConcurrentHashMap;
 @EnableKafka
 @Configuration
 public class KafkaConsumerConfig {
+    private static final int concurrency = 1;
     @Value("${spring.kafka.bootstrap-servers}")
     private String bootstrapServers;
-
-    private static final int concurrency = 1;
 
     private Map<String, Object> getConfig() {
         Map<String, Object> configs = new ConcurrentHashMap<>();
@@ -36,8 +35,10 @@ public class KafkaConsumerConfig {
         JsonDeserializer<FeatureVectorOne> jsonDeserializer =
                 new JsonDeserializer<>(FeatureVectorOne.class);
         StringDeserializer stringDeserializer = new StringDeserializer();
-        DefaultKafkaConsumerFactory<String, FeatureVectorOne> defaultKafkaConsumerFactory = new DefaultKafkaConsumerFactory<>(getConfig(), stringDeserializer, jsonDeserializer);
-        ConcurrentKafkaListenerContainerFactory<String, FeatureVectorOne> concurrentKafkaListenerContainerFactory = new ConcurrentKafkaListenerContainerFactory<>();
+        DefaultKafkaConsumerFactory<String, FeatureVectorOne> defaultKafkaConsumerFactory =
+                new DefaultKafkaConsumerFactory<>(getConfig(), stringDeserializer, jsonDeserializer);
+        ConcurrentKafkaListenerContainerFactory<String, FeatureVectorOne> concurrentKafkaListenerContainerFactory =
+                new ConcurrentKafkaListenerContainerFactory<>();
         concurrentKafkaListenerContainerFactory.setConsumerFactory(defaultKafkaConsumerFactory);
         concurrentKafkaListenerContainerFactory.setConcurrency(concurrency);
         return concurrentKafkaListenerContainerFactory;
@@ -48,7 +49,8 @@ public class KafkaConsumerConfig {
         JsonDeserializer<CompiledRecommendation> jsonDeserializer =
                 new JsonDeserializer<>(CompiledRecommendation.class);
         StringDeserializer stringDeserializer = new StringDeserializer();
-        DefaultKafkaConsumerFactory<String, CompiledRecommendation> defaultKafkaConsumerFactory = new DefaultKafkaConsumerFactory<>(getConfig(), stringDeserializer, jsonDeserializer);
+        DefaultKafkaConsumerFactory<String, CompiledRecommendation> defaultKafkaConsumerFactory =
+                new DefaultKafkaConsumerFactory<>(getConfig(), stringDeserializer, jsonDeserializer);
         ConcurrentKafkaListenerContainerFactory<String, CompiledRecommendation> concurrentKafkaListenerContainerFactory = new ConcurrentKafkaListenerContainerFactory<>();
         concurrentKafkaListenerContainerFactory.setConsumerFactory(defaultKafkaConsumerFactory);
         concurrentKafkaListenerContainerFactory.setConcurrency(concurrency);

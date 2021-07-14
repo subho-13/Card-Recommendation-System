@@ -3,76 +3,40 @@ from entities.RewardDetails import RewardDetails
 from lib.CommonFunctions import *
 
 
-def update_rewards(reward_details, cat, ans):
+def update_details(details, cat, ans):
     if cat == 0:
-        reward_details.Education += ans
+        details.Education += ans
     elif cat == 1:
-        reward_details.Entertainment += ans
+        details.Entertainment += ans
     elif cat == 2:
-        reward_details.Food += ans
+        details.Food += ans
     elif cat == 3:
-        reward_details.Gas_trans += ans
+        details.Gas_trans += ans
     elif cat == 4:
-        reward_details.Grocery_net += ans
+        details.Grocery_net += ans
     elif cat == 5:
-        reward_details.Grocery_pos += ans
+        details.Grocery_pos += ans
     elif cat == 6:
-        reward_details.Health += ans
+        details.Health += ans
     elif cat == 7:
-        reward_details.Home += ans
+        details.Home += ans
     elif cat == 8:
-        reward_details.Hotel += ans
+        details.Hotel += ans
     elif cat == 9:
-        reward_details.Kids_pets += ans
+        details.Kids_pets += ans
     elif cat == 10:
-        reward_details.Misc_net += ans
+        details.Misc_net += ans
     elif cat == 11:
-        reward_details.Misc_pos += ans
+        details.Misc_pos += ans
     elif cat == 12:
-        reward_details.Personal += ans
+        details.Personal += ans
     elif cat == 13:
-        reward_details.Shop_net += ans
+        details.Shop_net += ans
     elif cat == 14:
-        reward_details.Shop_pos += ans
+        details.Shop_pos += ans
     elif cat == 15:
-        reward_details.Travel += ans
-    return reward_details
-
-
-def update_exp(expenditure_details, cat, amount):
-    if cat == 0:
-        expenditure_details.Education += amount
-    elif cat == 1:
-        expenditure_details.Entertainment += amount
-    elif cat == 2:
-        expenditure_details.Food += amount
-    elif cat == 3:
-        expenditure_details.Gas_trans += amount
-    elif cat == 4:
-        expenditure_details.Grocery_net += amount
-    elif cat == 5:
-        expenditure_details.Grocery_pos += amount
-    elif cat == 6:
-        expenditure_details.Health += amount
-    elif cat == 7:
-        expenditure_details.Home += amount
-    elif cat == 8:
-        expenditure_details.Hotel += amount
-    elif cat == 9:
-        expenditure_details.Kids_pets += amount
-    elif cat == 10:
-        expenditure_details.Misc_net += amount
-    elif cat == 11:
-        expenditure_details.Misc_pos += amount
-    elif cat == 12:
-        expenditure_details.Personal += amount
-    elif cat == 13:
-        expenditure_details.Shop_net += amount
-    elif cat == 14:
-        expenditure_details.Shop_pos += amount
-    elif cat == 15:
-        expenditure_details.Travel += amount
-    return expenditure_details
+        details.Travel += ans
+    return details
 
 
 def total_amount(user_details):
@@ -132,8 +96,11 @@ def cat_wise_amt(expenditure_details, cat):
 
 
 def calculate_reward_points(abstracted_transaction, expenditure_details, reward_details):
-    if expenditure_details is None or reward_details is None:
-        expenditure_details, reward_details = ExpenditureDetails(), RewardDetails()
+    if expenditure_details is None:
+        expenditure_details = ExpenditureDetails(abstracted_transaction.card_id, abstracted_transaction.card_type)
+
+    if reward_details is None:
+        reward_details = RewardDetails(abstracted_transaction.card_id, abstracted_transaction.card_type)
 
     card_data = card_data_generator()
     card_mapper = card_map_generator(card_data)
@@ -151,9 +118,9 @@ def calculate_reward_points(abstracted_transaction, expenditure_details, reward_
 
     ans = card_percent * amount  ## Rewards
 
-    reward_details = update_rewards(reward_details, cat,
+    reward_details = update_details(reward_details, cat,
                                     ans)  ## add rewards to the dictionary corresponding to the purchase category
-    expenditure_details = update_exp(expenditure_details, cat, amount)  ## amount spent in the category
+    expenditure_details = update_details(expenditure_details, cat, amount)  ## amount spent in the category
 
     if 'Intro' in card.keys():
         for intro in card['Intro']:  ## Intro benefits of the card used
@@ -164,13 +131,13 @@ def calculate_reward_points(abstracted_transaction, expenditure_details, reward_
             if category == 'Any':  ## If reward is given on just the amount spent not a particular category
                 if total_amount(expenditure_details) > threshold and reward_details.is_any_reward_given == False:
                     ans = ans + reward
-                    reward_details = update_rewards(reward_details, cat, reward)
+                    reward_details = update_details(reward_details, cat, reward)
                     reward_details.is_any_reward_given = True
             elif cat_wise_amt(expenditure_details, cat) >= threshold:  ## If reward is on a particular category
                 x = reward_details.is_reward_given_in_category
-                if (x & (1 << (cat - 1))) >> (cat - 1) == 0:
+                if (x & (1 << (cat))) >> (cat) == 0:
                     ans = ans + reward
-                    reward_details = update_rewards(reward_details, cat, reward)
-                    reward_details.is_reward_given_in_category = (x | (1 << (cat - 1)))  ## Intro reward given
+                    reward_details = update_details(reward_details, cat, reward)
+                    reward_details.is_reward_given_in_category = (x | (1 << (cat)))  ## Intro reward given
 
     return expenditure_details, reward_details

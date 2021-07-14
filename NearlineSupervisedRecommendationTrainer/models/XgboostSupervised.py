@@ -1,12 +1,20 @@
 import warnings
 
-import numpy as np
-from CommonFunctions1 import *
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from xgboost import XGBClassifier
 
+from lib.CommonFunctions1 import *
+
 warnings.filterwarnings('ignore')
+
+
+def predict_proba_ordered(probs, classes_, all_classes):
+    proba_ordered = np.zeros((probs.shape[0], all_classes.size), dtype=np.float)
+    sorter = np.argsort(all_classes)
+    idx = sorter[np.searchsorted(all_classes, classes_, sorter=sorter)]
+    proba_ordered[:, idx] = probs
+    return proba_ordered
 
 
 def supervised_data_preparation(df):
@@ -66,12 +74,11 @@ def xgb_supervised(df):
 
 
 class XGBoostObject:
-    def __init__(self, sc, model):
-        self.sc = sc
-        self.model = model
+    def __init__(self):
+        self.sc, self.model = None, None
 
-    def train(self):
-        self.sc, self.model = xgb_supervised()
+    def train(self, df):
+        self.sc, self.model = xgb_supervised(df)
 
     def update(self, new_model):
         self.sc = new_model.sc
@@ -82,6 +89,8 @@ class XGBoostObject:
         user_list = np.reshape(user_list, (1, 17))
         user_list = self.sc.transform(user_list)
         card_score = self.model.predict_proba(user_list)
+        all_classes = np.arange(0, 9, 1)
+        card_score = predict_proba_ordered(card_score, self.model.classes_, all_classes)
         card_score = standardize(card_score)
         card_score = (np.reshape(card_score, (9,))).tolist()
         return (user_id, 'XGBoost Model', card_score)

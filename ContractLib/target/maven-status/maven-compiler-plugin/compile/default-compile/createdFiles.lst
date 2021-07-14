@@ -1,0 +1,14 @@
+com\wf\contractlib\contracts\AbstractedTransaction.class
+com\wf\contractlib\contracts\CustomerDetails.class
+com\wf\contractlib\contracts\GeneratedRecommendation.class
+com\wf\contractlib\entities\Gender.class
+com\wf\contractlib\contracts\NearlineTrigger.class
+com\wf\contractlib\contracts\ProvidedRecommendation.class
+com\wf\contractlib\entities\CardType.class
+com\wf\contractlib\contracts\CollectedTransaction.class
+com\wf\contractlib\contracts\OfflineTrigger.class
+com\wf\contractlib\entities\GeoCoordinate.class
+com\wf\contractlib\entities\JobType.class
+com\wf\contractlib\contracts\CompiledRecommendation.class
+com\wf\contractlib\contracts\featurevector\FeatureVectorOne.class
+com\wf\contractlib\entities\PurchaseCategory.class

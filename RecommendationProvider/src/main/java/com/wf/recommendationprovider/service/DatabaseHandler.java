@@ -2,8 +2,10 @@ package com.wf.recommendationprovider.service;
 
 import com.wf.contractlib.contracts.CompiledRecommendation;
 import com.wf.contractlib.contracts.featurevector.FeatureVectorOne;
-import com.wf.recommendationprovider.entity.CustomerDetails;
-import com.wf.recommendationprovider.repository.CustomerDetailsRepository;
+import com.wf.recommendationprovider.entity.CompiledRec;
+import com.wf.recommendationprovider.entity.FeatureVector;
+import com.wf.recommendationprovider.repository.CompiledRecRepository;
+import com.wf.recommendationprovider.repository.FeatureVectorRepository;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +17,11 @@ import java.util.Optional;
 @Service
 public class DatabaseHandler {
     private DetailsGenerator detailsGenerator;
-    private CustomerDetailsRepository customerDetailsRepository;
+    private CompiledRecRepository compiledRecRepository;
+    private FeatureVectorRepository featureVectorRepository;
 
     @Getter @Setter
-    private Boolean testVariable = false ;
+    private Boolean testVariable= false ;//for testing only
 
     @Autowired
     public void setDetailsGenerator(DetailsGenerator detailsGenerator) {
@@ -26,38 +29,47 @@ public class DatabaseHandler {
     }
 
     @Autowired
-    public void setCustomerDetailsRepository(CustomerDetailsRepository customerDetailsRepository) {
-        this.customerDetailsRepository = customerDetailsRepository;
+    public void setFeatureVectorRepository(FeatureVectorRepository featureVectorRepository) {
+        this.featureVectorRepository = featureVectorRepository;
+    }
+
+    @Autowired
+    public void setCompiledRecRepository(CompiledRecRepository compiledRecRepository) {
+        this.compiledRecRepository = compiledRecRepository;
     }
 
     @Transactional
     public void handle(FeatureVectorOne featureVectorOne) {
-        CustomerDetails customerDetails = detailsGenerator.generate(featureVectorOne);
+        FeatureVector featureVector = detailsGenerator.generate(featureVectorOne);
+        Optional<FeatureVector> optionalFeatureVector =
+                featureVectorRepository.findByCustomerID(featureVector.getCustomerID());
 
-        Optional<CustomerDetails> optionalCustomerDetails =
-                customerDetailsRepository.findByCustomerID(customerDetails.getCustomerID());
+        if (optionalFeatureVector.isPresent()) {
+            FeatureVector temp = optionalFeatureVector.get();
+            temp.setPurchaseExpenditureMap(featureVector.getPurchaseExpenditureMap());
+            featureVector = temp;
+            testVariable=true ;
+        }
 
-        if (optionalCustomerDetails.isPresent()) {
-            customerDetails.setCardConfidenceMap(optionalCustomerDetails.get().getCardConfidenceMap())  ;
-            testVariable =true ; //to test only
-        };
-
-        customerDetailsRepository.save(customerDetails);
+        System.out.println(featureVector);
+        featureVectorRepository.save(featureVector);
     }
 
     @Transactional
     public void handle(CompiledRecommendation compiledRecommendation) {
-        CustomerDetails customerDetails = detailsGenerator.generate(compiledRecommendation);
+        CompiledRec compiledRec = detailsGenerator.generate(compiledRecommendation);
 
-        Optional<CustomerDetails> optionalCustomerDetails =
-                customerDetailsRepository.findByCustomerID(customerDetails.getCustomerID());
+        Optional<CompiledRec> optionalCompiledRec =
+                compiledRecRepository.findByCustomerID(compiledRec.getCustomerID());
 
-        if (optionalCustomerDetails.isPresent()) {
-            CustomerDetails temp =
-                    optionalCustomerDetails.get();
-            temp.setCardConfidenceMap(customerDetails.getCardConfidenceMap());
-            customerDetails = temp;
+        if (optionalCompiledRec.isPresent()) {
+            CompiledRec temp = optionalCompiledRec.get();
+            temp.setCardConfidenceMap(compiledRec.getCardConfidenceMap());
+            compiledRec = temp;
+            testVariable=true ;
         }
-        customerDetailsRepository.save(customerDetails);
+
+        System.out.println(compiledRec);
+        compiledRecRepository.save(compiledRec);
     }
 }

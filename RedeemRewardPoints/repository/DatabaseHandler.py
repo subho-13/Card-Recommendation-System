@@ -1,48 +1,43 @@
-from entities.CardDetails import CardDetails
+from sqlalchemy.orm import sessionmaker
+
+from entities.CustomerDetails import CustomerDetails
 from entities.ExpenditureDetails import ExpenditureDetails
 from entities.RewardDetails import RewardDetails
+from repository.EntityManager import engine
 
-from repository.EntityManager import session
+
+def get_session():
+    session_maker = sessionmaker(bind=engine)
+    session_maker.configure(bind=engine)
+    session = session_maker()
+    return session
 
 
 def get_expenditure_details(card_id):
+    session = get_session()
     expenditure_details = session.query(ExpenditureDetails).filter_by(expenditure_id=card_id).first()
+    session.expunge_all()
     return expenditure_details
 
 
 def get_reward_details(card_id):
+    session = get_session()
     reward_details = session.query(RewardDetails).filter_by(reward_id=card_id).first()
+    session.expunge_all()
     return reward_details
 
 
-def save_expenditure_details(expenditure_details):
-    is_present = bool(
-        session.query(ExpenditureDetails).filter_by(expenditure_id=expenditure_details.expenditure_id).first())
-
-    if is_present:
-        session.query(ExpenditureDetails).filter_by(expenditure_id=expenditure_details.expenditure_id).delete()
-
-    session.add(expenditure_details)
-    session.commit()
-
-
-def save_reward_details(reward_details):
-    is_present = bool(session.query(RewardDetails).filter_by(reward_id=reward_details.reward_id).first())
-
-    if is_present:
-        session.query(RewardDetails).filter_by(reward_id=reward_details.reward_id).delete()
-
-    session.add(reward_details)
-    session.commit()
-
-
-def save_card_details(card_details):
-    is_present = bool(session.query(CardDetails).filter_by(card_id=card_details.card_id).first())
-
-    if not is_present:
-        session.add(card_details)
+def save_details(details):
+    session = get_session()
+    try:
+        session.merge(details)
         session.commit()
+    except:
+        session.rollback()
 
 
-def get_card_details(customer_id):
-    return session.query(CardDetails).filter_by(customer_id=customer_id)
+def get_customer_details(customer_id):
+    session = get_session()
+    customer_details = session.query(CustomerDetails).filter_by(customer_id=customer_id).first()
+    session.expunge_all()
+    return customer_details

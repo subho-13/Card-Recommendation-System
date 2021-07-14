@@ -16,7 +16,7 @@ public class FeatureVectorOneConsumer {
 
     @KafkaListener(groupId = "RecommendationProvider", topics = "FeatureVectorOne",
             containerFactory = "featureVectorOneListenerFactory")
-    public void consumeFeatureVectorOne(FeatureVectorOne featureVectorOne) {        
+    public void consumeFeatureVectorOne(FeatureVectorOne featureVectorOne) {
         databaseHandler.handle(featureVectorOne);
     }
 }
