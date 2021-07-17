@@ -1,0 +1,222 @@
+Databases
+- dataabstraction_db
+- featureextractionone_db
+- featurevectorone_db
+- recommendationtrigger_db
+- recommendationcompiler_db
+
+Data Collector
+--------------
+> we consume the transactions via a rest controller
+> we apply an inbound filter on it to get rid of null 
+values and other anomalies 
+> we get the transaction in shape by converting it into a
+suitale form for our use by passsing it throug a converter
+> after that, we apply a final outbound filter
+> finally, produce the entity via the  collected 
+transaction topic through the kafka producer
+
+
+
+Data Abstraction Service
+------------------------
+> now that we have the collected transaction,
+this service takes in those transactions 
+through a kafka consumer 
+> then it sends the collected data to the database service 
+where the data abstraction takes place
+for ex, we assign a customer id for the firsstname,
+lastname,gender,dob,address
+and from now on, the identity of that customer is only 
+through that customer id.
+> in order to maintain data confidentiality, we do not 
+pass all details to the next microservices 
+> we only collect the relevant information that we need and 
+produce it through the kafka-producer via the topic 
+"abstracted transaction"
+
+Feature extraction
+------------------
+> here, we consume the abstracted transaction from the
+previous service via the kafka consumer
+> then the FV is calculated using that incoming data by
+ performing incremental calculations on top of that. 
+> then we store the feature vectors in the database
+and also produce it via the kafka producer
+> we also have a REST service for requesting customer 
+specific data
+
+
+PreComputedRecommendation Generator Service
+------------------------------
+> now that we have the feature vectors, we come to the 
+offfline unsupervised reco generator service
+> here, all the unsupervised models (7 till now) 
+have been integrated
+> 2 consumers
+> we consume the feature vector from the previous feature 
+extraction service via a kafka consumer and 
+redirect it to the databaseservice class
+> here it simply saves each incoming feature vector 
+in the database.
+if an existingcustomer one comes in, we simply 
+update his FV
+> now bcoz there is going to be batch processing here,
+there is another kafka consumer, that consumes a 
+trigger froma scheduler service at specific intervals 
+(which we will show after this)
+> on each trigger, the ml models that have been 
+integrated will pull out batch data from the database 
+service, compute upon it and produce their 
+individual results will go to the kafka producer 
+under the topic "GeneratedRecommendation"
+
+
+Offline Scheduler Service (Trigger)
+-------------------------
+> very brief idea about how we schedule the trigger
+> it consumes every abstracted transaction 
+through kafka consumer, 
+> it uses the database service to store the no of 
+transactions each user has done, 
+total no of transactions consumed till now etc.
+then it runs an algorithm based on some threshold values 
+to schedule a trigger
+> this trigger is sent to the reco generator service, 
+which we showed earlier, through the kafka producer 
+so that now can carry out a batch computation 
+using the ml models
+
+
+Recommendation Compiler Service
+-------------------------------
+> we take in the generated reco via a kafka-consumer 
+and save it in the db
+> here we have a static datastore where each model 
+has some predefined wt; 
+we have used read write lock to read and update it so that 
+when our system is up, then also we can integrate new models 
+or change wts of some existing models
+> (model compiler) at a later point when this service receives a request
+to compute recommendations for a particular customer id,
+it uses i)the stored recommendations from each model from the db
+	ii) the model weights to compile the final recommendation 
+>once calculated, we send it back the response 
+via the rest controller
+
+Reco Provider Service
+---------------------
+> this is responsible for calling the compiler
+> this contains a rest controller that can be queried
+using a particular customer details, maybe from the ui
+> then the underlying rest service will do the 
+hard work, get the customer id for that customer, 
+use that id to get the compiled recommendation, 
+and then send the response back to the ui 	
+
+so this was a small overview of the microsrvices
+
+now before we go on to jai,varun & aditya for ml models, 
+just a sneek peek into souvik's
+laptop to see if the services have started
+
+z axis scaling
+--------------
+> a particular kafka topic can be split into a number of 
+partitions across multiple brokers - and each such partition
+can be placed on a separate machine - to allow multiple
+consumers to read from a single topic in || without bogging 
+down 1 particular kafka server of the cluster
+
+since we have resource costraints,hardware constraints, 
+we have thought of a theoretical deployment strategy 
+for our card recommender system
+
+
+deployment
+----------
+> docker (it will give an lightweight isolated runtime env 
+for each of our microservices, also the tech stack will
+be encapsulated) eg, use dockerfile, docker compose
+
+> kubernetes, a layer on top of docker, that networks
+a set of machines into a single pool of resources,
+it will keep a desired no of instances running at all times,
+even when the machines crash, so it will provide fault tolerance 
+and resiliency to our architecture.
+
+
+
+> now since most of the details are hidden away here, 
+if other services want any specific details about 
+the transaction, we have provided rest endpoints 
+which other services can query for ex, 
+if they need the address of a customer id
+
+x axis
+
+
+y axis
+minimised coordination - just follow a contract
+loose coupling - same
+SRp - only performing a single task, no shared work
+CCP - if change in one microservice, it is locally and not globally
+
+z axis
+
+big data instances in cloud
+
+Overview of what our approach is, 
+
+-------------------------------------
+PART 1
+CARD RECO
+----------
+----------
+
+> MICROSERVICES OVERVIEW
+------------------------
+
+> ML MODELS
+-----------------------
+> SUPERVISED
+- USABILITY
+- IMPLEMENTATION LOGIC
+- RESULT ANALYSIS
+
+> UNSUPERVISED
+- USABILITY
+- IMPLEMENTATION LOGIC
+- RESULT ANALYSIS
+
+
+
+PART 2
+FRAUD DETECTION
+---------------
+---------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

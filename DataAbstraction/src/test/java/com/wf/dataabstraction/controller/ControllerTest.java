@@ -83,7 +83,6 @@ class ControllerTest {
     }
 
     @Test
-    @DisplayName("happy path testing")
     public void controllerTest() throws Exception {
 
         CustomerDetails customerDetails = new CustomerDetails() ;
