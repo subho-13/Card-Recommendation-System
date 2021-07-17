@@ -4,13 +4,11 @@ from service.RewardPointsCalculator import total_amount
 
 
 def min_max_scale_value(value, min_val, max_val):
-    if value < min_val:
-        value, min_val = min_val, value
-        print(value)
-        
     if min_val == max_val:
-        return 1    
-    else:
+        return 1
+    if value == 0:
+        return 0
+    else :
         return (value - min_val) / (max_val - min_val)
 
 

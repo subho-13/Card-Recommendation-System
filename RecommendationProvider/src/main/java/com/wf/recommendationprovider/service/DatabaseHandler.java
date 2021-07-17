@@ -6,6 +6,8 @@ import com.wf.recommendationprovider.entity.CompiledRec;
 import com.wf.recommendationprovider.entity.FeatureVector;
 import com.wf.recommendationprovider.repository.CompiledRecRepository;
 import com.wf.recommendationprovider.repository.FeatureVectorRepository;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,6 +20,8 @@ public class DatabaseHandler {
     private CompiledRecRepository compiledRecRepository;
     private FeatureVectorRepository featureVectorRepository;
 
+    @Getter @Setter
+    private Boolean testVariable= false ;//for testing only
 
     @Autowired
     public void setDetailsGenerator(DetailsGenerator detailsGenerator) {
@@ -44,6 +48,7 @@ public class DatabaseHandler {
             FeatureVector temp = optionalFeatureVector.get();
             temp.setPurchaseExpenditureMap(featureVector.getPurchaseExpenditureMap());
             featureVector = temp;
+            testVariable=true ;
         }
 
         System.out.println(featureVector);
@@ -61,6 +66,7 @@ public class DatabaseHandler {
             CompiledRec temp = optionalCompiledRec.get();
             temp.setCardConfidenceMap(compiledRec.getCardConfidenceMap());
             compiledRec = temp;
+            testVariable=true ;
         }
 
         System.out.println(compiledRec);
