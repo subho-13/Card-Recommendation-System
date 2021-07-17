@@ -1,0 +1,5 @@
+Integration Testing
+	-> Ran a Transaction Stream for Half an Hour with an average of 30 transactions per second
+	-> Give improper delay between 25 to 35 ms between each transactions
+	-> After 1 mins, check if the Rest Endpoints are working as expected
+	-> Check if there was some error in the system during the integration testing
