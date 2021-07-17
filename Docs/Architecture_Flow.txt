@@ -1,0 +1,37 @@
+1. We are following a Microservice architecture to build our system. Each of the 
+   microservices are loosely coupled and follow the SRP.
+2. We are using an event driven architecture that uses event Sourcing pattern. This pattern will provide consistency for the transactional data and maintain full audit trails.
+
+Lets follow the flow of the data.
+FLOW
+-----
+1. The Incoming transaction streams into the DC service.
+2. This service cleans up the data, filters the anomalies and produces the Collected Transaction.
+3. This entity flows into DA service
+4. Here, most of the customer details are abstracted away and only the relevant details are produced as AT.
+5. The AbstractedTransaction entity then streams into FE, NS
+   and RPR service
+6. Let's take the FE service
+7. This service uses the abstracted transaction to perform incremental
+calculations and produce a FV.
+8. The Offline scheduler consumes the Abstracted Transaction to schedule offline 
+triggers at certain intervals.
+9. These two entities move into the offline generator service, which contains our 
+unsupervised ml models. On receiving the offline trigger, it will carry out the batch computations on the FV and produce the generated recommendation.
+10. Similarly, the nearline generator receieves the NearlineTrigger entity along with
+   the FeatureVector. Then the supervised models carry put their computation
+   and produce their recommenation.
+11. The recommendation from both the generator services stream into the compiler
+service. This service assembles the recommendations and produces the Compiled
+Recommendation.     
+12. A part of this moves into the supervised trainer service, which trains its supervised ml models using this data.
+   The other part below moves into the provider service.
+13. This provider service formats the recommendation properly, gives it shape and
+sends it to the client-ui who receives their credit card recommendatiom.
+14. Now for every transaction, the customers are also accumulating reward points.
+So to the left, we see that the AT moves into the reward point service where the reward 
+points are allocated for every trnxn. Also, certain personalised product recommendations are also provided using the reward suggestion service.
+This is also sent to the client ui.
+
+Hence, this is a high level overview of how the data is flowing through the pipeline.
+--     
