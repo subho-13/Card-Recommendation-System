@@ -1,0 +1,51 @@
+Slide_1
+
+Overview ( 1 min : 30 s ) 
+
+Card Recommendation :- Topic
+
+-> Pie Chart
+{ Credit Cards are a stable source of income. Credit Cards contributed to about 34% of revenue generated from Consumer Lending Division in the last financial quater. 
+
+So, to enhance this line of business, we need to build a Card Recommendation System }
+
+-> Build a Card Recommendation System
+
+-> Can retain the existing Customers { By suggesting new or complimentary cards }
+-> Can attract new Customer { By recommending cards that are rewarding to their Demographics and Lifestyle }
+-> Provide Personalized Suggestions to Redeem Reward Points
+
+Challenges
+
+{ So, what are the challenges that we tried to address while developing the system? }
+
+-> Scalability
+	-> Scale up operations Functionally and Physically { It should be scalable to billions of users with different habits and preferences }
+-> Adaptability
+	-> Dynamically adapt to ever changing customer preferences {  }
+-> Privacy
+	-> Ensure confidentiality of sensitive customer details { }
+	
+Assumptions
+	-> Every User has an Initial Credit card
+	-> Credit Scores are available
+	
+Scalability ( 1 )
+Scale Cube
+	-> Cloning/Replication
+	-> Functional Decomposition
+	-> Data Partioning
+
+Theoretical Deployment
+	-> Service Instance per Container
+	-> Use Docker as Containerization technology
+	-> Use Kubernetes for orchestration
+	-> Use Optimized Cloud Instances
+	
+	
+	
+	
+	
+	
+	
+

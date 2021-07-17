@@ -1,39 +1,41 @@
-import React, {useState} from "react"
-import './App.css';
-import CardConf from "./cardConfMap/CardConf";
-import Purchase from './purchaseExpMap/Purchase';
+import axios from "axios";
+import React, { useState } from "react";
 
-const App = () => {
-  const [customerID, setCustomerID] = useState(-1);
-  const [flagSubmit, setFlagSubmit] = useState(false);
+import SearchBar from "./search_bar/SearchBar"
+import CardDetails from "./card_details/CardDetails";
 
-  const handleChange = (e) => {
-      setFlagSubmit(false);
-      setCustomerID(e.target.value);
+async function getCustomerDetails(customerID) {
+  var customerDetails = await axios.get(`http://localhost:9508/get/${customerID}`)
+          .then((response) => { 
+                return response.data
+              }).catch((err) => {
+                console.log(err);
+              })
+
+ return await customerDetails
+}
+
+function App() {
+  const [cardConfidenceMap, setCardConfidenceMap] = useState({})
+  const [purchaseExpenditureMap, setPurchaseExpenditureMap] = useState({})
+
+  const handleSubmit = (customerDetails) => {
+    const customerID = customerDetails.customerID
+    getCustomerDetails(customerID).then(customerDetails => {
+      setCardConfidenceMap(customerDetails.cardConfidenceMap)
+    })
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setFlagSubmit(true);
-  }
-
-  return (
-    <div className="App">     
-          <form onSubmit={handleSubmit}>
-            <input
-                type="text"
-                name="customerID"
-                value={customerID}
-                onChange={handleChange}                
-            />
-            <button type="submit">Fetch</button>
-        </form>      
-        <div>
-          {flagSubmit &&  <Purchase customerID={customerID} />}
-          {flagSubmit &&  <CardConf customerID={customerID} />}
-        </div>
+  return <div>
+    <div>
+      <SearchBar onSubmit={handleSubmit} />
     </div>
-  );
+    <div>
+      <div>
+        <CardDetails cardConfidenceMap={cardConfidenceMap} />
+      </div>
+    </div>
+  </div>
 }
 
 export default App;

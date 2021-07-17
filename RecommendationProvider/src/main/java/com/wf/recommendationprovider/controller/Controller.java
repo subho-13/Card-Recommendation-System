@@ -8,6 +8,7 @@ import com.wf.recommendationprovider.repository.CompiledRecRepository;
 import com.wf.recommendationprovider.repository.FeatureVectorRepository;
 import com.wf.recommendationprovider.service.ComplimentaryCardProvider;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -39,6 +40,7 @@ public class Controller {
     }
 
     @GetMapping("/get/{customerID}")
+    @CrossOrigin(origins = "*")
     public ProvidedRecommendation getRecommendation(@PathVariable Integer customerID) {
         Optional<CompiledRec> optionalCompiledRec = compiledRecRepository.findByCustomerID(customerID);
         Optional<FeatureVector> optionalFeatureVector = featureVectorRepository.findByCustomerID(customerID);
