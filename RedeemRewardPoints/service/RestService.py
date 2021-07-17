@@ -7,9 +7,10 @@ def min_max_scale_value(value, min_val, max_val):
     if min_val == max_val:
         return 1
     if value == 0:
-    	return 0
+        return 0
     else :
         return (value - min_val) / (max_val - min_val)
+
 
 
 class RestService:

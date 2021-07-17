@@ -1,0 +1,32 @@
+-> Overview
+	-> Problem statement
+	-> Assumptions
+	-> Challenges that were addressed ( 2 points from Archi and 2 points from ML )
+-> Architectural Design
+	-> The overall Data Flow Diagram { Technical Flow }
+	-> [ Data Flow Diagram ]
+	-> [ Class UML Diagram ]
+	-> [ ER Diagram ]
+	-> [ Description of Public interfaces, entities and functions (only those with business logic) ]
+-> Models and Their Intepretation
+	-> [ Data Collection ]
+	-> Use Cases
+	-> Models and their Usabilities
+	-> Performance and Adaptability
+-> Testing ( ML + Architecture )
+	-> Happy Path Scenarios
+	-> Unit Testing
+	-> Sonarqube static analysis
+	-> Automated Testing
+-> Scalability and Deployment and Security
+	-> Scale Cube
+	-> Load Performance Metrics
+
+-> **2 - 3 Screenshots 
+
+-> [ Development Environment Setup Document ]
+-> [ Effort Estimation ]
+-> [ Future Scope, Enterprise Readiness ]
+-> [ 6S ]
+-> [ Overall project Experience ]
+-> [ References ]

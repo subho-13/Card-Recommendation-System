@@ -1,0 +1,56 @@
+Credit Cards are a stable source of income for the Banks.
+In Wells Fargo, in the Quarter 2 of Financial Year 2021
+	-> roughly 34% of Customer Lending Revenue from the Credit Card line of business
+	-> So the Card Recommender system that we're building should be able to
+		-> Can Attract new users
+		-> Can retain existing users
+		-> Provide suggestions that are customer centric
+
+Now, building such a Recommendation System brings forth the following Challenges
+	-> Scalability
+		-> Scale up the operations as more customers start using the system
+	-> Adaptability
+		-> Adapt and personalize the recommendations w.r.t to the changing lifestyle of the customer
+	-> Privacy
+		-> Ensure that the sensitive customer information is handled safely and securely and it's confidentiality is maintained
+
+One of our primary challenges were to make the Recommendation System scalable. Scalability 
+	-> handle increasing and dynamic workload 
+	-> By adding new resources and functionalities 
+	-> in a cost effective manner
+
+To measure the scalability, we'll use the Scale Cube Model.
+
+In the scale cube model, the axes represent the scalability strategies
+	-> The X Axis represents scaling by replication of microservice instances
+	-> Y Axis represents scaling through Componentization of the Architecture
+	-> Z Axis represents scaling through Federation
+
+	-> Architecture is X Axis scalable because 
+		-> The microservices are loosely coupled as Producers and Consumers
+		-> They are internally stateless
+		-> Thus N - Identical microservices can be used to handle the incoming events parallely 
+		
+
+	-> Architecture follows the Y axis scaling strategy because
+		-> Each microservice has a Bounded Context
+		-> The Architecture is composed of a set of disjoint microservices
+
+	-> Architecture is also Z axis scalable. 
+	-> It runs on top of Apache Kafka supports key based topic partioning
+
+We'll take the scale cube approach to determine 
+The microservices
+
+
+
+
+
+
+
+
+
+
+
+
+

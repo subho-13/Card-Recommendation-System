@@ -1,0 +1,20 @@
+Step 1 := 4 member team := Piece together the slides
+-> Souvik, Sabuj, ..., ...
+
+Story := Write a common narrative that binds our whole work together.
+
+Team Card Recommender
+Team Fraud Detection
+
+-> Presentation will decide if we get the PPO.
+-> Use Horizontal Transititon
+-> Use minimal motion to act as pointer
+-> Use Arrows to highlight specific portions
+-> Give Descriptions under diagrams -> Max. 5-6 words (Anyhow!!)
+-> Give keywords in 200% Size, Bold and write short description in 5-6 words
+-> Always connect with the ultimate aim
+	-> Connect with the Business values and not :- Just because we found it cool.
+-> Connect between slides with a common narrative
+	-> Answer := Why do the audience need to listen to the next slide? What's in there for them?
+		And answer shouldn't be :- Just because I made it. Connect to the macro aim and the ultimate goal.
+-> Explain it, like you explain you're explaining it to your Grandmother or just a random stranger on street.
