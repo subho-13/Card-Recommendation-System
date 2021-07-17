@@ -63,7 +63,7 @@ class FinalRecommendationCompilerTest {
         Map<String, Map<CardType, Float>> modelCardConfidenceMap = new HashMap<>();
         modelCardConfidenceMap.put("Rule Learning", model1_map);
         modelCardConfidenceMap.put("Association Rule Learning", model2_map);
-        modelCardConfidenceMap.put("Som Based", model3_map);
+        modelCardConfidenceMap.put("SOM Based", model3_map);
 
         Map<CardType, Float> finalCardConfidencemap = new HashMap<>();
 
