@@ -17,11 +17,9 @@ import java.util.Map;
 
 @Service
 public class CompiledRecommendationProducer implements DisposableBean, Runnable {
-    private FinalRecommendationCompiler finalRecommendationCompiler;
-    private RecommendationDetailsRepository recommendationDetailsRepository;
-    private DatabaseHandler databaseHandler;
-    private KafkaTemplate<String, CompiledRecommendation> kafkaTemplate;
-    private Thread thread;
+    private final FinalRecommendationCompiler finalRecommendationCompiler;
+    private final DatabaseHandler databaseHandler;
+    private final KafkaTemplate<String, CompiledRecommendation> kafkaTemplate;
 
     @Value("${sleeptime-ms}")
     private int sleepTime;
@@ -34,17 +32,15 @@ public class CompiledRecommendationProducer implements DisposableBean, Runnable 
 
     @Autowired
     public CompiledRecommendationProducer(FinalRecommendationCompiler finalRecommendationCompiler,
-                                          RecommendationDetailsRepository recommendationDetailsRepository,
                                           DatabaseHandler databaseHandler,
                                           KafkaTemplate<String,
             CompiledRecommendation> kafkaTemplate) {
         this.finalRecommendationCompiler = finalRecommendationCompiler;
-        this.recommendationDetailsRepository = recommendationDetailsRepository;
         this.databaseHandler = databaseHandler;
         this.kafkaTemplate = kafkaTemplate;
 
-        this.thread = new Thread(this);
-        this.thread.start();
+        Thread thread = new Thread(this);
+        thread.start();
     }
 
 
@@ -72,7 +68,7 @@ public class CompiledRecommendationProducer implements DisposableBean, Runnable 
                         finalRecommendationCompiler.getCardConfidenceMap(modelCardConfidenceMap);
 
                 compiledRecommendation.setCardConfidenceMap(finalCardConfidenceMap);
-                System.out.println("PRODUCED", compiledRecommendation);
+                System.out.println("PRODUCED :: " +  compiledRecommendation);
                 this.kafkaTemplate.send(topic, compiledRecommendation);
             }
         }
