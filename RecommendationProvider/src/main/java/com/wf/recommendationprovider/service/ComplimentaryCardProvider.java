@@ -48,7 +48,7 @@ public class ComplimentaryCardProvider {
         float maxRewardPoints = 0;
         float maxBenefitsSum = 0;
 
-        for (Map.Entry<CardType, CardBenefits> cardBenefitsEntry : cardBenefitsMap.entrySet()) {
+        for (Map.Entry<CardType , CardBenefits> cardBenefitsEntry : cardBenefitsMap.entrySet()) {
             CardType card = cardBenefitsEntry.getKey();
             CardBenefits cardBenefits = cardBenefitsEntry.getValue();
 
