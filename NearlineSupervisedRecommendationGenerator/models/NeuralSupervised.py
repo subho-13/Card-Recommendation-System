@@ -11,14 +11,16 @@ def supervised_data_preparation(df):
     y = df_clean.iloc[:, -1].values
     return X, y
 
+
 def eligibility(card_data, user_final_list, credit, job):
-    for i in range(0,len(user_final_list)):
-        for j in range(0,len(card_data)):
+    for i in range(0, len(user_final_list)):
+        for j in range(0, len(card_data)):
             if card_data[j]['Card_Name'] == 'College' and job != 'student':
                 user_final_list[i][j] = 0.0
-            if(credit < card_data[j]['Credit_Score']):
-                user_final_list[i][j] = 0.0 
+            if (credit < card_data[j]['Credit_Score']):
+                user_final_list[i][j] = 0.0
     return user_final_list
+
 
 def train_test_data_generator(X, y):
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)

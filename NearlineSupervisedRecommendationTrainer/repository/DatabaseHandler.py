@@ -22,6 +22,7 @@ def save_user_details_from_compiled_recommendations(user_details):
         session.add(user_details)
 
     session.commit()
+    session.close()
 
 
 def save_user_details_from_feature_vector_one(user_details):
@@ -31,6 +32,8 @@ def save_user_details_from_feature_vector_one(user_details):
         session.commit()
     except :
         session.rollback()
+    finally:
+        session.close()
 
 
 def load_user_details_df():

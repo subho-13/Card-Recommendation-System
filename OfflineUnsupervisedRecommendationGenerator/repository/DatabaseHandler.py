@@ -39,6 +39,8 @@ def save_feature_vector_one(feature_vector_one_dict):
         session.commit()
     except:
         session.rollback()
+    finally:
+        session.close()
 
 
 def load_feature_vector_one_df():

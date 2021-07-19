@@ -13,8 +13,13 @@ def get_session():
 
 def get_feature_vector_one(User_Id):
     session = get_session()
-    feature_vector_one  = session.query(FeatureVectorOne).filter_by(User_Id=User_Id).first()
-    session.expunge_all()
+    try :
+        feature_vector_one = session.query(FeatureVectorOne).filter_by(User_Id=User_Id).first()
+        session.expunge_all()
+    except:
+        feature_vector_one = None
+    finally:
+        session.close()
     return feature_vector_one
 
 
@@ -53,3 +58,5 @@ def save_feature_vector_one(feature_vector_one_dict):
         session.commit()
     except:
         session.rollback()
+    finally:
+        session.close()

@@ -1,7 +1,8 @@
 #!/bin/sh
-./init_kafka.sh
-./init_db.sh
+./init_kafka.sh &
 sleep 30
+./init_db.sh & 
+sleep 5
 cd ../DataCollector
 gnome-terminal --tab -- mvn spring-boot:run
 cd ../DataAbstraction
@@ -18,11 +19,17 @@ cd ../RecommendationProvider
 gnome-terminal --tab -- mvn spring-boot:run
 cd ../OfflineUnsupervisedRecommendationGenerator
 export PYTHONPATH=${PWD}
+sleep 5
 gnome-terminal --tab -- python3 ./driver/RuleLearning.py
+sleep 2
 gnome-terminal --tab -- python3 ./driver/AssociationRuleLearning.py
+sleep 2
 gnome-terminal --tab -- python3 ./driver/SelfOrganizingMaps.py
+sleep 2
 gnome-terminal --tab -- python3 ./driver/KpcaSimilarity.py
+sleep 2
 gnome-terminal --tab -- python3 ./driver/NeuralEmbedding.py
+sleep 2
 gnome-terminal --tab -- python3 ./driver/NewUserModel.py
 cd ../NearlineSupervisedRecommendationTrainer/
 export PYTHONPATH=${PWD}
@@ -37,4 +44,5 @@ cd ../RewardSuggestion/
 export PYTHONPATH=${PWD}
 gnome-terminal --tab -- python3 ./Controller.py
 cd ../
-gnome-terminal --tab ./Driver.py
+sleep 2
+gnome-terminal --tab -- python3 ./Driver.py

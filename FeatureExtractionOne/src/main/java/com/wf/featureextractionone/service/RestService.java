@@ -29,7 +29,7 @@ public class RestService {
     }
 
     public Long getCardIssueUnixTime(Integer cardID) {
-        String uri = dataAbstractionUrl + "/get/creditScore/" + cardID;
+        String uri = dataAbstractionUrl + "/get/cardIssueUnixTime/" + cardID;
         return fetchDataFromUri(uri, Long.class);
     }
 

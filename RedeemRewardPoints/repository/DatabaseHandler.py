@@ -17,6 +17,7 @@ def get_expenditure_details(card_id):
     session = get_session()
     expenditure_details = session.query(ExpenditureDetails).filter_by(expenditure_id=card_id).first()
     session.expunge_all()
+    session.close()
     return expenditure_details
 
 
@@ -24,6 +25,7 @@ def get_reward_details(card_id):
     session = get_session()
     reward_details = session.query(RewardDetails).filter_by(reward_id=card_id).first()
     session.expunge_all()
+    session.close()
     return reward_details
 
 
@@ -34,10 +36,13 @@ def save_details(details):
         session.commit()
     except:
         session.rollback()
+    finally:
+        session.close()
 
 
 def get_customer_details(customer_id):
     session = get_session()
     customer_details = session.query(CustomerDetails).filter_by(customer_id=customer_id).first()
     session.expunge_all()
+    session.close()
     return customer_details

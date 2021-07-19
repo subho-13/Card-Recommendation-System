@@ -27,6 +27,7 @@ class GeneratedRecommendation:
 
 def load_and_preprocess_df():
     df = load_user_details_df()
+    df.dropna(inplace=True)
     df = df[df['new_user'] == False]
     df.drop('new_user', axis=1, inplace=True)
     df.reset_index(drop=True, inplace=True)
@@ -57,6 +58,8 @@ class SupervisedModelProducer(Thread):
 
                 if len(df) < minimum_df_size:
                     continue
+
+                print(df)
 
                 self.supervised_model.train(df)
                 self.kafka_producer.send(self.topic, self.supervised_model)
