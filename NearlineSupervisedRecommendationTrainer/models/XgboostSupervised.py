@@ -1,9 +1,9 @@
 import warnings
-
+import numpy as np
+from lib.CommonFunctions1 import *
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from xgboost import XGBClassifier
-
 from lib.CommonFunctions1 import *
 
 warnings.filterwarnings('ignore')
@@ -17,6 +17,9 @@ def predict_proba_ordered(probs, classes_, all_classes):
     return proba_ordered
 
 
+warnings.filterwarnings('ignore')
+
+
 def supervised_data_preparation(df):
     '''Removes unwanted columns and splits the data into input matrix X and output vector y'''
 
@@ -24,6 +27,16 @@ def supervised_data_preparation(df):
     X = df_clean.iloc[:, 1:-1].values
     y = df_clean.iloc[:, -1].values
     return X, y
+
+
+def eligibility(card_data, user_final_list, credit, job):
+    for i in range(0, len(user_final_list)):
+        for j in range(0, len(card_data)):
+            if card_data[j]['Card_Name'] == 'College' and job != 'student':
+                user_final_list[i][j] = 0.0
+            if (credit < card_data[j]['Credit_Score']):
+                user_final_list[i][j] = 0.0
+    return user_final_list
 
 
 def train_test_data_generator(X, y):
@@ -91,6 +104,11 @@ class XGBoostObject:
         card_score = self.model.predict_proba(user_list)
         all_classes = np.arange(0, 9, 1)
         card_score = predict_proba_ordered(card_score, self.model.classes_, all_classes)
+        credit_score = user_dict['credit_score']
+        card_data = card_data_generator()
+        job = user_dict['job']
+        job = job.lower()
+        card_score = eligibility(card_data, card_score, credit_score, job)
         card_score = standardize(card_score)
         card_score = (np.reshape(card_score, (9,))).tolist()
         return (user_id, 'XGBoost Model', card_score)

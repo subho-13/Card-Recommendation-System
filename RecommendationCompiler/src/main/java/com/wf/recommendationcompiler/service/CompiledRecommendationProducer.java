@@ -68,7 +68,7 @@ public class CompiledRecommendationProducer implements DisposableBean, Runnable 
                         finalRecommendationCompiler.getCardConfidenceMap(modelCardConfidenceMap);
 
                 compiledRecommendation.setCardConfidenceMap(finalCardConfidenceMap);
-                System.out.println("PRODUCED :: " +  compiledRecommendation);
+                System.out.println("Produced :: " +  compiledRecommendation);
                 this.kafkaTemplate.send(topic, compiledRecommendation);
             }
         }

@@ -22,15 +22,16 @@ public class FinalRecommendationCompiler {
 
     public FinalRecommendationCompiler() {
         modelWeightMap = new HashMap<>();
-        modelWeightMap.put("Rule Learning", 0.15F);
-        modelWeightMap.put("Association Rule Learning", 0.35F);
+        modelWeightMap.put("Rule Learning", 0.33F);
+        modelWeightMap.put("Association Rule Learning", 0.32F);
         modelWeightMap.put("Kpca Kmeans Based", 0.05F);
-        modelWeightMap.put("Kpca Similarity", 0.06F);
+        modelWeightMap.put("Kpca Similarity", 0.09F);
         modelWeightMap.put("PCA Based", 0.04F);
-        modelWeightMap.put("SOM Based", 0.1F);
-        modelWeightMap.put("Neural Based", 0.1F);
+        modelWeightMap.put("SOM Based", 0.09F);
+        modelWeightMap.put("Neural Based", 0.09F);
         modelWeightMap.put("Autoencoder Based", 0.1F);
-        modelWeightMap.put("New User", 0.05F);
+        modelWeightMap.put("New User", 0.02F);
+        modelWeightMap.put("XGBoost Model", 0.06F);
     }
 
     public void updateModelWeightMap(@NotNull final Map<String, Float> newModelWeightMap) {

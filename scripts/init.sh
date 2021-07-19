@@ -1,8 +1,40 @@
 #!/bin/sh
+./init_kafka.sh
+./init_db.sh
+sleep 30
+cd ../DataCollector
+gnome-terminal --tab -- mvn spring-boot:run
+cd ../DataAbstraction
+gnome-terminal --tab -- mvn spring-boot:run
+cd ../FeatureExtractionOne
+gnome-terminal --tab -- mvn spring-boot:run
+cd ../OfflineScheduler
+gnome-terminal --tab -- mvn spring-boot:run
+cd ../NearlineScheduler
+gnome-terminal --tab -- mvn spring-boot:run
+cd ../RecommendationCompiler
+gnome-terminal --tab -- mvn spring-boot:run
+cd ../RecommendationProvider
+gnome-terminal --tab -- mvn spring-boot:run
+cd ../OfflineUnsupervisedRecommendationGenerator
+export PYTHONPATH=${PWD}
+gnome-terminal --tab -- python3 ./driver/RuleLearning.py
+gnome-terminal --tab -- python3 ./driver/AssociationRuleLearning.py
+gnome-terminal --tab -- python3 ./driver/SelfOrganizingMaps.py
+gnome-terminal --tab -- python3 ./driver/KpcaSimilarity.py
+gnome-terminal --tab -- python3 ./driver/NeuralEmbedding.py
+gnome-terminal --tab -- python3 ./driver/NewUserModel.py
+cd ../NearlineSupervisedRecommendationTrainer/
+export PYTHONPATH=${PWD}
+gnome-terminal --tab -- python3 ./driver/XgboostSupervised.py
+cd ../NearlineSupervisedRecommendationGenerator/
+export PYTHONPATH=${PWD}
+gnome-terminal --tab -- python3 ./driver/XgboostSupervised.py
+cd ../RedeemRewardPoints/
+export PYTHONPATH=${PWD}
+gnome-terminal --tab -- python3 ./Controller.py
+cd ../RewardSuggestion/
+export PYTHONPATH=${PWD}
+gnome-terminal --tab -- python3 ./Controller.py
 cd ../
-PGPASSWORD=themonksofteamb1 psql -h localhost -U teamb1 -d offline_unsupervised_recommendation_generator_db -c 'DROP TABLE IF EXISTS feature_vector_one;'
-PGPASSWORD=themonksofteamb1 psql -h localhost -U teamb1 -d redeem_reward_points_db -c 'DROP TABLE IF EXISTS customer_details cascade;'
-PGPASSWORD=themonksofteamb1 psql -h localhost -U teamb1 -d redeem_reward_points_db -c 'DROP TABLE IF EXISTS expenditure_details;'
-PGPASSWORD=themonksofteamb1 psql -h localhost -U teamb1 -d redeem_reward_points_db -c 'DROP TABLE IF EXISTS reward_details;'
-PGPASSWORD=themonksofteamb1 psql -h localhost -U teamb1 -d nearline_supervised_recommendation_trainer_db -c 'DROP TABLE IF EXISTS user_details;'
-PGPASSWORD=themonksofteamb1 psql -h localhost -U teamb1 -d nearline_supervised_recommendation_generator_db -c 'DROP TABLE IF EXISTS feature_vector_one;'
+gnome-terminal --tab ./Driver.py

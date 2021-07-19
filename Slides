@@ -1,3 +1,13 @@
+Thank you for Joining,
+On behalf of Team B1, now we're going to present the Card Recommendation System.
+
+Let's us look into today's agenda
+	-> At first, we'll have a brief overview of the Card Recommendation System.
+	-> Then, we'll look into the system architecture
+	-> After that, we'll have a deep discussion on the Recommendation Models
+	-> Finally, we're going to see how we perform our Testing
+	-> And Then check if the System is really scalable or not
+
 Credit Cards are a stable source of income for the Banks.
 In Wells Fargo, in the Quarter 2 of Financial Year 2021
 	-> roughly 34% of Customer Lending Revenue from the Credit Card line of business
@@ -5,14 +15,20 @@ In Wells Fargo, in the Quarter 2 of Financial Year 2021
 		-> Can Attract new users
 		-> Can retain existing users
 		-> Provide suggestions that are customer centric
+		
+We made a few assumptions
 
-Now, building such a Recommendation System brings forth the following Challenges
+Also, we had to consider a few constraints while building our system
+
+Building such a Recommendation System brings forth it's own set of Challenges
 	-> Scalability
-		-> Scale up the operations as more customers start using the system
+		-> Scale up the operations cost effectively as more customers start using the system
 	-> Adaptability
 		-> Adapt and personalize the recommendations w.r.t to the changing lifestyle of the customer
 	-> Privacy
 		-> Ensure that the sensitive customer information is handled safely and securely and it's confidentiality is maintained
+		
+
 
 One of our primary challenges were to make the Recommendation System scalable. Scalability 
 	-> handle increasing and dynamic workload 
@@ -22,27 +38,26 @@ One of our primary challenges were to make the Recommendation System scalable. S
 To measure the scalability, we'll use the Scale Cube Model.
 
 In the scale cube model, the axes represent the scalability strategies
-	-> The X Axis represents scaling by replication of microservice instances
-	-> Y Axis represents scaling through Componentization of the Architecture
-	-> Z Axis represents scaling through Federation
+	-> The X Axis represents scaling by running multiple copies of the services behind a load balancer
+	-> Y Axis represents scaling by decomposing the Architecture into services, responsible for one or more closely related functions
+	-> Z Axis represents scaling through assigning each instance of the microservice, a subset of the data
 
 	-> Architecture is X Axis scalable because 
-		-> The microservices are loosely coupled as Producers and Consumers
-		-> They are internally stateless
-		-> Thus N - Identical microservices can be used to handle the incoming events parallely 
+		-> Composed of the microservices
+		-> Loosely coupled as Producers and Consumers
+		-> Stateless
+		-> N - Identical microservices can handle the events concurrently
 		
 
-	-> Architecture follows the Y axis scaling strategy because
+	-> Architecture follows Y axis scaling strategy because
+		-> Composed of a set of disjoint microservices
 		-> Each microservice has a Bounded Context
-		-> The Architecture is composed of a set of disjoint microservices
 
 	-> Architecture is also Z axis scalable. 
-	-> It runs on top of Apache Kafka supports key based topic partioning
+	-> Runs on top of Apache Kafka supports key based topic partioning
 
-We'll take the scale cube approach to determine 
-The microservices
-
-
+So, that was all about Card Recommendation System
+-> Thank you, Opening the floor to Questions
 
 
 

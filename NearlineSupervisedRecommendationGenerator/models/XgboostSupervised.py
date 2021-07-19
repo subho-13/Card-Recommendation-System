@@ -9,6 +9,7 @@ from lib.CommonFunctions1 import *
 warnings.filterwarnings('ignore')
 
 
+<<<<<<< HEAD
 def predict_proba_ordered(probs, classes_, all_classes):
     proba_ordered = np.zeros((probs.shape[0], all_classes.size), dtype=np.float)
     sorter = np.argsort(all_classes)
@@ -17,6 +18,8 @@ def predict_proba_ordered(probs, classes_, all_classes):
     return proba_ordered
 
 
+=======
+>>>>>>> 8305a3f7d6bd85588f776687ac2f5cec1f103282
 def supervised_data_preparation(df):
     '''Removes unwanted columns and splits the data into input matrix X and output vector y'''
 
@@ -25,6 +28,14 @@ def supervised_data_preparation(df):
     y = df_clean.iloc[:, -1].values
     return X, y
 
+def eligibility(card_data, user_final_list, credit, job):
+    for i in range(0,len(user_final_list)):
+        for j in range(0,len(card_data)):
+            if card_data[j]['Card_Name'] == 'College' and job != 'student':
+                user_final_list[i][j] = 0.0
+            if(credit < card_data[j]['Credit_Score']):
+                user_final_list[i][j] = 0.0 
+    return user_final_list
 
 def train_test_data_generator(X, y):
     '''Splits the data in testing and training data and scales it'''
@@ -74,8 +85,14 @@ def xgb_supervised(df):
 
 
 class XGBoostObject:
+<<<<<<< HEAD
     def __init__(self):        
         self.sc, self.model = None, None  
+=======
+    def __init__(self):
+        self.sc = None
+        self.model = None
+>>>>>>> 8305a3f7d6bd85588f776687ac2f5cec1f103282
 
     def train(self, df):
         self.sc, self.model = xgb_supervised(df)
@@ -91,6 +108,11 @@ class XGBoostObject:
         card_score = self.model.predict_proba(user_list)
         all_classes = np.arange(0, 9, 1)
         card_score = predict_proba_ordered(card_score, self.model.classes_, all_classes)
+        credit_score = user_dict['credit_score']
+        card_data = card_data_generator()
+        job = user_dict['job']
+        job = job.lower()
+        card_score = eligibility(card_data, card_score, credit_score, job)
         card_score = standardize(card_score)
         card_score = (np.reshape(card_score, (9,))).tolist()
         return (user_id, 'XGBoost Model', card_score)

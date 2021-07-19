@@ -28,7 +28,7 @@ public class Trigger {
 
     private int numUsersAboveThreshold = 0;
 
-    private int currentThresholdTransactionCount = 8;
+    private int currentThresholdTransactionCount = 3;
 
     @Transactional
     public void handle(AbstractedTransaction abstractedTransaction) {

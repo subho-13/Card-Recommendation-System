@@ -45,6 +45,7 @@ def cluster_dict_generator(mappings, cluster_num, df, card_data):
     mapping_dict = {}
     for i in range(len(cluster_num)):
         cluster = mappings[i]
+        cluster_dict = {}
         if len(cluster) > 0:
             cluster_series = pd.value_counts(df[df['User_Id'].isin(cluster)]['card_type'])
             total = cluster_series.sum()
@@ -90,12 +91,6 @@ def recommendation_generator(clusters, mapping_dict, card_data, df, card_mapper)
 
 
 def pca_kmeans(df):
-    # =============================================================================
-    #     df = pd.read_csv("Updated User Database.csv")
-    # =============================================================================
-    # =============================================================================
-    #     df_1, empty_list = new_user_remover(df)
-    # =============================================================================
 
     cat_map, indices = category_card_mapper()
     card_data = card_data_generator()
@@ -111,10 +106,6 @@ def pca_kmeans(df):
     user_final_list = recommendation_generator(clusters, mapping_dict, card_data, df, card_mapper)
 
     user_final_list = standardize(user_final_list)
-    # =============================================================================
-    #     user_final_list1 = np.concatenate((user_final_list, empty_list))
-    # =============================================================================
-    # np.save('Model_Weights/pca_means_user_final_list', user_final_list)
     user_final_tuple_list = user_tuple_generator(user_final_list, 'PCA Based')
 
     return user_final_tuple_list

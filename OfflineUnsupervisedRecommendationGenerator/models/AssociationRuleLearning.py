@@ -27,7 +27,7 @@ def user_cat_list_generator(df):
     return df_final, user_cat_list
 
 
-def frequent_pattern_growth_algo(df, min_sup, metric='lift', threshold=3.5):
+def frequent_pattern_growth_algo(df, min_sup, metric='lift', threshold=2.5):
     '''Returns the association rules by Frequent Pattern Growth Algo'''
 
     rules_fp = fpgrowth(df, min_support=min_sup, use_colnames=True)
@@ -133,7 +133,7 @@ def association_rule_learning(df):
     # =============================================================================
 
     df_final, user_cat_list = user_cat_list_generator(df)
-    rules_fp = frequent_pattern_growth_algo(df_final, 0.03)
+    rules_fp = frequent_pattern_growth_algo(df_final, 0.02)
     fp_dict = dict_generator(rules_fp)
 
     card_data = card_data_generator()

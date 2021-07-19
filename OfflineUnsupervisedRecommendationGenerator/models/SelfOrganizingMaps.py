@@ -37,6 +37,7 @@ def cluster_dict_generator(mappings, card_data, df, sc, n, m):
     for i in range(n):
         for j in range(m):
             cluster = mappings[(i, j)]
+            cluster_dict = {}
             if len(cluster) > 0:
                 cluster = sc.inverse_transform(cluster)
                 cluster = cluster[:, 0].astype(int)
@@ -86,13 +87,7 @@ def recommendation_generator(som, mapping_dict, card_data, df, X, card_mapper):
 
     return user_final_list
 
-
 def self_organizing_maps(df):
-    # =============================================================================
-    #     df = pd.read_csv("Updated User Database.csv")
-    #     df_1, empty_list = new_user_remover(df)
-    # =============================================================================
-
     cat_map, indices = category_card_mapper()
     card_data = card_data_generator()
     sc, X = data_preparation(df)
@@ -108,9 +103,6 @@ def self_organizing_maps(df):
                                                df, X, card_mapper)
 
     user_final_list = standardize(user_final_list)
-    # =============================================================================
-    #     user_final_list1 = np.concatenate((user_final_list, empty_list))
-    # =============================================================================
-    # np.save('Model_Weights/som_user_final_list', user_final_list)
+
     user_final_tuple_list = user_tuple_generator(user_final_list, 'SOM Based')
     return user_final_tuple_list
