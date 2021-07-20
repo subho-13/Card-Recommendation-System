@@ -17,7 +17,6 @@ public class TransactionConsumer {
     @KafkaListener(groupId = "NearlineScheduler", topics = "AbstractedTransaction",
             containerFactory = "abstractedTransactionListenerFactory")
     public void consumeAbstractedTransaction(AbstractedTransaction abstractedTransaction) {
-        System.out.println(abstractedTransaction);
         transactionCountTrigger.handle(abstractedTransaction);
     }
 }

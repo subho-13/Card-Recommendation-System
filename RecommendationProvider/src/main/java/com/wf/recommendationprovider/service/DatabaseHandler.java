@@ -51,7 +51,6 @@ public class DatabaseHandler {
             testVariable=true ;
         }
 
-        System.out.println(featureVector);
         featureVectorRepository.save(featureVector);
     }
 

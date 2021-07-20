@@ -23,7 +23,7 @@ class SupervisedModelConsumer(Thread):
 
     def run(self):
         for message in self.kafka_consumer:
-            with self.rwlock.gen_rlock():
+            with self.rwlock.gen_wlock():
                 updated_supervised_model = message.value
                 self.supervised_model.update(updated_supervised_model)
 

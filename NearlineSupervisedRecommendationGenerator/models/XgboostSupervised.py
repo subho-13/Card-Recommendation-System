@@ -111,5 +111,5 @@ class XGBoostObject:
         job = job.lower()
         card_score = eligibility(card_data, card_score, credit_score, job)
         card_score = standardize(card_score)
-        card_score = (np.reshape(card_score, (9,))).tolist()
+        card_score = np.nan_to_num(np.reshape(card_score, (9,))).tolist()
         return (user_id, 'XGBoost Model', card_score)

@@ -27,7 +27,7 @@ function SearchBar(props) {
                 onChange={handleChange}  
                 onClick={handleClick}
             />
-            <button type="submit">Fetch</button>
+            <button type="submit">Customer ID</button>
         </form>
     </div>
 }

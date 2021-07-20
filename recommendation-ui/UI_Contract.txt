@@ -1,0 +1,8 @@
+ProvidedRecommendation {
+	isComplimentaryCard : boolean
+	purchaseExpenditureMap : Map[String]Float
+	cardConfidenceMap : Map[String]Float
+	cards : []String
+}
+
+

@@ -4,23 +4,8 @@ import { Chart } from "react-google-charts"
 
 function CardDetails(props) {
     return <div>
-        <Chart
-            width={'50rem'}
-            height={'50rem'}
-            chartType="PieChart"
-            loader={<div>Loading Charts</div>}
-            data={[
-                ['Card', 'Confidence Score'],
-                ...Object.entries(props.cardConfidenceMap)
-            ]}
-            options={
-                {
-                    title: "Card & Confidence",
-                    pieHole: 0.4
-                }
-            }
-        />
-    </div>
+        <div>Suggested Credit Cards </div>
+   </div>
 }
 
 export default CardDetails

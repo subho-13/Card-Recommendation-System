@@ -51,16 +51,17 @@ class SupervisedModelProducer(Thread):
 
     def run(self):
         sleep(self.init_sleep_time)
-
+        count = 1
         while self.event.is_set():
             with self.rwlock.gen_wlock():
                 df = load_and_preprocess_df()
 
-                if len(df) < minimum_df_size:
+                if len(df) <= minimum_df_size:
                     continue
-
-                print(df)
 
                 self.supervised_model.train(df)
                 self.kafka_producer.send(self.topic, self.supervised_model)
+                print("Sent Supervised Model", count)
+                count += 1
+
                 sleep(self.sleep_time)

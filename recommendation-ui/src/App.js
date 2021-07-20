@@ -16,8 +16,10 @@ async function getCustomerDetails(customerID) {
 }
 
 function App() {
+  const [isComplimentaryCard, setIsComplimentaryCard] = useState(false)
   const [cardConfidenceMap, setCardConfidenceMap] = useState({})
   const [purchaseExpenditureMap, setPurchaseExpenditureMap] = useState({})
+  const [listOfCards, setListOfCards] = useState([])
 
   const handleSubmit = (customerDetails) => {
     const customerID = customerDetails.customerID

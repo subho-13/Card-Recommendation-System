@@ -1,24 +1,14 @@
-Thank you for Joining,
-On behalf of Team B1, now we're going to present the Card Recommendation System.
-
-Let's us take a look into today's agenda
-	-> At first, we'll have a brief overview of the Card Recommendation System.
-	-> Then, we'll look into the system architecture
-	-> After that, we'll have a deep discussion on the Recommendation Models
-	-> We're going to see how we perform our Testing
-	-> And Finally we'll check if the System is really scalable or not
-
-Credit Cards are a stable source of income for the Banks.
-In Wells Fargo, in the Quarter 2 of Financial Year 2021
-	-> roughly 34% of Customer Lending Revenue from the Credit Card line of business
+Credit Cards
+	-> stable source of income for the Banks.
+In Wells Fargo
+	-> Quarter 2 of this Financial Year
+	-> 34% of Customer Lending Revenue
 	-> So the Card Recommender system that we're building should be able to
 		-> Can Attract new users
 		-> Can retain existing users
-		-> Provide suggestions that are customer centric
-		
-We made a few assumptions
-
-Also, we had to consider a few constraints while building our system
+		-> Provide suggestions that are customer centric	
+-> We made a few assumptions
+-> Also, we had to consider a few constraints while building our system
 
 Building such a Recommendation System brings forth an array of Challenges
 	-> Scalability
@@ -40,18 +30,18 @@ To measure the scalability, we'll use the Scale Cube Model.
 In the scale cube model, the axes represent the scalability strategies
 	-> The X Axis represents scaling by replication, i.e., running multiple copies of the services behind a load balancer
 	-> Y Axis represents scaling by Componentization, i.e.,  decomposing the Architecture into disjoint services
-	-> Z Axis represents scaling through assigning each instance of the microservice, a subset of the data
+	-> Z Axis represents scaling through Federation, i.e., assigning each instance of the microservice, a subset of the data
 
 	-> Architecture is X Axis scalable because
-		-> The microservices are Loosely coupled as Producers and Consumers and are Stateless
-		-> Thus, N - Identical microservices can be deployed concurrently to handle the incoming events
-
+		-> The microservices are Loosely coupled as Producers and Consumers
+		-> Thus, we can handle the incoming events conurrently by deploying N - Identical microservice instances.
+		
 	-> Architecture follows Y axis scaling strategy because
 		-> Composed of a set of microservices where each microservice has a Bounded Context
 		-> This ensures that each microservice is responsible for one or more closely related functions
 
 	-> Architecture is also Z axis scalable since it runs on top of Apache Kafka.
-		-> In Kafka producer, a partition key can be specified to indicate the destination partition of the message. 
+		-> In Kafka producer, we can specify a customer centric partition key to indicate the destination of a message. 
 		-> Thus, in this way, we can achieve Data Partioning or Federation in our architecture
 
 So, that was all about Card Recommendation System
