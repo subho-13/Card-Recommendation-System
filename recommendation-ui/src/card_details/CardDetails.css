@@ -1,0 +1,32 @@
+.card-details {
+    align-self: center;
+
+}
+
+.card-details-table {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.card-details-header, .card-details-row, .card-details-row-complimentary {
+    font-family: 'Raleway', sans-serif;
+    font-style: normal;
+    font-size: 1.3rem;
+    padding: 0.3rem;
+    text-align: center;
+    border-style: solid;
+    border-color: #ffcd41;
+    border-width: 1px 2px 1px 2px ;
+    padding: 0.4rem;
+}
+
+.card-details-row-complimentary {
+    font-style: italic;
+}
+
+.card-details-header {
+    background-color: #d71e2b;
+    color: #ffcd41;
+    font-size: 1.5rem;
+    font-weight: bold;
+}

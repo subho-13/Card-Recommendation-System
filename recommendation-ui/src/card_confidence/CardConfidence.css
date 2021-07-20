@@ -1,0 +1,44 @@
+.card-confidence {
+    align-self: center;
+}
+.card-confidence-table {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    border-style: solid;
+    border-color: #ffcd41;
+    border-width: 1px 0px 1px 0px ;
+}
+
+.heading, .row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    font-family: 'Raleway', sans-serif;
+    font-style: normal;
+    font-size: 1.3rem;
+    text-align: center;
+    border-style: solid;
+    border-color: #ffcd41;
+    border-width: 1px 2px 1px 2px ;
+    width: 100%;
+}
+
+.heading {
+    background-color: #d71e2b;
+    color: #ffcd41;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.key {
+    border-style: solid;
+    border-color: #ffcd41;
+    border-width: 0px 1px 0px 0px ;
+    padding: 0.4rem;
+}
+
+.value {
+    border-style: solid;
+    border-color: #ffcd41;
+    border-width: 0px 0px 0px 1px ;
+    padding: 0.4rem;
+}

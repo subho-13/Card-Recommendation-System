@@ -1,10 +1,11 @@
 import axios from "axios";
 import React, { useState } from "react";
 
-import SearchBar from "./search_bar/SearchBar";
+import SearchBar from "./search_bar/SearchBar.js";
 import CardDetails from "./card_details/CardDetails";
 import ShoppingPattern from "./purchase_expenditure_map/ShoppingPattern";
 import CardConfidence from "./card_confidence/CardConfidence";
+import beautify from "./util/Functions.js";
 import ProductDetails from "./product_details/ProductDetails";
 import "./App.css"
 
@@ -22,57 +23,58 @@ async function getCustomerDetails(customerID) {
 }
 
 function App() {
-  const [existingCard, setExistingCard] = useState("");
-  const [creditScore, setCreditScore] = useState(0);
-  const [job, setJob] = useState("");
-  const [isComplimentaryCard, setIsComplimentaryCard] = useState(false);
-  const [cardConfidenceMap, setCardConfidenceMap] = useState({});
-  const [purchaseExpenditureMap, setPurchaseExpenditureMap] = useState({});
-  const [listOfCards, setListOfCards] = useState([]);
+  const [customerDetails, setCustomerDetails] = useState({
+      complimentaryCard: false,
+      creditScore: 0,
+      existingCard: 'None',
+      job: 'None',
+      cardConfidenceMap: {},
+      purchaseExpenditureMap: {},
+      cards: []
+  })
 
   const handleSubmit = (customerDetails) => {
     const customerID = customerDetails.customerID;
     getCustomerDetails(customerID).then((customerDetails) => {
-      setExistingCard(customerDetails.existingCard);
-      setCreditScore(customerDetails.creditScore);
-      setJob(customerDetails.job);
-      setIsComplimentaryCard(customerDetails.isComplimentaryCard);
-      setCardConfidenceMap(customerDetails.cardConfidenceMap);
-      setPurchaseExpenditureMap(customerDetails.purchaseExpenditureMap);
-      setListOfCards(customerDetails.cards);
+      console.log(customerDetails)
+      setCustomerDetails(customerDetails)
     });
   };
 
   return (
-    <div class='root-container'>
-      <div class="top-bar">
-        <div class="customer-id">
+    <div className='root-container'>
+      <div className="top-bar">
+        <div className="customer-id">
           <SearchBar onSubmit={handleSubmit} />
         </div>
-        <div class="credit-score">
-          <div class="field-name">Credit Score</div>
-          <div class="field-value">{creditScore}</div>
+        <div className="credit-score">
+          <div className="field-name">Credit Score</div>
+          <div className="field-value">{customerDetails.creditScore}</div>
         </div>
-        <div class="profession">
-          <div class="field-name">Profession</div>
-          <div class="field-value">{job}</div>
+        <div className="reward-points">
+          <div className="field-name">Reward Points</div>
+          <div className="field-value">{customerDetails.creditScore}</div>
         </div>
-        <div class="existing-card">
-          <div class="field-name">Existing Card</div>
-          <div class="field-value">{existingCard}</div>
+        <div className="profession">
+          <div className="field-name">Profession</div>
+          <div className="field-value">{beautify(customerDetails.job)}</div>
+        </div>
+        <div className="existing-card">
+          <div className="field-name">Existing Card</div>
+          <div className="field-value">{beautify(customerDetails.existingCard)}</div>
         </div>
       </div>
-      <div class="details">
-        <div>
-          <CardConfidence cardConfidenceMap={cardConfidenceMap} />
+      <div className="details">
+        <div className='card-confidence'>
+          <CardConfidence cardConfidenceMap={customerDetails.cardConfidenceMap} />
         </div>
-        <div>
-          <ShoppingPattern purchaseExpenditureMap={purchaseExpenditureMap} />
+        <div className='purchase-expenditure'>
+          <ShoppingPattern purchaseExpenditureMap={customerDetails.purchaseExpenditureMap} />
         </div>
-        <div>
+        <div className='card-details'>
           <CardDetails
-            cards={listOfCards}
-            isComplimentaryCard={isComplimentaryCard}
+            cards={customerDetails.cards}
+            complimentaryCard={customerDetails.complimentaryCard}
           />
         </div>
       </div>

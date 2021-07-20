@@ -14,15 +14,25 @@
     grid-row: 1 / span 1;
 
     display: grid;
-    grid-auto-columns: repeat(5, 1fr);
+    grid-template-columns: 1.2fr 1fr 1fr 1.2fr 1.2fr;
 }
 
 .customer-id {
     grid-column: 1 / span 1;
+    display: grid;
+    align-items: center;
+    border-style: solid;
+    border-color: #ffcd41;
+    border-width: 2px;
+    border-radius: 1rem;
 }
 
 .credit-score {
     grid-column: 2 / span 1;
+}
+
+.reward-points {
+    grid-column: 3 / span 1;
 }
 
 .profession {
@@ -35,31 +45,53 @@
 
 .credit-score,
 .existing-card,
-.profession {
+.profession,
+.reward-points {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    justify-items: center;
+    border-style: solid;
+    border-color: #ffcd41;
+    border-width: 2px;
+    border-radius: 1rem;
+    margin: 0.1rem;
+}
+
+.profession,
+.existing-card {
+    grid-template-columns: 1fr 1.2fr;
+}
+
+.credit-score,
+.reward-points {
+    grid-template-columns: 1.2fr 1fr;
 }
 
 
-.field-name, .field-value, .customer-id {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.field-name, .field-value {
+    margin: 0.2rem;
+    padding: 0.3rem;
 }
 
 .field-name {
     font-family: 'Xanh Mono', monospace;
     font-style: italic;
+    font-size: 1.5rem;
+    justify-content: flex-end;
+    text-align: right;
 }
 
 .field-value {
-    font-family: 'Fira Code', monospace;
+    font-family: 'Xanh Mono', monospace;
     font-style: normal;
+    font-size: 1.5rem;
+    justify-content: flex-start;
+    text-align: left;
 }
 
 .details {
     grid-row: 2 / span 1;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 3fr 1fr;
+    grid-template-columns: 30rem 60rem;
+    grid-template-rows: 65vh 30vh;
 }

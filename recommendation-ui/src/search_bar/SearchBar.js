@@ -19,15 +19,15 @@ function SearchBar(props) {
         setCustomerID("")
     }
 
-    return <form class='search-bar' onSubmit={handleSubmit}>
-            <button type="submit" class='submit-button' >Customer ID</button>
+    return <form className='search-form' onSubmit={handleSubmit}>
+            <button type="submit" className='submit-button' >Customer ID</button>
             <input 
                 type="text" 
                 name="customerID" 
                 value={customerID} 
                 onChange={handleChange}  
                 onClick={handleClick}
-                class='input-bar'
+                className='input-bar'
             />
         </form>
 }

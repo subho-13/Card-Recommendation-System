@@ -67,8 +67,7 @@ public class DatabaseHandler {
             compiledRec = temp;
             testVariable=true ;
         }
-
-        System.out.println(compiledRec);
+        
         compiledRecRepository.save(compiledRec);
     }
 }

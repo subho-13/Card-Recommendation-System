@@ -67,7 +67,9 @@ public class Controller {
             if (card == featureVector.getCardType()) {
                 providedRecommendation.setComplimentaryCard(true);
                 card = complimentaryCardProvider.getComplimentaryCard(featureVector);
-                cards.add(0, card);
+                cards.remove(0);
+                cards.add(card);
+                System.out.println("Customer ID :: " + featureVector.getCustomerID());
             }
         }
 
