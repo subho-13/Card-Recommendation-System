@@ -1,6 +1,7 @@
 package com.wf.contractlib.contracts;
 
 import com.wf.contractlib.entities.CardType;
+import com.wf.contractlib.entities.JobType;
 import com.wf.contractlib.entities.PurchaseCategory;
 import lombok.Data;
 import lombok.Getter;
@@ -15,6 +16,9 @@ import java.util.Map;
 @Setter
 @ToString
 public class ProvidedRecommendation {
+    CardType existingCard;
+    Integer creditScore;
+    JobType job;
     boolean isComplimentaryCard;
     Map<PurchaseCategory, Float> purchaseExpenditureMap;
     Map<CardType, Float> cardConfidenceMap;

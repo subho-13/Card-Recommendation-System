@@ -1,0 +1,25 @@
+.search-bar {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.input-bar, .submit-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+}
+
+.input-bar {
+    font-family: 'Fira Code', monospace;
+    font-style: normal;
+    width: 4rem;
+}
+
+.submit-button {
+    font-family: 'Xanh Mono', monospace;
+    font-style: italic;
+    width: 6rem;
+}

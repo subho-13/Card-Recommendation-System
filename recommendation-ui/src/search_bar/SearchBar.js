@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import './SearchBar.css'
 
 function SearchBar(props) {
     const [customerID, setCustomerID] = useState("1");
@@ -18,18 +19,17 @@ function SearchBar(props) {
         setCustomerID("")
     }
 
-    return <div>
-        <form onSubmit={handleSubmit}>
+    return <form class='search-bar' onSubmit={handleSubmit}>
+            <button type="submit" class='submit-button' >Customer ID</button>
             <input 
                 type="text" 
                 name="customerID" 
                 value={customerID} 
                 onChange={handleChange}  
                 onClick={handleClick}
+                class='input-bar'
             />
-            <button type="submit">Customer ID</button>
         </form>
-    </div>
 }
 
 export default SearchBar

@@ -1,0 +1,65 @@
+.root-container {
+    height: 100vh;
+    width: 100vw;
+
+    overflow: scroll;
+    overflow-y: hidden;
+    overflow-x: hidden; 
+
+    display: grid;
+    grid-template-rows: 10vh 90vh;
+}
+
+.top-bar {
+    grid-row: 1 / span 1;
+
+    display: grid;
+    grid-auto-columns: repeat(5, 1fr);
+}
+
+.customer-id {
+    grid-column: 1 / span 1;
+}
+
+.credit-score {
+    grid-column: 2 / span 1;
+}
+
+.profession {
+    grid-column: 4 / span 1;
+}
+
+.existing-card {
+    grid-column: 5 / span 1;
+}
+
+.credit-score,
+.existing-card,
+.profession {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+
+.field-name, .field-value, .customer-id {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.field-name {
+    font-family: 'Xanh Mono', monospace;
+    font-style: italic;
+}
+
+.field-value {
+    font-family: 'Fira Code', monospace;
+    font-style: normal;
+}
+
+.details {
+    grid-row: 2 / span 1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 3fr 1fr;
+}

@@ -53,6 +53,9 @@ public class Controller {
         CompiledRec compiledRec = optionalCompiledRec.get();
 
         ProvidedRecommendation providedRecommendation = new ProvidedRecommendation();
+        providedRecommendation.setExistingCard(featureVector.getCardType());
+        providedRecommendation.setCreditScore(featureVector.getCreditScore());
+        providedRecommendation.setJob(featureVector.getJob());
         providedRecommendation.setPurchaseExpenditureMap(featureVector.getPurchaseExpenditureMap());
         providedRecommendation.setCardConfidenceMap(compiledRec.getCardConfidenceMap());
 
