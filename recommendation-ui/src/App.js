@@ -10,22 +10,36 @@ import ProductDetails from "./product_details/ProductDetails";
 import "./App.css"
 
 async function getCustomerDetails(customerID) {
-  var customerDetails = await axios
+  var recommendationDetails = axios
     .get(`http://localhost:9508/get/${customerID}`)
-    .then((response) => {
-      return response.data;
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+    
+  var productDetails = axios
+  .get(`http://localhost:9503/get/${customerID}`)
 
-  return await customerDetails;
+  const customerDetails = axios.all([productDetails, recommendationDetails]).then(
+    axios.spread((...responses) => {
+        const check =  responses.map((response) => {
+            return response.data
+        })
+
+        return check
+    })
+  ).then((detail) => {
+    console.log(detail)
+    return {
+      ...detail[0],
+      ...detail[1]
+    }
+  })
+
+  return customerDetails
 }
 
 function App() {
   const [customerDetails, setCustomerDetails] = useState({
       complimentaryCard: false,
       creditScore: 0,
+      rewardPoints: 0,
       existingCard: 'None',
       job: 'None',
       cardConfidenceMap: {},
@@ -35,10 +49,10 @@ function App() {
 
   const handleSubmit = (customerDetails) => {
     const customerID = customerDetails.customerID;
-    getCustomerDetails(customerID).then((customerDetails) => {
+    getCustomerDetails(customerID).then(customerDetails => {
       console.log(customerDetails)
-      setCustomerDetails(customerDetails)
-    });
+      setCustomerDetails({...customerDetails})
+    })
   };
 
   return (
@@ -53,7 +67,7 @@ function App() {
         </div>
         <div className="reward-points">
           <div className="field-name">Reward Points</div>
-          <div className="field-value">{customerDetails.creditScore}</div>
+          <div className="field-value">{customerDetails.rewardPoints}</div>
         </div>
         <div className="profession">
           <div className="field-name">Profession</div>
@@ -76,6 +90,9 @@ function App() {
             cards={customerDetails.cards}
             complimentaryCard={customerDetails.complimentaryCard}
           />
+        </div>
+        <div className='product-suggestions'>
+          <ProductDetails productSuggestions={customerDetails.productSuggestions} />
         </div>
       </div>
     </div>

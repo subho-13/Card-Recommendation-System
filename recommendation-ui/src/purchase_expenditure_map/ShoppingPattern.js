@@ -6,8 +6,8 @@ import './SpendingPattern.css'
 
 function ShoppingPattern(props) {
     return <Chart
-        width={'60rem'}
-        height={'30rem'}
+        width={'65vw'}
+        height={'60vh'}
         chartType='BarChart'
         loader={<div>Loading Shopping Pattern</div>}
         data={[
@@ -20,11 +20,11 @@ function ShoppingPattern(props) {
             {
                 title: 'Expenditure Pattern',
                 titleTextStyle : {
-                    fontName : 'Xanh Mono',
-                    fontSize : 20
+                    fontName : 'Open Sans',
+                    fontSize : 24,
                 },
                 chartArea: {
-                    width: '60%'
+                    width: '55%'
                 },
                 colors: ['#d71e2b'],
                 vAxis : {
@@ -34,7 +34,7 @@ function ShoppingPattern(props) {
                     },
                     title: 'Category',
                     titleTextStyle : {
-                        fontName : 'Xanh Mono',
+                        fontName : 'Fira Code',
                         fontSize : 20
                     }
                 },
@@ -51,7 +51,7 @@ function ShoppingPattern(props) {
                     },
                     title: 'Expenditure',
                     titleTextStyle : {
-                        fontName : 'Xanh Mono',
+                        fontName : 'Fira Code',
                         fontSize : 20
                     }
                 }

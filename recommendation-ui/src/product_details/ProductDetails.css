@@ -1,0 +1,73 @@
+.product-suggestions {
+    align-self: center;
+}
+.product-suggestions-table {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    border-style: solid;
+    border-color: #ffcd41;
+    border-width: 1px 0px 1px 0px ;
+}
+
+.product-heading, .product-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    font-family: 'Open Sans', sans-serif;
+    font-weight: normal;
+    font-size: 1.1rem;
+    border-style: solid;
+    border-color: #ffcd41;
+    border-width: 1px 2px 1px 2px ;
+    width: 100%;
+}
+
+.product-heading {
+    background-color: #d71e2b;
+    color: #ffcd41;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.partner-company {
+    border-style: solid;
+    border-color: #ffcd41;
+    border-width: 0px 1px 0px 0px ;
+    padding: 0.4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.product-name {
+    border-style: solid;
+    border-color: #ffcd41;
+    border-width: 0px 1px 0px 1px ;
+    padding: 0.4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.product-category{
+    border-style: solid;
+    border-color: #ffcd41;
+    border-width: 0px 1px 0px 1px ;
+    padding: 0.4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.reward-points-required {
+    border-style: solid;
+    border-color: #ffcd41;
+    border-width: 0px 1px 0px 0px ;
+    padding: 0.4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}

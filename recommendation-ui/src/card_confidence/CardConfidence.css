@@ -12,8 +12,8 @@
 .heading, .row {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    font-family: 'Raleway', sans-serif;
-    font-style: normal;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: normal;
     font-size: 1.3rem;
     text-align: center;
     border-style: solid;
@@ -29,14 +29,14 @@
     font-weight: bold;
 }
 
-.key {
+.model {
     border-style: solid;
     border-color: #ffcd41;
     border-width: 0px 1px 0px 0px ;
     padding: 0.4rem;
 }
 
-.value {
+.score {
     border-style: solid;
     border-color: #ffcd41;
     border-width: 0px 0px 0px 1px ;

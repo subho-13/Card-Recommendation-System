@@ -8,15 +8,15 @@ function CardConfidence(props) {
         return b[1] - a[1]
     }).map(elem => {
         return <div className='row' key={elem[0]}>
-            <div className='key'>{beautify(elem[0])}</div>
-            <div className='value'>{elem[1]}</div>
+            <div className='model'>{beautify(elem[0])}</div>
+            <div className='score'>{elem[1]}</div>
         </div>
     })
 
-    return <div className='card-confidence-table'>
+    return <div className='product-suggestions-table'>
         <div className='heading'>
-            <div className='key'>Model Name</div>
-            <div className='value'>Confidence Score</div>
+            <div className='model'>Card Name</div>
+            <div className='score'>Confidence Score</div>
         </div>
         {cardConfidenceTable}
     </div>

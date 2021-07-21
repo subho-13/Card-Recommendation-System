@@ -80,4 +80,4 @@ def get_rewards(expenditure_details, reward_points):
     user_cat_list = user_cat_list_generator(user_list)
     user_association_list = association_generator(user_cat_list, cat_dict)  # Add association categories to user_list
     suggestion_list = find_suggestions(user_association_list, df_prod, reward_points)  # Find suggestions
-    return suggestion_list
+    return df_prod[df_prod.product_id.isin(suggestion_list)].to_dict(orient='records')

@@ -7,28 +7,62 @@
     overflow-x: hidden; 
 
     display: grid;
-    grid-template-rows: 10vh 90vh;
+    grid-template-rows: 13vh 87vh;
 }
 
 .top-bar {
     grid-row: 1 / span 1;
 
     display: grid;
-    grid-template-columns: 1.2fr 1fr 1fr 1.2fr 1.2fr;
+    grid-template-columns: 1.1fr 1fr 1fr 1.2fr 1.2fr;
+
+    padding: 0.3rem 0.5rem;
+    border-style:solid;
+    border-color: #d71e2b;
+    border-width: 0px 0px 7px 0px;
+    background-color: #ffcd41;
 }
 
 .customer-id {
     grid-column: 1 / span 1;
     display: grid;
     align-items: center;
+    justify-items: center;
     border-style: solid;
     border-color: #ffcd41;
     border-width: 2px;
     border-radius: 1rem;
+    background-color: #ffffff;
 }
+
+.credit-score,
+.existing-card,
+.profession,
+.reward-points {
+    border-style: solid;
+    border-color: #ffcd41;
+    border-width: 2px;
+    margin: 0px 2px 0px 1px;
+    background-color: #ffffff;
+    border-radius: 1rem;
+}
+
+.profession,
+.existing-card {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+}
+
+.credit-score,
+.reward-points {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+}
+
 
 .credit-score {
     grid-column: 2 / span 1;
+    margin: 0px 2px 0px 4px;
 }
 
 .reward-points {
@@ -43,55 +77,39 @@
     grid-column: 5 / span 1;
 }
 
-.credit-score,
-.existing-card,
-.profession,
-.reward-points {
-    display: grid;
-    align-items: center;
-    justify-items: center;
-    border-style: solid;
-    border-color: #ffcd41;
-    border-width: 2px;
-    border-radius: 1rem;
-    margin: 0.1rem;
-}
-
-.profession,
-.existing-card {
-    grid-template-columns: 1fr 1.2fr;
-}
-
-.credit-score,
-.reward-points {
-    grid-template-columns: 1.2fr 1fr;
-}
-
-
 .field-name, .field-value {
-    margin: 0.2rem;
-    padding: 0.3rem;
+    padding: 0.1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .field-name {
-    font-family: 'Xanh Mono', monospace;
-    font-style: italic;
-    font-size: 1.5rem;
-    justify-content: flex-end;
-    text-align: right;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: normal;
+    font-size: 1.4rem;
+    text-align: center;
+    border-style: solid;
+    border-color: #ffcd41;
+    border-width: 0px 2px 0px 0px;
+    border-radius: 0.7rem;
+    padding: 0 0.1rem 0 0.1rem;
 }
 
 .field-value {
-    font-family: 'Xanh Mono', monospace;
-    font-style: normal;
-    font-size: 1.5rem;
-    justify-content: flex-start;
-    text-align: left;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: normal;
+    font-size: 1.4rem;
+    padding: 0 0.1rem 0 0.1rem;
 }
 
 .details {
     grid-row: 2 / span 1;
     display: grid;
-    grid-template-columns: 30rem 60rem;
-    grid-template-rows: 65vh 30vh;
+    grid-template-columns: 32vw 65vw;
+    grid-template-rows: 60vh 30vh;
+    border-style:solid;
+    border-color: #ffcd41;
+    border-width: 7px 0px 0px 0px;
 }

@@ -31,9 +31,10 @@ class RestService:
             'reward_points': reward_points
         })
 
-        print(val.raw)
+        suggestion_dict = val.json()
+        suggestion_dict['rewardPoints'] = reward_points
 
-        return val.json()
+        return suggestion_dict
 
     def min_max_scale_expenditure(self, expenditure_details):
         with self.rwlock.gen_rlock():
