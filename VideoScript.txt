@@ -1,0 +1,75 @@
+At first, we'll run the initialization script.
+This will initiate the Kafka Server
+Then it will some clean-up operations from previous run.
+
+After that it starts launching the different servers, as you can see.
+
+At first the
+	-> DataCollector service comes online
+	-> Then the Data Abstraction
+	-> Feature Extraction
+	-> Offline Scheduler
+	-> Nearline Scheduler
+	-> Recommendation Compiler
+	-> Recommendation Provider
+	-> Reward Suggestion
+	-> And the Reward Redeem Service
+	
+After that we start our 
+	-> Offline Unsupervised Recommendation Generator services
+	-> Followed by the Nearline Supervised Trainer Service
+	-> And the Nearline Supervised Generator Service.
+
+Due to Hardware contraints, We're running only a subset of the models
+	-> New User Model
+	-> Rule Learning Model
+	-> Association Rule Learning Model
+	-> Self Organizing Maps Model
+	-> Neural Embedding Model
+	-> And the XGBoost Model
+
+Finally, Our Driver Starts streaming in The Transactions
+
+Now,
+	-> The Unsupervised Models are waiting for the Offline Triggers
+	-> And the Supervised Models are waiting to get trained to become Operational
+	
+-> Oh wait, Here we got our First Trigger
+	-> The New User Models responded
+	-> The Rule Learning Model also responsed to it
+	-> But what about the Rest?
+		-> They're actually waiting to have enough Old Users before they feasibily start generating recommendations
+	-> After a Few Triggers
+		-> Oh They Did!
+
+-> It's about time that the Nearline Supervised Trainer starts Cooking a XGBoost Model
+	-> The Trainer trained a XGBoost Model
+	-> And Sent it to the Generator Service
+	
+-> After Receiving Nearline Triggers from the Nearline Scheduler
+	-> The XGBoost Model also starts generating the Recommendations
+	
+-> The Compiler compiles all these Recommendations periodically
+	-> And then Sends it to Recommendation Provider
+
+-> Now, let's see the Final Recommendations and the Product Suggestions
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

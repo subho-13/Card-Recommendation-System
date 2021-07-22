@@ -25,7 +25,6 @@ class RestService:
 
         expenditure_details_dict = expenditure_details.__dict__
         del expenditure_details_dict['_sa_instance_state']
-        print(expenditure_details_dict)
         val = requests.post(self.reward_suggestion_url, json={
             'expenditure_details': expenditure_details_dict,
             'reward_points': reward_points

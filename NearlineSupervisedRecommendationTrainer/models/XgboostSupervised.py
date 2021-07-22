@@ -8,7 +8,6 @@ from lib.CommonFunctions1 import *
 
 warnings.filterwarnings('ignore')
 
-
 def predict_proba_ordered(probs, classes_, all_classes):
     proba_ordered = np.zeros((probs.shape[0], all_classes.size), dtype=np.float)
     sorter = np.argsort(all_classes)

@@ -45,7 +45,6 @@ public class RestService {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            System.out.println("Trying :: " + url);
             tmp = this.restTemplate.getForObject(url, clazz);
             sleepTimeMilliseconds = (sleepTimeMilliseconds * 2 + 1) % 6000;
         }

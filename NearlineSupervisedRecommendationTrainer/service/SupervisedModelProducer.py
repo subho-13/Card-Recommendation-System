@@ -61,7 +61,7 @@ class SupervisedModelProducer(Thread):
 
                 self.supervised_model.train(df)
                 self.kafka_producer.send(self.topic, self.supervised_model)
-                print("Sent Supervised Model", count)
+                print("Sent Supervised Model :: ", count)
                 count += 1
 
                 sleep(self.sleep_time)

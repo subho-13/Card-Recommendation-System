@@ -30,10 +30,14 @@ rest_service = RestService(rwlock_reader, purchase_category_min_max_dict)
 def construct_reward_suggestions(rewardPoints=0, productSuggestions=[]):
     if productSuggestions is None:
         productSuggestions = []
-    return {
+    reward_suggestions = {
         'rewardPoints': rewardPoints,
         'productSuggestions': productSuggestions
     }
+
+    print(reward_suggestions)
+
+    return reward_suggestions
 
 
 @app.route('/get/<customer_id>')

@@ -120,8 +120,6 @@ public class DetailsGenerator {
 
         meanPurchaseExpenditureMap.put(purchaseCategory, newMeanExpenditure);
         purchaseCountMap.put(purchaseCategory, count + 1);
-        System.out.println(meanPurchaseExpenditureMap);
-        System.out.println(purchaseCountMap);
     }
 
     private boolean isNewUser(FeatureVector featureVector) {

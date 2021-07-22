@@ -55,7 +55,6 @@ public class LastScheduledTrigger  implements DisposableBean, Runnable {
         while (true) {
             List<CustomerDetails> customerDetailsList = getCustomersToSchedule();
 
-//            produceTrigger(customerDetailsList); 
             for(CustomerDetails customer: customerDetailsList) {
                 NearlineTrigger nearlineTrigger = new NearlineTrigger();
                 nearlineTrigger.setCustomerID(customer.getCustomerID());

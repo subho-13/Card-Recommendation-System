@@ -19,7 +19,7 @@ public class TriggerProducer {
     private String topic;
 
     public void produce(NearlineTrigger nearlineTrigger){
-        System.out.println("Produced :: " + nearlineTrigger);
+        System.out.println(nearlineTrigger);
         this.template.send(topic, nearlineTrigger);
     }
 }
