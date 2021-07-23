@@ -20,7 +20,7 @@ class TransactionConverterTest {
     public void setUp(){ transactionConverter=new TransactionConverter() ;}
 
     @Test
-    public void converterTest() throws ParseException {
+     void converterTest() throws ParseException {
         CollectedTransaction collectedTransaction = new CollectedTransaction() ;
         collectedTransaction.setCardNum("9876543219876543");
         collectedTransaction.setMerchant("Sporer-Keebler");

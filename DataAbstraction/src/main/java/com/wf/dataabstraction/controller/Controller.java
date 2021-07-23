@@ -5,7 +5,6 @@ import com.wf.dataabstraction.entity.CardDetails;
 import com.wf.dataabstraction.entity.CustomerDetails;
 import com.wf.dataabstraction.repository.CardDetailsRepository;
 import com.wf.dataabstraction.repository.CustomerDetailsRepository;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -66,7 +65,7 @@ public class Controller {
     }
 
     @PostMapping(value = "/get/customerID")
-    public Integer getCustomerID( com.wf.contractlib.contracts.CustomerDetails customerDetails){
+    public Integer getCustomerID( @RequestBody com.wf.contractlib.contracts.CustomerDetails customerDetails){
         try {
             Date convertedDob = new SimpleDateFormat("yyyy-MM-dd").parse(customerDetails.getDob());
 

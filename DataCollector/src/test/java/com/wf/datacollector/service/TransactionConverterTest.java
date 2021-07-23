@@ -12,8 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
-
-public class TransactionConverterTest {
+class TransactionConverterTest {
     private TransactionConverter transactionConverter ;
 
     @BeforeEach
@@ -23,7 +22,7 @@ public class TransactionConverterTest {
 
     @Test
     @DisplayName("Should return TRUE")
-    public void converterTest() throws ParseException {
+    void converterTest() throws ParseException {
         InboundTransaction transaction = new InboundTransaction() ;
         transaction.setCard_num("9876543219876543");
         transaction.setMerchant("Sporer-Keebler");

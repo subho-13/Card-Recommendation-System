@@ -22,7 +22,7 @@ class DetailsGeneratorTest {
     }
 
     @Test
-    public void detailsGeneratorTest()
+    void detailsGeneratorTest()
     {
         GeneratedRecommendation generatedRecommendation = new GeneratedRecommendation() ;
         RecommendationDetails recommendationDetails = new RecommendationDetails() ;

@@ -62,7 +62,7 @@ class TransactionCountTriggerTest {
     }
 
     @Test
-    public void handleTest()
+    void handleTest()
     {
         AbstractedTransaction abstractedTransaction = createAbstractedTransaction() ;
 

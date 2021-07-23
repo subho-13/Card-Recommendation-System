@@ -13,10 +13,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import java.util.HashMap;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.when;
@@ -40,9 +37,8 @@ public class DetailsGeneratorTest {
     public void  after() throws Exception {closeable.close();}
 
     @Test
-    public void createNewFeatureVectorTest()
+    void createNewFeatureVectorTest()
     {
-
         AbstractedTransaction abstractedTransaction = new AbstractedTransaction();
         abstractedTransaction.setCustomerID(1);
         abstractedTransaction.setCardID(5);
@@ -76,7 +72,7 @@ public class DetailsGeneratorTest {
     }
 
     @Test
-    public void createUpdatedFeatureVectorTest()
+    void createUpdatedFeatureVectorTest()
     {
 
         AbstractedTransaction abstractedTransaction = new AbstractedTransaction();
@@ -112,13 +108,14 @@ public class DetailsGeneratorTest {
         featureVector.getPurchaseExpenditureMap().put(PurchaseCategory.PERSONAL, 75F);
         featureVector.getPurchaseExpenditureMap().put(PurchaseCategory.FOOD, 20.18F);
         featureVector.setNewUser(true);
-        assertEquals(newFeatureVector, detailsGenerator.createUpdatedFeatureVector(featureVector,abstractedTransaction)) ;
+        FeatureVector featureVector1 = detailsGenerator.createUpdatedFeatureVector(featureVector,abstractedTransaction) ;
+        assertEquals(newFeatureVector, featureVector1) ;
 
 
     }
 
     @Test
-    public void convertTest()
+    void convertTest()
     {
 
         FeatureVector featureVector = new FeatureVector();

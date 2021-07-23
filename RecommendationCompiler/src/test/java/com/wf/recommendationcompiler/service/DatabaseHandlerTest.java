@@ -61,7 +61,7 @@ class DatabaseHandlerTest {
 
     @Test
     @DisplayName("when customer is present")
-    public void handlerTest()
+     void handlerTest()
     {
         Map<CardType,Float> confidenceMap = getMap();
 
@@ -86,7 +86,7 @@ class DatabaseHandlerTest {
 
     @Test
     @DisplayName("when customer is not present")
-    public void detailsNullTest()
+    void detailsNullTest()
     {
         Map<CardType,Float> confidenceMap = getMap();
 
@@ -110,7 +110,7 @@ class DatabaseHandlerTest {
     }
 
     @Test
-    public void getAllRecommendationDetailsTest()
+    void getAllRecommendationDetailsTest()
     {
         databaseHandler.getAllRecommendationDetails();
         when(recommendationDetailsRepository.findAll()).thenReturn(null) ;

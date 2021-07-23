@@ -50,7 +50,7 @@ class LastScheduledTriggerTest {
     }
 
     @Test
-    public void runTest()
+     void runTest()
     {
         List<CustomerDetails> customerDetailsList = new ArrayList<>();
 
@@ -68,10 +68,10 @@ class LastScheduledTriggerTest {
         customerDetailsList.add(customer2) ;
 
        doReturn(customerDetailsList).when(mockRepository).findByLastScheduledUnixTimeLessThan(anyLong()) ;
-//        when(mockRepository.findByLastScheduledUnixTimeLessThan(987654l)).thenReturn(customerDetailsList) ;
-//        lastScheduledTrigger.produceTrigger(customerDetailsList);
+        when(mockRepository.findByLastScheduledUnixTimeLessThan(987654l)).thenReturn(customerDetailsList) ;
+        lastScheduledTrigger.produceTrigger(customerDetailsList);
         verify(triggerProducer,times(2)).produce(any());
-        verify(mockRepository,times(2)).save(any());
+        verify(mockRepository,times(2)).save(customer1);
 
     }
 

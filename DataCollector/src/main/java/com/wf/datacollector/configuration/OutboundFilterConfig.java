@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 public class OutboundFilterConfig {
     @Bean
     public OutboundFilter getOutboundFilterChain() {
-        OutboundFilter filterone = new OutboundFilterUnknown();
-        return filterone;
+
+        return new OutboundFilterUnknown();
     }
 }

@@ -33,7 +33,7 @@ class ModelWeightControllerTest {
         }
 
         @Test
-        public void consumeTransactionTest() throws Exception {
+        void consumeTransactionTest() throws Exception {
             finalRecommendationCompiler = new FinalRecommendationCompiler() ;
             mockMvc.perform(
                     MockMvcRequestBuilders.post("/modelWeight").content("{\"Rule Learning\":0.05,\"Association Rule Learning\":0.15,\"Kpca Kmeans\":0.35,\"Kpca Similarity\":0.06,\"Pca Kmeans\":0.04,\"Som Based\":0.1,\"Neural Based\":0.1,\"Autoencoder Based\":0.1,\"New User\":0.05}").contentType("application/json"))
@@ -42,7 +42,7 @@ class ModelWeightControllerTest {
         }
 
         @Test
-        public void badRequestTest() throws Exception {
+        void badRequestTest() throws Exception {
             finalRecommendationCompiler = new FinalRecommendationCompiler() ;
             mockMvc.perform(
                     MockMvcRequestBuilders.post("/modelWeight").content("").contentType("application/json"))

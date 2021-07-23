@@ -9,9 +9,11 @@ class DatabaseHandlerTest {
 
     @BeforeEach
     void setUp() {
+
     }
 
     @AfterEach
     void tearDown() {
+
     }
 }

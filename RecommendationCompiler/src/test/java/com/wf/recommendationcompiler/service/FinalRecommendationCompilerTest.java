@@ -25,7 +25,7 @@ class FinalRecommendationCompilerTest {
 
     @Test
     @DisplayName("final card confidence map is returned successfully ")
-    public void getCardConfidenceMapTest() {
+    void getCardConfidenceMapTest() {
         Map<CardType, Float> model1_map = new HashMap<>();
         Map<CardType, Float> model2_map = new HashMap<>();
         Map<CardType, Float> model3_map = new HashMap<>();
@@ -67,15 +67,15 @@ class FinalRecommendationCompilerTest {
 
         Map<CardType, Float> finalCardConfidencemap = new HashMap<>();
 
-        finalCardConfidencemap.put(CardType.CASH_WISE, 0.065f);
-        finalCardConfidencemap.put(CardType.COLLEGE, 0.0155f);
-        finalCardConfidencemap.put(CardType.CREDIT_BUILDER, 0.0405f);
-        finalCardConfidencemap.put(CardType.ENTERTAINMENT, 0.099f);
-        finalCardConfidencemap.put(CardType.HOLIDAY, 0.0616f);
-        finalCardConfidencemap.put(CardType.HOTEL, 0.0925f);
-        finalCardConfidencemap.put(CardType.PLATINUM, 0.22749999f);
-        finalCardConfidencemap.put(CardType.SHOPPING, 0.0582f);
-        finalCardConfidencemap.put(CardType.VISA_SIGNATURE, 0.24450001f);
+        finalCardConfidencemap.put(CardType.CASH_WISE, 0.0784f);
+        finalCardConfidencemap.put(CardType.COLLEGE, 0.017900001f);
+        finalCardConfidencemap.put(CardType.CREDIT_BUILDER, 0.0428f);
+        finalCardConfidencemap.put(CardType.ENTERTAINMENT, 0.10390001f);
+        finalCardConfidencemap.put(CardType.HOLIDAY, 0.07164f);
+        finalCardConfidencemap.put(CardType.HOTEL, 0.1071f);
+        finalCardConfidencemap.put(CardType.PLATINUM, 0.24200001f);
+        finalCardConfidencemap.put(CardType.SHOPPING, 0.07238001f);
+        finalCardConfidencemap.put(CardType.VISA_SIGNATURE, 0.2406f);
 
         assertEquals(finalCardConfidencemap, finalRecommendationCompiler.getCardConfidenceMap(modelCardConfidenceMap));
 
@@ -84,7 +84,7 @@ class FinalRecommendationCompilerTest {
 
     @Test
     @DisplayName("Model weights are updated successfully ")
-    public void updateMapTest() {
+     void updateMapTest() {
         HashMap<String, Float> modelWeightMap = new HashMap<>();
         modelWeightMap.put("Rule Learning", 0.05F);
         modelWeightMap.put("Association Rule Learning", 0.15F);

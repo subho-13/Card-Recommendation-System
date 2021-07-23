@@ -123,7 +123,7 @@ class DatabaseHandlerTest {
     }
 
     @Test //customer exists
-    public void handlerTest() throws ParseException {
+     void handlerTest() throws ParseException {
 
         CollectedTransaction collectedTransaction = getCollectedTransaction() ;
         CustomerDetails customerDetails = getCustomerDetails() ;
@@ -155,7 +155,7 @@ class DatabaseHandlerTest {
     }
 
     @Test
-    public void newUserTest() throws ParseException {
+     void newUserTest() throws ParseException {
 
         CollectedTransaction collectedTransaction = getCollectedTransaction() ;
         CustomerDetails customerDetails = getCustomerDetails() ;

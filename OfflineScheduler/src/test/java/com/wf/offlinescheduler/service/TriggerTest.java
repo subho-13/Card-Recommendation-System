@@ -24,7 +24,7 @@ import static org.mockito.Mockito.when;
 
 
 @ExtendWith(MockitoExtension.class)
-public class TriggerTest {
+class TriggerTest {
     @Mock
     TriggerProducer triggerProducer;
     @Mock
@@ -33,9 +33,7 @@ public class TriggerTest {
     AutoCloseable closeable;
     @InjectMocks
     private Trigger trigger;
-    private int totalUsers = 0;
-    private int numUsersAboveThreshold = 0;
-    private int currentThresholdTransactionCount = 8;
+    private int currentThresholdTransactionCount = 3;
 
     @BeforeEach
     public void setUp() {
@@ -64,27 +62,27 @@ public class TriggerTest {
 
     @Test
     @DisplayName("send trigger when above threshold")
-    public void sendTriggerTest() {
+    void sendTriggerTest() {
 
         AbstractedTransaction abstractedTransaction = createAbstractedTransaction();
 
         CustomerDetails customerDetails = new CustomerDetails();
         customerDetails.setCustomerID(001);
-        customerDetails.setNumTransactions(7);
+        customerDetails.setNumTransactions(2);
 
         when(mockRepository.findById(anyInt())).thenReturn(Optional.of(customerDetails));
         when(mockRepository.countByNumTransactionsGreaterThanEqual(currentThresholdTransactionCount)).thenReturn(100);
         trigger.handle(abstractedTransaction);
 
-//        System.out.println(trigger.getTotalUsers()+" "+trigger.getNumUsersAboveThreshold()+" " +trigger
-//        .getCurrentThresholdTransactionCount());
+        System.out.println(trigger.getTotalUsers()+" "+trigger.getNumUsersAboveThreshold()+" " +trigger
+        .getCurrentThresholdTransactionCount());
         assertEquals(100, trigger.getNumUsersAboveThreshold());
 
     }
 
     @Test
     @DisplayName("trigger is not sent when customer exists but below threshold")
-    public void belowThresholdTest() {
+    void belowThresholdTest() {
 
         AbstractedTransaction abstractedTransaction = createAbstractedTransaction();
 
@@ -102,7 +100,7 @@ public class TriggerTest {
 
     @Test
     @DisplayName("new customer is added")
-    public void newCustomerTest() {
+    void newCustomerTest() {
         AbstractedTransaction abstractedTransaction = createAbstractedTransaction();
         CustomerDetails customerDetails = new CustomerDetails();
         customerDetails.setCustomerID(001);

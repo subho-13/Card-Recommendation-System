@@ -34,7 +34,7 @@ public class InboundFilterNull implements InboundFilter {
         isInputOkay &= (transaction.getAge() != null);
         isInputOkay &= (transaction.getCredit_score()!= null);
 
-        if(nextInboundFilter == null || isInputOkay == false) {
+        if(nextInboundFilter == null || isInputOkay ==false) {
             return isInputOkay;
         }
 

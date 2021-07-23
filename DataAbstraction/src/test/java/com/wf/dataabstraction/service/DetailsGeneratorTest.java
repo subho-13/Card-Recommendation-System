@@ -23,7 +23,7 @@ class DetailsGeneratorTest {
 
     @Test
     @DisplayName("assert return values and null parameters")
-    public void test() throws ParseException {
+     void test() throws ParseException {
 
         CollectedTransaction collectedTransaction = new CollectedTransaction() ;
         collectedTransaction.setCardNum("9876543219876543");

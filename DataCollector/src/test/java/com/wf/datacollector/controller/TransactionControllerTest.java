@@ -20,7 +20,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @AutoConfigureMockMvc
 @WebMvcTest(TransactionController.class)
-public class TransactionControllerTest {
+class TransactionControllerTest {
     @Autowired
     protected MockMvc mockMvc;
     @Autowired
@@ -38,7 +38,7 @@ public class TransactionControllerTest {
     }
 
     @Test
-    public void consumeTransactionTest() throws Exception {
+     void consumeTransactionTest() throws Exception {
         InboundTransaction inboundTransaction = new InboundTransaction();
         when(collectedTransactionProducer.produce(inboundTransaction)).thenReturn(false);
         mockMvc.perform(
@@ -55,7 +55,7 @@ public class TransactionControllerTest {
     }
 
     @Test
-    public void badRequestTest() throws Exception {
+     void badRequestTest() throws Exception {
         InboundTransaction inboundTransaction = new InboundTransaction();
         when(collectedTransactionProducer.produce(inboundTransaction)).thenReturn(false);
         mockMvc.perform(
