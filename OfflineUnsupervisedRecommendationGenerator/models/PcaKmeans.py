@@ -91,7 +91,6 @@ def recommendation_generator(clusters, mapping_dict, card_data, df, card_mapper)
 
 
 def pca_kmeans(df):
-
     cat_map, indices = category_card_mapper()
     card_data = card_data_generator()
 

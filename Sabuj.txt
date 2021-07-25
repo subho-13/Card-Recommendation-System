@@ -1,0 +1,13 @@
+Good Evening,
+Welcome to the final presentation of Team - B1
+
+Today, we're going to discuss about the following topics
+-> Card Recommendation System
+-> Fraud Detection System
+-> Testing and Scalability
+-> Demo of the Two Systems
+
+Starting with the Card Recommendation System
+	-> Go through the overview
+	-> Take a brief look into the Architecture
+	-> Discuss about the Recommendation Models

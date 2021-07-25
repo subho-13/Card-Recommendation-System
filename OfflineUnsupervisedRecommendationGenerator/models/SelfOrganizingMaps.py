@@ -87,6 +87,7 @@ def recommendation_generator(som, mapping_dict, card_data, df, X, card_mapper):
 
     return user_final_list
 
+
 def self_organizing_maps(df):
     cat_map, indices = category_card_mapper()
     card_data = card_data_generator()

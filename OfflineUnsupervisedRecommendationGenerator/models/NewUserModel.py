@@ -16,7 +16,7 @@ def available_cards(card_data, df):
                     user_list[j] = 1.0
                     break
 
-            if (card['Card_Name'] != "College" and credit >= card['Credit_Score'] and df.loc[i,'card_type'] != j):
+            if (card['Card_Name'] != "College" and credit >= card['Credit_Score'] and df.loc[i, 'card_type'] != j):
                 if max(600, card['Credit_Score']) > max_credit:
                     for k, val in enumerate(user_list):
                         if val > 0 and max(600, card_data[k]['Credit_Score']) < (max_credit - 50):
@@ -24,7 +24,7 @@ def available_cards(card_data, df):
                     user_list.append(1.0)
                     max_credit = max(600, card['Credit_Score'])
                     continue
-                    
+
                 if max(600, card['Credit_Score']) >= (max_credit - 50):
                     user_list.append(1.0)
                     max_credit = max(600, card['Credit_Score'])

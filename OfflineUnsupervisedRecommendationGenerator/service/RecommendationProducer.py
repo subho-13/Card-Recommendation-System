@@ -1,9 +1,9 @@
 import json
+from random import randint
 from threading import Thread
+from time import sleep
 
 from kafka import KafkaProducer
-from random import randint
-from time import sleep
 
 from Configuration import bootstrap_servers, minimum_df_size
 from lib.CommonDicts import card_dict
@@ -55,7 +55,7 @@ class RecommendationProducer(Thread):
 
     def generate_recommendation(self):
         sleep(randint(3, 7))
-        
+
         with self.rwlock.gen_wlock():
             df = self.load_and_preprocess_df()
 
