@@ -65,6 +65,7 @@ public class ComplimentaryCardProvider {
 
             if (rewardPoints > maxRewardPoints) {
                 recommendedCard = card;
+                maxRewardPoints = rewardPoints;
                 continue;
             } else if (rewardPoints < maxRewardPoints) {
                 continue;
@@ -74,6 +75,7 @@ public class ComplimentaryCardProvider {
 
             if (benefitsSum >= maxBenefitsSum) {
                 recommendedCard = card;
+                maxBenefitsSum = benefitsSum;
             }
         }
 

@@ -14,7 +14,7 @@
     grid-template-columns: repeat(4, 1fr);
     font-family: 'Open Sans', sans-serif;
     font-weight: normal;
-    font-size: 1.1rem;
+    font-size: 1rem;
     border-style: solid;
     border-color: #ffcd41;
     border-width: 1px 2px 1px 2px ;
@@ -24,7 +24,7 @@
 .product-heading {
     background-color: #d71e2b;
     color: #ffcd41;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: bold;
 }
 
@@ -32,7 +32,7 @@
     border-style: solid;
     border-color: #ffcd41;
     border-width: 0px 1px 0px 0px ;
-    padding: 0.4rem;
+    padding: 0.2rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -43,7 +43,7 @@
     border-style: solid;
     border-color: #ffcd41;
     border-width: 0px 1px 0px 1px ;
-    padding: 0.4rem;
+    padding: 0.2rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -54,7 +54,7 @@
     border-style: solid;
     border-color: #ffcd41;
     border-width: 0px 1px 0px 1px ;
-    padding: 0.4rem;
+    padding: 0.2rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -65,7 +65,7 @@
     border-style: solid;
     border-color: #ffcd41;
     border-width: 0px 1px 0px 0px ;
-    padding: 0.4rem;
+    padding: 0.2rem;
     display: flex;
     justify-content: center;
     align-items: center;

@@ -51,10 +51,6 @@ public class CompiledRecommendationProducer implements DisposableBean, Runnable 
         while (true) {
             Thread.sleep(sleepTime);
 
-            if (!databaseHandler.getIsNewDataAvailable()) {
-                continue;
-            }
-
              List<RecommendationDetails> recommendationDetailsList = databaseHandler.getAllRecommendationDetails();
             Map<Integer, Map<String, Map<CardType, Float>>> customerModelCardConfidenceMap =
                     getCustomerModelCardConfidenceMap(recommendationDetailsList);

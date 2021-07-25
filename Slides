@@ -20,30 +20,41 @@ Building such a Recommendation System brings forth an array of Challenges
 		
 Now that we know the challenges, Sabuj will now discuss about the System Architecture
 
-One of our primary challenges was to make the Recommendation System scalable. Scalability 
-	-> handle increasing and dynamic workload 
-	-> By adding new resources and functionalities 
-	-> in a cost effective manner
-
+<- Akanksha ->
+One of our primary challenges was to make the Recommendation System scalable.
 To measure the scalability, we'll use the Scale Cube Model.
 
 In the scale cube model, the axes represent the scalability strategies
 	-> The X Axis represents scaling by replication, i.e., running multiple copies of the services behind a load balancer
 	-> Y Axis represents scaling by Componentization, i.e.,  decomposing the Architecture into disjoint services
 	-> Z Axis represents scaling through Federation, i.e., assigning each instance of the microservice, a subset of the data
+	
+	<- Akanksha ->
+	
+	<- Souvik ->
 
 	-> Architecture is X Axis scalable because
 		-> The microservices are Loosely coupled as Producers and Consumers
 		-> Thus, we can handle the incoming events conurrently by deploying N - Identical microservice instances.
 		
+	<- Souvik ->
+	
+	<- Akanksha ->
+	
 	-> Architecture follows Y axis scaling strategy because
 		-> Composed of a set of microservices where each microservice has a Bounded Context
 		-> This ensures that each microservice is responsible for one or more closely related functions
+	
+	<- Akanksha ->
 
+	<- Souvik ->
+	
 	-> Architecture is also Z axis scalable since it runs on top of Apache Kafka.
 		-> In Kafka producer, we can specify a customer centric partition key to indicate the destination of a message. 
 		-> Thus, in this way, we can achieve Data Partioning or Federation in our architecture
+		
+	<- Souvik ->
 
-So, that was all about Card Recommendation System
--> Thank you, Opening the floor to Questions
+So, that was all about Card Recommendation and the Fraud Detection Systems.
+Now, before we move to the Q&A, we'd like to show a short demo of our System.
 

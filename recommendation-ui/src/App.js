@@ -67,7 +67,7 @@ function App() {
         </div>
         <div className="reward-points">
           <div className="field-name">Reward Points</div>
-          <div className="field-value">{customerDetails.rewardPoints}</div>
+          <div className="field-value">{customerDetails.rewardPoints.toFixed(2)}</div>
         </div>
         <div className="profession">
           <div className="field-name">Profession</div>

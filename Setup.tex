@@ -1,0 +1,205 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+
+\author{}
+\date{}
+
+\begin{document}
+
+\hypertarget{setup}{%
+\section{Setup}\label{setup}}
+
+\hypertarget{cloning-repository}{%
+\subsection{Cloning Repository}\label{cloning-repository}}
+
+Git clone the TEAM B1 repository.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{git}\NormalTok{ clone https://github.com/preethamlv/TEAM{-}B1.git}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{installing-dependencies}{%
+\subsection{Installing Dependencies}\label{installing-dependencies}}
+
+Install the following packages :
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Java and Maven
+\item
+  Postgresql
+\item
+  Pip and Python dependencies
+\item
+  Apache Kafka
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sudo}\NormalTok{ apt install default{-}jdk default{-}jre maven postgresql python3{-}pip}
+\ExtensionTok{pip}\NormalTok{ install Flask SQLAlchemy psycopg2{-}binary kafka{-}python }
+\ExtensionTok{pip}\NormalTok{ install keras tensorflow yellowbrick xgboost pandas numpy}
+\BuiltInTok{cd}\NormalTok{ Card{-}Recommendation{-}System}
+\FunctionTok{mkdir}\NormalTok{ ./binaries}
+\CommentTok{\# Download Kafka{-}2.13 from kafka.apache.org/downloads}
+\CommentTok{\# Extract the GZIP file in the \textquotesingle{}binaries\textquotesingle{}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{installing-maven-dependencies}{%
+\subsection{Installing Maven
+Dependencies}\label{installing-maven-dependencies}}
+
+Go to the Java Microservices and maven install them in the following
+order
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{cd}\NormalTok{ ./Contractlib}
+\ExtensionTok{mvn}\NormalTok{ install}
+\BuiltInTok{cd}\NormalTok{ ../DataCollector}
+\ExtensionTok{mvn}\NormalTok{ install}
+\BuiltInTok{cd}\NormalTok{ ../DataAbstraction}
+\ExtensionTok{mvn}\NormalTok{ install}
+\BuiltInTok{cd}\NormalTok{ ../FeatureExtractionOne}
+\ExtensionTok{mvn}\NormalTok{ install}
+\BuiltInTok{cd}\NormalTok{ ../OfflineScheduler}
+\ExtensionTok{mvn}\NormalTok{ install}
+\BuiltInTok{cd}\NormalTok{ ../NearlineScheduler}
+\ExtensionTok{mvn}\NormalTok{ install}
+\BuiltInTok{cd}\NormalTok{ ../RecommendationCompiler}
+\ExtensionTok{mvn}\NormalTok{ install}
+\BuiltInTok{cd}\NormalTok{ ../RecommendationProvider}
+\ExtensionTok{mvn}\NormalTok{ install}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{creating-databases}{%
+\subsection{Creating Databases}\label{creating-databases}}
+
+Create the following Postgres Database:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sudo}\NormalTok{ {-}u postgres psql}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+CREATE USER teamb1 WITH PASSWORD 'themonksofteamb1'
+CREATE DATABASE data_abstraction_db WITH OWNER teamb1;
+CREATE DATABASE redeem_reward_points_db WITH OWNER teamb1;
+CREATE DATABASE feature_extraction_one_db WITH OWNER teamb1;
+CREATE DATABASE nearline_scheduler_db WITH OWNER teamb1;
+CREATE DATABASE offline_scheduler_db WITH OWNER teamb1;
+CREATE DATABASE recommendation_compiler_db WITH OWNER teamb1;
+CREATE DATABASE recommendation_provider_db WITH OWNER teamb1;
+CREATE DATABASE offline_unsupervised_generator_db WITH OWNER teamb1;
+CREATE DATABASE nearline_supervised_generator_db WITH OWNER teamb1;
+CREATE DATABASE nearline_supervised_trainer_db WITH OWNER teamb1;
+ALTER SYSTEM SET max_connections TO '500';
+\end{verbatim}
+
+\hypertarget{starting-microservices}{%
+\subsection{Starting Microservices}\label{starting-microservices}}
+
+Go to the /scripts folder of Card-Recommdendation-System and Run the
+following commands
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Execute only once}
+\FunctionTok{chmod}\NormalTok{ +x ./init*}
+\CommentTok{\# Start the Microservices}
+\ExtensionTok{./init.sh}
+\end{Highlighting}
+\end{Shaded}
+
+If the script fails to run the Kafka-Server, fix the Kafka Path in
+init\_kafka.sh
+
+\end{document}

@@ -9,7 +9,7 @@ function CardConfidence(props) {
     }).map(elem => {
         return <div className='row' key={elem[0]}>
             <div className='model'>{beautify(elem[0])}</div>
-            <div className='score'>{elem[1]}</div>
+            <div className='score'>{elem[1].toFixed(4)}</div>
         </div>
     })
 

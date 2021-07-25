@@ -52,7 +52,7 @@ public class FinalRecommendationCompiler {
         Map<CardType, Float> finalCardConfidenceMap = new HashMap<>();
         try {
             readLock.lock();
-
+            float totalGlobalConfidence = 0.0F;
             for (Map.Entry<String, Map<CardType, Float>> entry: modelCardConfidenceMap.entrySet()) {
                 String modelName = entry.getKey();
                 Float modelWeight = modelWeightMap.get(modelName);
@@ -64,13 +64,23 @@ public class FinalRecommendationCompiler {
                     Float confidence = cardConfidence.getValue();
                     Float globalConfidence = confidence * modelWeight;
 
-                    if(finalCardConfidenceMap.containsKey(cardType)) {
+                    if (finalCardConfidenceMap.containsKey(cardType)) {
                         Float prevConfidence = finalCardConfidenceMap.get(cardType);
                         globalConfidence += prevConfidence;
                     }
 
                     finalCardConfidenceMap.put(cardType, globalConfidence);
                 }
+            }
+
+            for(Map.Entry<CardType, Float> finalCardConfidence : finalCardConfidenceMap.entrySet()) {
+                totalGlobalConfidence += finalCardConfidence.getValue();
+            }
+
+
+            for(Map.Entry<CardType, Float> finalCardConfidence : finalCardConfidenceMap.entrySet()) {
+                    finalCardConfidenceMap.put(finalCardConfidence.getKey(),
+                            finalCardConfidence.getValue()/totalGlobalConfidence);
             }
 
         } finally {

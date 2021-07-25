@@ -12,7 +12,7 @@ from service.AbstractedTransactionConsumer import AbstractedTransactionConsumer
 from service.RestService import RestService
 
 app = Flask(__name__)
-cors = CORS(app)
+cors = CORS(app, resources={r"/*": {"origins": "*", "send_wildcard": "False"}})
 app.config['CORS_HEADERS'] = 'Content-Type'
 
 purchase_category_min_max_dict = {

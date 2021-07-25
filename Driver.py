@@ -14,5 +14,5 @@ with open('./Data/Final Transaction Data.csv', mode='r') as csv_file:
         if line_count > 0:
             requests.post(url, json=row)
             print("Transaction Number :: " , line_count)
-            sleep(randint(20, 40)/1000)
+            sleep(randint(10, 20)/1000)
         line_count += 1

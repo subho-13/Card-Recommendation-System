@@ -1,75 +1,47 @@
-At first, we'll run the initialization script.
-This will initiate the Kafka Server
-Then it will some clean-up operations from previous run.
-
-After that it starts launching the different servers, as you can see.
-
-At first the
-	-> DataCollector service comes online
-	-> Then the Data Abstraction
+-> At first, The Kafka Server is initialized
+-> Then, we're performing some clean-Up operations
+-> After that we're starting the following servers
+	-> Data Collector
+	-> Data Abstraction
 	-> Feature Extraction
 	-> Offline Scheduler
 	-> Nearline Scheduler
 	-> Recommendation Compiler
 	-> Recommendation Provider
-	-> Reward Suggestion
-	-> And the Reward Redeem Service
+	-> Reward Suggestions
+	-> Redeem Reward Points
 	
-After that we start our 
-	-> Offline Unsupervised Recommendation Generator services
-	-> Followed by the Nearline Supervised Trainer Service
-	-> And the Nearline Supervised Generator Service.
-
-Due to Hardware contraints, We're running only a subset of the models
+-> We're running the following unsupervised models
 	-> New User Model
-	-> Rule Learning Model
-	-> Association Rule Learning Model
-	-> Self Organizing Maps Model
-	-> Neural Embedding Model
-	-> And the XGBoost Model
+	-> Rule Learning
+	-> Association Rule Learning
+	-> Self Organizing Maps
+	-> Kpca Similarity
+	-> Neural Embedding
+-> And then we're starting the
+	-> XGBoost
+		-> Trainer
+		-> Generator Service
+		
+-> And finally the UI and the Transaction Driver.
+-> The Transaction Driver is sending the Transactions to the Data Collector
+    
+-> So, right now we can see that we've received no recommendations from the models
+-> What we're waiting for is the first Trigger to these models to generate the recommendations 
+-> And we recieved one and Here, we have the recommendations
+	-> from the Rule Learning and New User Model
+-> But not Other Models 
+	-> These models require a few more transactions to start generating good recommendations. 
+	-> So, waiting for more Triggers
+-> Now, if we check once again, all the unsupervised models are now  generating recommendations
+-> Question is what about the xgboost models?
+-> The XGBoost model is waiting to getting trained from these recommendations
+-> And here, we've trained our first model
+-> Okay, the Xgboost Scheduler is also sending the triggers
+-> And lo! The XGBoost models have also started generating Recommendations
+-> So, after that all these recommendations are getting compiled in the Recommendation Compiler, which is further sending it to the Provider service, acting as a backend for the UI
+-> Now, if check the results for the Users from the UI
 
-Finally, Our Driver Starts streaming in The Transactions
-
-Now,
-	-> The Unsupervised Models are waiting for the Offline Triggers
-	-> And the Supervised Models are waiting to get trained to become Operational
+27:09
+31:11	
 	
--> Oh wait, Here we got our First Trigger
-	-> The New User Models responded
-	-> The Rule Learning Model also responsed to it
-	-> But what about the Rest?
-		-> They're actually waiting to have enough Old Users before they feasibily start generating recommendations
-	-> After a Few Triggers
-		-> Oh They Did!
-
--> It's about time that the Nearline Supervised Trainer starts Cooking a XGBoost Model
-	-> The Trainer trained a XGBoost Model
-	-> And Sent it to the Generator Service
-	
--> After Receiving Nearline Triggers from the Nearline Scheduler
-	-> The XGBoost Model also starts generating the Recommendations
-	
--> The Compiler compiles all these Recommendations periodically
-	-> And then Sends it to Recommendation Provider
-
--> Now, let's see the Final Recommendations and the Product Suggestions
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
