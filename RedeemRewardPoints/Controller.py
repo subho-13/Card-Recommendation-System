@@ -14,7 +14,7 @@ from service.RestService import RestService
 csrf = CSRFProtect()
 app = Flask(__name__)
 csrf.init_app(app)
-cors = CORS(app, resources={r"/*": {"origins": "*", "send_wildcard": "False"}})
+cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
 purchase_category_min_max_dict = {
