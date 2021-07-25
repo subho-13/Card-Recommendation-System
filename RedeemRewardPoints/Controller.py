@@ -4,14 +4,16 @@ from time import sleep
 
 from flask import Flask
 from flask_cors import CORS, cross_origin
+from flask_wtf.csrf import CSRFProtect
 
 from readerwriterlock import rwlock
 
 from repository.DatabaseHandler import *
 from service.AbstractedTransactionConsumer import AbstractedTransactionConsumer
 from service.RestService import RestService
-
+csrf = CSRFProtect()
 app = Flask(__name__)
+csrf.init_app(app)
 cors = CORS(app, resources={r"/*": {"origins": "*", "send_wildcard": "False"}})
 app.config['CORS_HEADERS'] = 'Content-Type'
 

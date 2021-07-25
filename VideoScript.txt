@@ -41,7 +41,3 @@
 -> And lo! The XGBoost models have also started generating Recommendations
 -> So, after that all these recommendations are getting compiled in the Recommendation Compiler, which is further sending it to the Provider service, acting as a backend for the UI
 -> Now, if check the results for the Users from the UI
-
-27:09
-31:11	
-	
