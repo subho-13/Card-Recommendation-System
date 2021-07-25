@@ -21,12 +21,13 @@ Building such a Recommendation System brings forth an array of Challenges
 Now that we know the challenges we're trying to address, Sabuj will now discuss about the System Architecture
 
 In the Redeem Reward Points Microservice
-	-> Product database containing a list of -> premium as well as basic <- products and services.
+	-> Product database contains a list of -> premium as well as basic <- products and services.
 -> These Products are suggested to the users based on their reward points in the associated categories. 
--> For evaluation purposes, we are considering a customer, whose profession is 'Student' and has rewards points of about 8132.
+-> For evaluation purposes, we are considering a customer, whose profession is 'Student' and has rewards points of about 81 - hundred
 -> Now, the plot shows Categories like Education and Shopping involves maximum expenditure. 
 -> So, recommending the 'Book voucher' and 'Nike shoes' as the top suggestions seem to be quite reasonable.
--> Another product, the 'Dell laptop' has also been suggested which has a slightly greater reward points requirement.
+-> Another product, the 'Dell laptop' has also been suggested. 
+-> This has a slightly greater reward points requirement.
 -> This is so, because the user may take it up as a target
 	-> And decide to save the reward points rather than spending them all on other products.
 

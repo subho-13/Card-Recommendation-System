@@ -14,7 +14,7 @@ from service.RestService import RestService
 csrf = CSRFProtect()
 app = Flask(__name__)
 csrf.init_app(app)
-cors = CORS(app)
+# cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
 purchase_category_min_max_dict = {
@@ -43,7 +43,7 @@ def construct_reward_suggestions(rewardPoints=0, productSuggestions=[]):
 
 
 @app.route('/get/<customer_id>')
-@cross_origin()
+@cross_origin("localhost:*")
 def hello_world(customer_id):
     customer_details = get_customer_details(customer_id)
 
