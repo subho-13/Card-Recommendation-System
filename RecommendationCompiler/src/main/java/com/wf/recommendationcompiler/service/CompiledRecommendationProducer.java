@@ -3,7 +3,6 @@ package com.wf.recommendationcompiler.service;
 import com.wf.contractlib.contracts.CompiledRecommendation;
 import com.wf.contractlib.entities.CardType;
 import com.wf.recommendationcompiler.entity.RecommendationDetails;
-import com.wf.recommendationcompiler.repository.RecommendationDetailsRepository;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -90,6 +89,6 @@ public class CompiledRecommendationProducer implements DisposableBean, Runnable 
 
     @Override
     public void destroy() throws Exception {
-
+           //do nothing
     }
 }

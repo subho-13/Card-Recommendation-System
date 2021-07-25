@@ -8,6 +8,7 @@ class NearlineSchedulerApplicationTests {
 
     @Test
     void contextLoads() {
+
     }
 
 }

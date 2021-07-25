@@ -1,6 +1,6 @@
 package com.wf.contractlib.contracts;
 
-import com.wf.contractlib.entities.Gender;
+import com.wf.contractlib.entities.* ;
 import lombok.*;
 
 @Data

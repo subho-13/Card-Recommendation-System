@@ -1,9 +1,7 @@
 package com.wf.datacollector.controller;
 
 import com.wf.datacollector.entity.InboundTransaction;
-import com.wf.datacollector.filter.inbound.InboundFilter;
 import com.wf.datacollector.service.CollectedTransactionProducer;
-import com.wf.datacollector.service.TransactionConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,7 +17,7 @@ public class TransactionController {
     }
 
     @PostMapping("/transaction")
-    boolean consumeTransaction(@RequestBody InboundTransaction inboundTransaction) {
+    public boolean consumeTransaction(@RequestBody InboundTransaction inboundTransaction) {
         return collectedTransactionProducer.produce(inboundTransaction);
     }
 }

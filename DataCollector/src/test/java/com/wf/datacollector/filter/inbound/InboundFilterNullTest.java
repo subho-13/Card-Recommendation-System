@@ -14,10 +14,9 @@ import org.junit.jupiter.api.Test;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class InboundFilterNullTest {
+class InboundFilterNullTest {
 
     private  InboundFilterNull inboundFilterNull ;
 
@@ -29,7 +28,7 @@ public class InboundFilterNullTest {
 
     @Test
     @DisplayName("Should return true when the fields aren't unknown")
-    public void testIsOk() throws ParseException {
+    void testIsOk() throws ParseException {
         InboundTransaction inboundTransaction = new InboundTransaction();
         inboundTransaction.setTrans_date_trans_time("6/21/2020 12:14");
         inboundTransaction.setCard_num("9876543219876543");
@@ -64,7 +63,7 @@ public class InboundFilterNullTest {
 
     @Test
     @DisplayName("Should return false when values are null")
-    public void testIsNotOkWhenDobNull() {
+    void testIsNotOkWhenDobNull() {
         InboundTransaction inboundTransaction = new InboundTransaction();
         inboundTransaction.setTrans_date_trans_time(null);
         inboundTransaction.setCard_num("9876543219876543");
@@ -97,7 +96,7 @@ public class InboundFilterNullTest {
 
     @Test
     @DisplayName("Should return false when the fields are unknown")
-    public void testIsNotOkWhenUnknown() throws ParseException {
+    void testIsNotOkWhenUnknown() throws ParseException {
         InboundTransaction inboundTransaction = new InboundTransaction();
         inboundTransaction.setTrans_date_trans_time("");
         inboundTransaction.setCard_num("9876543219876543");
@@ -106,7 +105,7 @@ public class InboundFilterNullTest {
         inboundTransaction.setTrans_amt(30.34F);
         inboundTransaction.setFirst("Ashley");
         inboundTransaction.setLast("Lopez");
-        inboundTransaction.setGender("");
+        inboundTransaction.setGender(null);
         inboundTransaction.setCard_type("Shopping");
         inboundTransaction.setCredit_score(210);
         inboundTransaction.setStreet("9333 Valentine Point");
@@ -116,7 +115,7 @@ public class InboundFilterNullTest {
         inboundTransaction.setLongitude(40.6729F);
         inboundTransaction.setLatitude(-73.5365F);
         inboundTransaction.setCity_pop(34496);
-        inboundTransaction.setJob("");
+        inboundTransaction.setJob(null);
         inboundTransaction.setDob("10-2-98");
         inboundTransaction.setTrans_num("c81755dbbbea9d5c77f094348a7579be");
         inboundTransaction.setUnix_time(1371816893L);
@@ -127,5 +126,6 @@ public class InboundFilterNullTest {
 
         System.out.println(inboundTransaction) ;
         assertFalse(inboundFilterNull.isOk(inboundTransaction), "Should return false");
+
     }
 }

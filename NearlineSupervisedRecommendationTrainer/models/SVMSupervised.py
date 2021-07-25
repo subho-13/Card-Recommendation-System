@@ -76,8 +76,8 @@ class SVMObject:
         self.sc = sc
         self.model = model
 
-    def train(self):
-        self.sc, self.model = svm_trainer()
+    def train(self, df):
+        self.sc, self.model = svm_trainer(df)
 
     def update(self, new_model):
         self.sc = new_model.sc

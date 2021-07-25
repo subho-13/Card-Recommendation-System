@@ -55,15 +55,7 @@ public class LastScheduledTrigger  implements DisposableBean, Runnable {
         while (true) {
             List<CustomerDetails> customerDetailsList = getCustomersToSchedule();
 
-            for(CustomerDetails customer: customerDetailsList) {
-                NearlineTrigger nearlineTrigger = new NearlineTrigger();
-                nearlineTrigger.setCustomerID(customer.getCustomerID());
-
-                triggerProducer.produce(nearlineTrigger);
-
-                customer.setLastScheduledUnixTime(Time.getCurrentTimeInSecs());
-                customerDetailsRepository.save(customer);
-            }
+            produceTrigger(customerDetailsList) ;
 
             Thread.sleep(sleepTime);
         }
@@ -75,5 +67,21 @@ public class LastScheduledTrigger  implements DisposableBean, Runnable {
     }
 
     @Override
-    public void destroy() throws Exception {}
+    public void destroy() throws Exception {
+        //do nothing
+    }
+
+    public void produceTrigger(List<CustomerDetails> customerDetailsList )
+    {
+        for(CustomerDetails customer: customerDetailsList) {
+            NearlineTrigger nearlineTrigger = new NearlineTrigger();
+            nearlineTrigger.setCustomerID(customer.getCustomerID());
+
+            triggerProducer.produce(nearlineTrigger);
+
+            customer.setLastScheduledUnixTime(Time.getCurrentTimeInSecs());
+            customerDetailsRepository.save(customer);
+        }
+
+    }
 }

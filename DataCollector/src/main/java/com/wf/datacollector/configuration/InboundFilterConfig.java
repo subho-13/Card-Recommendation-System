@@ -10,7 +10,6 @@ public class InboundFilterConfig {
 
     @Bean
     public InboundFilter getInboundFilterChain() {
-        InboundFilter filterone = new InboundFilterNull();
-        return filterone;
+        return new InboundFilterNull();
     }
 }

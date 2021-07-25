@@ -27,11 +27,9 @@ import java.text.SimpleDateFormat;
 import java.util.Optional;
 
 import static com.wf.contractlib.entities.JobType.MANAGER;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @AutoConfigureMockMvc
 @WebMvcTest(Controller.class)
@@ -53,7 +51,7 @@ class ControllerTest {
 
     @Test
     @DisplayName("Get mapping tests when user not found in DB ")
-    public void newUserTest() throws Exception {
+     void newUserTest() throws Exception {
 
         when(cardDetailsRepository.findByCardID(5)).thenReturn(Optional.empty());
         mockMvc.perform(
@@ -73,17 +71,17 @@ class ControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().string("")) ;
 
-//        when(customerDetailsRepository.findByFirstNameAndLastNameAndGenderAndDob(anyString(),anyString(),any(),any())).thenReturn(Optional.empty()) ;
-//        mockMvc.perform(
-//                MockMvcRequestBuilders.post("/get/customerID").content("{\\\"customerID\\\":1,\\\"firstName\\\":\\\"Ashley\\\",\\\"lastName\\\":\\\"Lopez\\\",\\\"gender\\\":\\\"FEMALE\\\",\\\"dob\\\":\\\"10-10-98\\\",\\\"addressDetails\\\":null,\\\"job\\\":\\\"MANAGER\\\",\\\"creditScore\\\":210,\\\"cardDetails\\\":[]}\"" )
-//                        .contentType("application/json"))
-//                .andExpect(status().isBadRequest()) ;
-// {\"customerID\":1,\"firstName\":\"Ashley\",\"lastName\":\"Lopez\",\"gender\":\"FEMALE\",\"dob\":\"10-10-98\",\"addressDetails\":null,\"job\":\"MANAGER\",\"creditScore\":210,\"cardDetails\":[]}"
+        when(customerDetailsRepository.findByFirstNameAndLastNameAndGenderAndDob(anyString(),anyString(),any(),any())).thenReturn(Optional.empty()) ;
+        mockMvc.perform(
+                MockMvcRequestBuilders.post("/get/customerID")
+                        .content("{\"firstName\":\"Ashley\",\"lastName\":\"Lopez\",\"gender\":\"FEMALE\",\"dob\":\"2000-01-09\"}")
+                        .contentType("application/json"))
+                .andExpect(status().isOk()).andReturn() ;
 
     }
 
     @Test
-    public void controllerTest() throws Exception {
+    void controllerTest() throws Exception {
 
         CustomerDetails customerDetails = new CustomerDetails() ;
         customerDetails.setCustomerID(1);
@@ -118,11 +116,12 @@ class ControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().string(String.valueOf(210))) ;
 
-        when(customerDetailsRepository.findByFirstNameAndLastNameAndGenderAndDob(anyString(),anyString(),any(),any())).thenReturn(Optional.empty()) ;
+        when(customerDetailsRepository.findByFirstNameAndLastNameAndGenderAndDob(anyString(),anyString(),any(),any())).thenReturn(Optional.of(customerDetails)) ;
         mockMvc.perform(
-                MockMvcRequestBuilders.post("/get/customerID").content("{\\\"customerID\\\":1,\\\"firstName\\\":\\\"Ashley\\\",\\\"lastName\\\":\\\"Lopez\\\",\\\"gender\\\":\\\"FEMALE\\\",\\\"dob\\\":\\\"10-10-98\\\",\\\"addressDetails\\\":null,\\\"job\\\":\\\"MANAGER\\\",\\\"creditScore\\\":210,\\\"cardDetails\\\":[]}\"" )
+                MockMvcRequestBuilders.post("/get/customerID")
+                        .content("{\"firstName\":\"Ashley\",\"lastName\":\"Lopez\",\"gender\":\"FEMALE\",\"dob\":\"2000-01-09\"}")
                         .contentType("application/json"))
-                .andExpect(status().isOk()) ;
+                        .andExpect(status().isOk());
 
     }
 

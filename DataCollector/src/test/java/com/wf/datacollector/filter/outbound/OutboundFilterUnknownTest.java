@@ -15,7 +15,7 @@ import java.text.SimpleDateFormat;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class OutboundFilterUnknownTest {
+class OutboundFilterUnknownTest {
     private OutboundFilterUnknown outboundFilterUnknown;
 
     @BeforeEach
@@ -27,7 +27,7 @@ public class OutboundFilterUnknownTest {
 
     @Test
     @DisplayName("Should return true when the fields aren't unknown")
-    public void testIsOk() throws ParseException {
+     void testIsOk() throws ParseException {
         CollectedTransaction collectedTransaction = new CollectedTransaction();
         collectedTransaction.setDob(new SimpleDateFormat("yyyy-MM-dd").parse("10-2-10"));
         collectedTransaction.setGender(Gender.FEMALE);
@@ -41,7 +41,7 @@ public class OutboundFilterUnknownTest {
 
     @Test
     @DisplayName("Should return false when dob is null")
-    public void testIsNotOkWhenDobNull() {
+     void testIsNotOkWhenDobNull() {
         CollectedTransaction collectedTransaction = new CollectedTransaction();
         collectedTransaction.setDob(null);
         collectedTransaction.setGender(Gender.FEMALE);
@@ -54,7 +54,7 @@ public class OutboundFilterUnknownTest {
 
     @Test
     @DisplayName("Should return false when the fields are unknown")
-    public void testIsNotOkWhenUnknown() throws ParseException {
+     void testIsNotOkWhenUnknown() throws ParseException {
         CollectedTransaction collectedTransaction = new CollectedTransaction();
         collectedTransaction.setDob(new SimpleDateFormat("yyyy-MM-dd").parse("10-2-10"));
         collectedTransaction.setGender(Gender.UNKNOWN);
