@@ -1,14 +1,19 @@
+-> Before we look into the objectives, let's look at the landscape
 Credit Cards
 	-> stable source of income for the Banks.
 In Wells Fargo
 	-> Quarter 2 of this Financial Year
-	-> 34% of Customer Lending Revenue
-	-> So the Card Recommender system that we're building should be able to
+	-> 34% of Customer Lending Revenue came from the Credit Cards line of business
+	-> So the Card Recommendation system that we're building should be able to
 		-> Can Attract new users
 		-> Can retain existing users
 		-> Provide suggestions that are customer centric	
 -> We made a few assumptions
--> Also, we had to consider a few constraints while building our system
+	-> Every Customer has an initial credit card
+	-> Credit scores of the customers are available
+-> Also, we had to consider a few constraints
+	-> Tagged Credit Cards Data was unavailable
+	-> No suitable evaluation metric for the Recommendation Models
 
 Building such a Recommendation System brings forth an array of Challenges
 	-> Scalability
@@ -16,18 +21,40 @@ Building such a Recommendation System brings forth an array of Challenges
 	-> Adaptability
 		-> Adapt and personalize the recommendations w.r.t to the changing lifestyle of the customer
 	-> Privacy
-		-> Ensure that the sensitive customer information is handled safely and securely and it's confidentiality is maintained
+		-> Ensure that the sensitive customer information is handled safely and securely
+		-> It's confidentiality is maintained
 		
-Now that we know the challenges we're trying to address, Sabuj will now discuss about the System Architecture
+Now that we know the challenges we're trying to address, next we will discuss more about the System Architecture
 
-In the Redeem Reward Points Microservice
-	-> Product database contains a list of -> premium as well as basic <- products and services.
--> These Products are suggested to the users based on their reward points in the associated categories. 
--> For evaluation purposes, we are considering a customer, whose profession is 'Student' and has rewards points of about 81 - hundred
--> Now, the plot shows Categories like Education and Shopping involves maximum expenditure. 
--> So, recommending the 'Book voucher' and 'Nike shoes' as the top suggestions seem to be quite reasonable.
+Next we come to the Suggestions to Redeem the accrued Reward Points
+	-> We have a product database which contains a list of
+		-> premium as well as some basic products.
+	-> These Products are suggested to the users 
+		-> based on their reward points in the associated categories. 
+-> For evaluation purposes, 
+	-> we are considering a customer
+	-> whose profession is 'Student'
+	-> has rewards points of about 8000
+-> The plot on the left shows that
+	-> There is maximum expenditure in the Categories of Education and Shopping
+-> So, recommendation of
+	-> 'Book voucher' and 'Nike shoes' 
+	-> seem to be quite reasonable.
 -> Another product, the 'Dell laptop' has also been suggested. 
 -> This has a slightly greater reward points requirement.
--> This is so, because the user may take it up as a target
-	-> And decide to save the reward points rather than spending them all on other products.
+-> However we suggested this
+	-> because the user may take it up as a target
+	-> And decide to save the reward points rather than spend them on other products.
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 

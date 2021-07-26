@@ -1,25 +1,8 @@
 -> At first, The Kafka Server is initialized
 -> Then, we're performing some clean-Up operations
 -> After that we're starting the following servers
-	-> Data Collector
-	-> Data Abstraction
-	-> Feature Extraction
-	-> Offline Scheduler
-	-> Nearline Scheduler
-	-> Recommendation Compiler
-	-> Recommendation Provider
-	-> Reward Suggestions
-	-> Redeem Reward Points
-	
--> We're running the following unsupervised models
-	-> New User Model
-	-> Rule Learning
-	-> Association Rule Learning
-	-> Self Organizing Maps
-	-> Kpca Similarity
-	-> Neural Embedding
--> And then we're starting the
-	-> XGBoost
+-> Next, we're starting the following unsupervised models
+-> Then, we're starting a XGBoost Model
 		-> Trainer
 		-> Generator Service
 		
@@ -28,16 +11,27 @@
     
 -> So, right now we can see that we've received no recommendations from the models
 -> What we're waiting for is the first Trigger to these models to generate the recommendations 
--> And we recieved one and Here, we have the recommendations
-	-> from the Rule Learning and New User Model
+-> And here have we recieved one
+	-> We can see that recommendations are being streamed from the Rule Learning and New User Model
 -> But not Other Models 
 	-> These models require a few more transactions to start generating good recommendations. 
 	-> So, waiting for more Triggers
 -> Now, if we check once again, all the unsupervised models are now  generating recommendations
--> Question is what about the xgboost models?
--> The XGBoost model is waiting to getting trained from these recommendations
+-> In the meantime, The XGBoost model is waiting to getting trained from these recommendations
 -> And here, we've trained our first model
--> Okay, the Xgboost Scheduler is also sending the triggers
--> And lo! The XGBoost models have also started generating Recommendations
--> So, after that all these recommendations are getting compiled in the Recommendation Compiler, which is further sending it to the Provider service, acting as a backend for the UI
--> Now, if check the results for the Users from the UI
+-> The Nearline Scheduler is also sending the triggers
+-> And we should recieve recommendations from the XGBoost models and we're receiving them
+-> So, all these recommendations are then getting compiled in the Recommendation Compiler
+-> Which is further sending it to the Provider service, acting as a backend for the UI
+-> Now, let's check the results for the Users from the UI
+	Customer with ID 1 has been suggested the Visa Signature card 
+		-> because of good credit scores
+		-> high expenditure in the Category of Grocery and Health
+	Customer with ID 10 has been suggested the Entertainment as the complimentary card
+		-> since the user already has the Shopping Card,
+		-> high expenditure in the Category of in the Entertainment and Food
+	Customer with ID 31 has been suggested the Cash Wise Card 
+		-> because of relatively high expenditure in Grocery and Shopping
+
+And with that we've come to the end of this Demo
+
